@@ -1,0 +1,203 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0 !important;
+}
+
+.subcontainer {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+button {
+    background-color: #3882F6;
+    color: white;
+    border-radius: 5px;
+    padding: 0.25em;
+    letter-spacing: 0.05em;
+    padding-left:10px;
+    padding-right:10px;
+    border: 0px;
+}
+
+#logo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #E5E7EB;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+nav li {
+    color: #E5E7EB;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #E5E7EB;
+}
+
+a:hover {
+    color: darkred;
+}
+
+#headerContainer  {
+    background-color: #1F2937
+}
+
+#headerInfo h1 {
+    font-size: 48px;
+}
+
+#headerInfo img {
+    width: 250px;
+    height: 250px;
+}
+
+#headerInfo p, h1{
+    color: #F9FAF8
+}
+
+#headerInfo {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5%;
+    gap: 1rem;
+}
+
+#mainInfo {
+    background-color: whitesmoke;
+    align-content: center;
+    justify-content: space-evenly;
+
+}
+
+#mainInfo h1 {
+    color: black;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.illustration {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5em;
+
+}
+
+.illustration img {
+    width: 180px;
+    height: 180px;
+    border-radius: 30px;
+    border: 5px solid #1F2937;
+}
+
+#quoteSection {
+    background-color: #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#quote {
+    font-size: 24px;
+    color: #1F2937;
+    font-style: italic;
+}
+
+#credit {
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+}
+
+#newsletter {
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+#mainInfoText h1 {
+    margin-bottom: 0;
+}
+
+#mainInfoText p {
+    margin-top: 0;
+}
+
+
+#letterContainer {
+    background-color: #3882F6;
+    border-radius: 5px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    padding-left: 5%;
+    padding-right: 5%;
+    justify-content: space-between;
+
+    display: flex;
+}
+
+#buttonContainer {
+    display: flex;
+}
+
+#buttonContainer button {
+    color: white;
+    border-radius: 5px;
+    padding: 0.25em;
+    letter-spacing: 0.05em;
+    padding-left:10px;
+    padding-right:10px;
+    border: 1px solid white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+#quoteSection {
+    padding-top: 10%;
+    margin-top: 10%;
+
+    padding-bottom: 4%;
+}
+
+#letterContainer p, h2 {
+    color: white;
+}
+
+footer {
+    padding-top: 2%;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #1F2937;
+    padding-bottom: 1%;
+}
+
+footer p {
+    color:white;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+blockquote {
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
