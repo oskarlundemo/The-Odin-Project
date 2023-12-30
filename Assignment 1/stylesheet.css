@@ -56,8 +56,10 @@ a:hover {
 }
 
 #headerInfo img {
-    width: 250px;
+    width: 600px;
     height: 250px;
+    object-fit: cover;
+    
 }
 
 #headerInfo p, h1{
