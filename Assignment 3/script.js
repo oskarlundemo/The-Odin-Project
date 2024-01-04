@@ -2,47 +2,35 @@
 
 $(document).ready(function () {
 
-    let mouseMove = $('#boxArea');
-    mouseMove.on('mouseover', ChangeDivColor);
+    let x;
+    let y;
 
 
 
-    for (i = 0; i < 16; i ++) {
-        $('#boxArea').append($('<div class="mouseArea"></div>'))
+    let canvasSize = 17;
 
+    canvasSize = canvasSize - (canvasSize % 4);
+
+    for (let i = 0; i < canvasSize; i++) {
+        $('#boxArea').append($('<div class="mouseArea"><div> </div></div>'))
     }
 
-    function ChangeDivColor () {
-
-        let x = 0;
-        let y = 0;
+    let childContainer = $('.mouseArea')
 
 
-        $('.mouseArea').on("mousemove", function (event) {
-            x = event.pageX;
-            y = event.pageY;
+    childContainer.on('mouseenter', function (e) {
+        $(this).css("background-color", "red");
 
-            console.log(event.pageX + ", " + event.pageY);
+        x = e.clientX;
+        y = e.clientY;
 
-            let test = TargetedElemnt(x,y);
+    });
 
-            test.style.backgroundColor = 'black';
-        });
-
-
-    }
-
-});
+    childContainer.on('mouseleave', function (e) {
+        $(this).css("background-color", "white")
+    });
 
 
+})
 
-function TargetedElemnt (x,y) {
 
-
-    let target = document.elementFromPoint(x, y);
-
-    if (target === $('mouseArea'))
-        alert('hej')
-
-    return target;
-}
