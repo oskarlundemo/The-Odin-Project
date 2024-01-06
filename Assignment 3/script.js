@@ -5,28 +5,38 @@ $(document).ready(function () {
     let x;
     let y;
 
-    let coolorPicker = $('#favcolor');
+    let colorPicker = $('#color');
     let pickedColor;
 
+    let sizePicker = $('#pixels');
+    let amountPixels;
 
 
-    let canvasSize = 17;
-
-    canvasSize = canvasSize - (canvasSize % 4);
 
     for (let i = 0; i < 16; i++) {
         $('#boxArea').append($('<div class="mouseArea"><div> </div></div>'))
-
     }
+
+    sizePicker.on('change', function (e) {
+        let tmp = e.target.value;
+        amountPixels = SizeDivider(tmp)
+
+        $('#sizeInfo').text(amountPixels + ' X ' + amountPixels);
+    });
+
 
     let childContainer = $('.mouseArea')
 
+    colorPicker.on('input', function (e) {
+        pickedColor = e.target.value;
+        $('#colorInfo').css('color', pickedColor);
 
-    coolorPicker.on('click', CoolorPicker);
+        console.log(pickedColor);
+    });
 
 
     childContainer.on('mouseenter', function (e) {
-        $(this).css("background-color", "red");
+        $(this).css("background-color", pickedColor);
 
         x = e.clientX;
         y = e.clientY;
@@ -38,14 +48,26 @@ $(document).ready(function () {
     });
 
 
-    function CoolorPicker () {
+    function Draw () {
 
-        picker = $('#favcolor').val();
 
-        console.log(picker);
     }
 
 
+    function SizeDivider (inpt) {
+
+        if (inpt > 1 && inpt < 20) {
+            return 1;
+        } else if (inpt >= 20 && inpt < 40) {
+            return 4;
+        } else if (inpt >= 40 && inpt < 60) {
+            return 16;
+        } else if (inpt >= 60 && inpt < 80) {
+            return 64;
+        } else {
+            return 128;
+        }
+    }
 })
 
 

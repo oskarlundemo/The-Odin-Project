@@ -9,7 +9,7 @@ body {
     width: 60%;
     height: 100%;
     margin: auto;
-    font-family: 'JetBrains Mono';
+    font-family: 'JetBrains Mono', sans-serif;
 
 }
 
@@ -47,7 +47,7 @@ header h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+
     gap: 2%;
 }
 
@@ -62,6 +62,47 @@ header h1 {
 
     width: 70%;
     height: 70%;
+}
+
+#color {
+    margin: auto;
+}
+
+#colorInfo {
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
+}
+
+#colorArea {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end !important;
+}
+
+
+#clearBtn {
+    max-width: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20%;
+
+    background-color: whitesmoke;
+
+    border: 0;
+    border-radius: 25px;
+
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+    padding-right: 6%;
+    padding-left: 6%;
+}
+
+#sizeInfo {
+    text-align: center;
+    font-weight: 800;
 }
 
 
