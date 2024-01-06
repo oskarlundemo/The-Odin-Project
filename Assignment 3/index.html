@@ -42,12 +42,17 @@
 
         <div id = "sidepanel">
 
-            <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+            <div id = "colorArea">
+                <p id = "colorInfo">Färg</p>
 
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="color" id="color" name="color" value="#ff0000">
 
-            <button>Clear</button>
+            </div>
 
+                <p id = "sizeInfo">1 X 1</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="pixels">
+
+                <button id = "clearBtn">Clear</button>
         </div>
 
     <div id = "boxArea">
