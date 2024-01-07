@@ -11,21 +11,40 @@ $(document).ready(function () {
     let sizePicker = $('#pixels');
     let amountPixels;
 
+    let clrBtn = $('#clearBtn');
 
 
-    for (let i = 0; i < 16; i++) {
-        $('#boxArea').append($('<div class="mouseArea"><div> </div></div>'))
-    }
 
     sizePicker.on('change', function (e) {
         let tmp = e.target.value;
         amountPixels = SizeDivider(tmp)
 
+        let boxes = document.querySelectorAll('.grid');
+        boxes.forEach(box => {
+            box.remove();//removes old grid
+        });
+
+        createGrid(amountPixels)
+
         $('#sizeInfo').text(amountPixels + ' X ' + amountPixels);
     });
 
+    function createGrid (pixels) {
+        for (let i = 0; i < (pixels * pixels); i++) {
+            $('#boxArea').append($('<div class="grid" ></div>'))
 
-    let childContainer = $('.mouseArea')
+            /**
+             *
+             *
+            grid.classList.add('grid');
+            const grid = document.createElement('div')
+            const boxSize = 250 / pixels; // creates the dynamic squeres
+            grid.style.width = boxSize + 'px';
+            grid.style.height = boxSize + 'px';
+            $('#boxArea').append(grid);
+                */
+        }
+    }
 
     colorPicker.on('input', function (e) {
         pickedColor = e.target.value;
@@ -35,38 +54,39 @@ $(document).ready(function () {
     });
 
 
-    childContainer.on('mouseenter', function (e) {
-        $(this).css("background-color", pickedColor);
+    $('#boxArea').on('mousedown', '.grid',function (e) {
 
         x = e.clientX;
         y = e.clientY;
 
+        $('#boxArea').on('mouseenter', '.grid', function () {
+
+            $(this).css("background-color", pickedColor);
+        });
     });
 
-    childContainer.on('mouseleave', function (e) {
-        $(this).css("background-color", "white")
+    clrBtn.on('click', function () {
+
+        $('.grid').css('background-color', 'white');
     });
-
-
-    function Draw () {
-
-
-    }
-
 
     function SizeDivider (inpt) {
 
-        if (inpt > 1 && inpt < 20) {
+        const inputNumber = parseFloat(inpt);
+
+        if (inputNumber >= 0 && inputNumber < 20) {
             return 1;
-        } else if (inpt >= 20 && inpt < 40) {
-            return 4;
-        } else if (inpt >= 40 && inpt < 60) {
-            return 16;
-        } else if (inpt >= 60 && inpt < 80) {
-            return 64;
-        } else {
-            return 128;
         }
+        if (inputNumber < 40) {
+            return 4;
+        }
+        if (inputNumber < 60) {
+            return 16;
+        }
+        if (inputNumber < 80) {
+            return 64;
+        }
+        return 128;
     }
 })
 
