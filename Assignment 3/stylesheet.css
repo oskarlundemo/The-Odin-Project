@@ -10,17 +10,19 @@ body {
     height: 100%;
     margin: auto;
     font-family: 'JetBrains Mono', sans-serif;
-
+    min-width: 803px !important;
 }
 
 header {
     text-align: center;
     padding-left: 5%;
     padding-right: 5%;
+    padding-bottom: 5%;
 }
 
 header h1 {
     border-bottom: 1px solid black;
+    padding-bottom: 2%;
 }
 
 #wrapper {
@@ -106,17 +108,13 @@ header h1 {
 }
 
 
-#boxArea > div {
-    display: flex;
-    flex-basis: calc(25% - 40px);
-    justify-content: center;
-    flex-direction: column;
+#authorTag {
+    text-align: center;
 }
-#boxArea > div > div {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
+
+
+
+
 
 
 

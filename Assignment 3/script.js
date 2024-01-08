@@ -5,6 +5,9 @@ $(document).ready(function () {
     let x;
     let y;
 
+
+    let mouseDown = 0;
+
     let colorPicker = $('#color');
     let pickedColor;
 
@@ -14,8 +17,16 @@ $(document).ready(function () {
     let clrBtn = $('#clearBtn');
 
 
+    clrBtn.on('mouseover', function(e) {
+        $(this).css('font-weight','800')
+
+        clrBtn.on('mouseleave', function(e) {
+            $(this).css('font-weight',"")
+        })
+    })
 
     sizePicker.on('change', function (e) {
+
         let tmp = e.target.value;
         amountPixels = SizeDivider(tmp)
 
@@ -30,43 +41,36 @@ $(document).ready(function () {
     });
 
     function createGrid (pixels) {
-        for (let i = 0; i < (pixels * pixels); i++) {
-            $('#boxArea').append($('<div class="grid" ></div>'))
 
-            /**
-             *
-             *
-            grid.classList.add('grid');
-            const grid = document.createElement('div')
-            const boxSize = 250 / pixels; // creates the dynamic squeres
-            grid.style.width = boxSize + 'px';
-            grid.style.height = boxSize + 'px';
-            $('#boxArea').append(grid);
-                */
+        const boxWidth = $('#boxArea').width();
+        const boxHeight = $('#boxArea').height();
+
+        for (let i = 0; i < (pixels * pixels); i++) {
+            $('#boxArea').append($('<div class="grid" ></div>'));
         }
+
+
+        $('.grid').css('height', boxHeight / pixels);
+        $('.grid').css('width', boxWidth / pixels);
+
     }
 
     colorPicker.on('input', function (e) {
         pickedColor = e.target.value;
         $('#colorInfo').css('color', pickedColor);
-
-        console.log(pickedColor);
     });
 
 
-    $('#boxArea').on('mousedown', '.grid',function (e) {
+    $('#boxArea').on('mouseenter', '.grid',function (e) {
 
         x = e.clientX;
         y = e.clientY;
 
-        $('#boxArea').on('mouseenter', '.grid', function () {
-
-            $(this).css("background-color", pickedColor);
-        });
+        $(this).css("background-color", pickedColor);
+        
     });
 
     clrBtn.on('click', function () {
-
         $('.grid').css('background-color', 'white');
     });
 
