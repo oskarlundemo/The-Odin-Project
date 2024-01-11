@@ -67,7 +67,7 @@ $(document).ready(function () {
         y = e.clientY;
 
         $(this).css("background-color", pickedColor);
-        
+
     });
 
     clrBtn.on('click', function () {
