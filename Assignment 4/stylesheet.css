@@ -2,12 +2,11 @@
 
 html {
     height: 100%;
-
 }
 
 
 body {
-    width: 60%;
+    max-width: 60%;
     background-color: whitesmoke;
     margin: auto;
     height: 100%;
@@ -18,10 +17,11 @@ body {
     margin-top: 20%;
     height: 100%;
 
-    width: 80%;
+    display: flex;
+
+    justify-content: space-around;
+    max-width: 80%;
 }
-
-
 .interface {
     height: 80%;
     width: 100%;
@@ -31,9 +31,17 @@ body {
     background-color: black;
     font-family: 'SF Pro Display', sans-serif;
     color: white;
+
     border-radius: 20px;
     height: 50%;
 
+    padding-left: 2%;
+    padding-right: 2%;
+
+    max-width: 450px;
+    min-width: 450px;
+
+    min-height: 700px;
     box-shadow: 12px 12px 2px 1px darkgrey;);
 }
 
@@ -48,13 +56,18 @@ body {
     height: 10%;
     border-radius: 200px;
 
-    background-color: darkgrey;
+    background-color: dimgrey;
     gap: 1%;
 }
 
 
 .interface {
-    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.interface p {
+    font-size: 200%;
 }
 
 .interface div {
@@ -62,7 +75,7 @@ body {
     height: 20%;
     margin: 0;
     padding: 0;
-
+    gap: 1%;
 }
 
 #display {
@@ -70,58 +83,83 @@ body {
     display: flex;
 
     justify-content: flex-end;
+    flex-direction: column;
+}
+
+#display p {
+    display: flex;
+    justify-content: flex-end;
+
+    font-size: 400%;
+    padding-right: 30px;
+
+    margin-bottom: 0;
 }
 
 #rowOne {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 2%;
 }
 
 #rowOne div {
     display: flex;
     justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
+
 }
 
 #rowTwo {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 2%;
 }
 
 #rowTwo div {
     display: flex;
     justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
 }
 
 #rowThree {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 2%;
 }
 
 #rowThree div {
     display: flex;
     justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
 }
 
 #rowFour {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 2%;
 }
-
 
 #rowFour div {
     display: flex;
     justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
 }
-
 
 #rowFive {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 2%;
 }
 
 #rowFive div {
     display: flex;
     justify-content: space-evenly;
+    height: 100%;
+    align-items: center
 }
 
 .operation {
@@ -133,4 +171,8 @@ body {
 
     background-color: orange;
     gap: 1%;
+}
+
+#reset, #negPos, #proCent {
+    background-color: lightgray;
 }
