@@ -10,6 +10,10 @@ body {
     background-color: whitesmoke;
     margin: auto;
     height: 100%;
+
+    display: flex;
+
+    justify-content: center;
 }
 
 
@@ -38,15 +42,11 @@ body {
     padding-left: 2%;
     padding-right: 2%;
 
-    max-width: 450px;
-    min-width: 450px;
+    max-width: 500px;
+    min-width: 500px;
 
-    min-height: 700px;
+    min-height: 780px;
     box-shadow: 12px 12px 2px 1px darkgrey;);
-}
-
-.operation {
-    background-color: orange;
 }
 
 .button {
@@ -59,7 +59,6 @@ body {
     background-color: dimgrey;
     gap: 1%;
 }
-
 
 .interface {
     min-width: 100%;
@@ -84,83 +83,33 @@ body {
 
     justify-content: flex-end;
     flex-direction: column;
+
+    margin-top: 2%;
 }
 
 #display p {
     display: flex;
     justify-content: flex-end;
 
-    font-size: 400%;
+    font-size: 600%;
     padding-right: 30px;
 
     margin-bottom: 0;
 }
 
-#rowOne {
+#rowOne, #rowTwo, #rowThree, #rowFour, #rowFive {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 2%;
 }
 
-#rowOne div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-
-}
-
-#rowTwo {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowTwo div {
+#rowFour div, #rowFive div, #rowThree div, #rowTwo div, #rowOne div {
     display: flex;
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
 }
 
-#rowThree {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowThree div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-}
-
-#rowFour {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowFour div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-}
-
-#rowFive {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowFive div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center
-}
 
 .operation {
     align-content: flex-start;
@@ -173,6 +122,17 @@ body {
     gap: 1%;
 }
 
+.specials {
+    align-content: flex-start;
+    width: 10%;
+
+    height: 10%;
+    border-radius: 200px;
+    gap: 1%;
+}
+
 #reset, #negPos, #proCent {
     background-color: lightgray;
 }
+
+
