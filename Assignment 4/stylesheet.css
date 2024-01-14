@@ -106,10 +106,10 @@ body {
 #rowFour div, #rowFive div, #rowThree div, #rowTwo div, #rowOne div {
     display: flex;
     justify-content: space-evenly;
+
     height: 100%;
     align-items: center;
 }
-
 
 .operation {
     align-content: flex-start;
@@ -128,10 +128,8 @@ body {
 
     height: 10%;
     border-radius: 200px;
-    gap: 1%;
-}
 
-#reset, #negPos, #proCent {
+    gap: 1%;
     background-color: lightgray;
 }
 
