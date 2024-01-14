@@ -10,12 +10,16 @@
 
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 
+
     <script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous" defer></script>
+            crossorigin="anonymous"></script>
 
-    <script src = "scripts/"></script>
+
+    <script src = "script.js/" defer></script>
+
+
 
     <title>Calculator!</title>
 </head>
@@ -26,40 +30,40 @@
     <div id = calcWrapper>
 
         <div id = "display">
-            <p>0</p>
+            <p id = "displayNumbers">0</p>
         </div>
         <div class = "interface">
 
             <div id = "rowOne">
-                <div id = "reset" class = "button"> <p>AC</p>  </div>
-                <div id = "negPos" class = "button"> <p>+/-</p></div>
-                <div id = "proCent" class = "button"> <p>%</p> </div>
-                <div class = "operation" id = "divider"><p>/</p></div>
+                <div id = "reset" class = "specials"> <p>AC</p>  </div>
+                <div id = "negPos" class = "specials"> <p>+/-</p></div>
+                <div id = "proCent" class = "specials"> <p>%</p> </div>
+                <div class = "operation" id = "/"><p>/</p></div>
             </div>
 
             <div id = "rowTwo">
-                <div id = "seven" class = "button"> <p>7</p> </div>
-                <div id = "eight" class = "button"> <p>8</p> </div>
-                <div id = "nine" class = "button">  <p>9</p> </div>
-                <div class = "operation" id = "multiply"> <p>x</p></div>
+                <div id = "7" class = "button"> <p>7</p> </div>
+                <div id = "8" class = "button"> <p>8</p> </div>
+                <div id = "9" class = "button">  <p>9</p> </div>
+                <div class = "operation" id = "*"> <p>x</p></div>
             </div>
 
             <div id = "rowThree">
-                <div id = "four" class = "button"> <p>4</p> </div>
-                <div id = "five" class = "button"> <p>5</p> </div>
-                <div id = "six" class = "button"> <p>6</p> </div>
-                <div class = "operation" id = "substraction"> <p>-</p></div>
+                <div id = "4" class = "button"> <p>4</p> </div>
+                <div id = "5" class = "button"> <p>5</p> </div>
+                <div id = "6" class = "button"> <p>6</p> </div>
+                <div class = "operation" id = "-"> <p>-</p></div>
             </div>
 
             <div id = "rowFour">
-                <div id = "one" class = "button"> <p>1</p> </div>
-                <div id = "two" class = "button"> <p>2</p> </div>
-                <div id = "three" class = "button"> <p>3</p> </div>
-                <div class = "operation" id = "addition"> <p>+</p> </div>
+                <div id = "1" class = "button"> <p>1</p> </div>
+                <div id = "2" class = "button"> <p>2</p> </div>
+                <div id = "3" class = "button"> <p>3</p> </div>
+                <div class = "operation" id = "+"> <p>+</p> </div>
             </div>
 
             <div id = "rowFive">
-                <div id = "zero" class = "button"> <p>0</p> </div>
+                <div id = "0" class = "button"> <p>0</p> </div>
                 <div id = "comma" class = "button"> <p>,</p> </div>
                 <div class = "operation" id = "sum"> <p>=</p> </div>
             </div>

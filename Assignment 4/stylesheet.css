@@ -49,10 +49,6 @@ body {
     box-shadow: 12px 12px 2px 1px darkgrey;);
 }
 
-.operation {
-    background-color: orange;
-}
-
 .button {
     align-content: flex-start;
     width: 10%;
@@ -63,7 +59,6 @@ body {
     background-color: dimgrey;
     gap: 1%;
 }
-
 
 .interface {
     min-width: 100%;
@@ -102,71 +97,19 @@ body {
     margin-bottom: 0;
 }
 
-#rowOne {
+#rowOne, #rowTwo, #rowThree, #rowFour, #rowFive {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 2%;
 }
 
-#rowOne div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-
-}
-
-#rowTwo {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowTwo div {
+#rowFour div, #rowFive div, #rowThree div, #rowTwo div, #rowOne div {
     display: flex;
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
 }
 
-#rowThree {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowThree div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-}
-
-#rowFour {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowFour div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center;
-}
-
-#rowFive {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-#rowFive div {
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-    align-items: center
-}
 
 .operation {
     align-content: flex-start;
@@ -176,6 +119,15 @@ body {
     border-radius: 200px;
 
     background-color: orange;
+    gap: 1%;
+}
+
+.specials {
+    align-content: flex-start;
+    width: 10%;
+
+    height: 10%;
+    border-radius: 200px;
     gap: 1%;
 }
 
