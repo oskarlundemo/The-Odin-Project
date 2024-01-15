@@ -39,9 +39,6 @@ $(document).ready(function () {
         totalSum = StringToNumber(currentNumbers, secondString, currentOperator)
 
         $('#displayNumbers').text(totalSum.toString());
-
-        console.log(totalSum);
-
         secondString = '';
         currentNumbers = totalSum;
     });
@@ -92,13 +89,10 @@ $(document).ready(function () {
 
         $(this).css('background-color', 'darkorange');
 
-        $('#displayNumbers').text('');
         currentOperator = this.id;
 
         currentNumbers = currentNumbers + currentOperator;
-
-    })
-
+    });
 
     function ContainsOperator (stringOfNumbers) {
         return /\+|-|\*|\//.test(stringOfNumbers);
