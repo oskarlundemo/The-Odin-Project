@@ -1,0 +1,151 @@
+* {
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+html, body, #wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#logo {
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    display: flex;
+
+    position: relative;
+    top: 20%;
+
+    height: 15%;
+    width: 100%;
+
+    justify-content: center;
+    align-content: baseline;
+
+    flex-direction: row;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    color: white;
+}
+
+#logo h1 {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    font-family: 'Norse', sans-serif;
+    font-size: 6rem;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+aside {
+    width: 50%;
+    height: 100%;
+    background-image: url("images/leafs.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+    width: 70%;
+    background-color: white;
+}
+
+fieldset {
+    display: flex;
+    justify-content: flex-start;
+
+    text-transform: uppercase;
+    border: 0;
+}
+
+label {
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    padding-left: 0;
+}
+
+fieldset > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+#fieldContainer2 {
+    margin-left: 2%;
+}
+
+a {
+    text-decoration: none;
+    color: #596D48;
+}
+
+a:hover {
+    color: red;
+}
+
+
+#buttonContainer {
+    display: flex;
+    flex-direction: column;
+
+    width: 28%;
+    height: 13%;
+
+    padding-top: 4%;
+    padding-left: 4%;
+}
+
+button {
+
+
+    width: 100%;
+    height: 100%;
+
+    max-width: max(200px, 100px);
+    max-height: max(200px, 100px);
+
+
+    border-radius: 15px;
+    border: 0;
+
+    color: white;
+    background-color: #596D48;
+
+    font-size:1.3rem;
+    letter-spacing: 0.09rem;
+}
+
+#fakeHeader {
+    display:flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding-left: 4%;
+    padding-top: 15%;
+    padding-bottom: 4%;
+
+    font-size: 1.4rem;
+}
+
+#fieldContainer2 {
+    padding-left: 5%;
+}
+
+legend {
+    font-size: 1.4rem;
+    padding-left: 5%;
+    box-shadow: 0 4px 2px -2px lightgray;
+
+}
+
+input {
+    color: rgba(0,0,0,0.5);
+}
