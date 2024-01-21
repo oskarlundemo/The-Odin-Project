@@ -1,0 +1,89 @@
+
+
+:root {
+    --default-color: #3b82f6;
+}
+
+
+img {
+    max-height: 20px;
+    max-width: 20px;
+}
+
+aside {
+    background-color: var(--default-color);
+}
+
+
+html{
+    width: 100%;
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+
+}
+
+#siteWrapper {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template: repeat(auto-fill, minmax(100px, auto)) / repeat(auto-fill, minmax(100px, auto));
+}
+
+
+header {
+    display: grid;
+
+    grid-template: 40% 40% / 80% 20%;
+}
+
+#userGreeting {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#currentSession {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+
+#sideBarOptions {
+    display: grid;
+    grid-template: repeat(9, 10%)/ 200px;
+
+    justify-self: center;
+    align-items: center;
+}
+
+#sideBarOptions > * {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+#logoSection {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+}
