@@ -3,8 +3,12 @@
     --default-color: #3b82f6;
     --default-grey: #f3f4f6;
     --default-white: #f9fafb;
+    --default-p: #686a6c;
 }
 
+p {
+    color: var(--default-p);
+}
 
 
 img {
@@ -19,7 +23,7 @@ html{
 }
 
 body {
-    width: 80%;
+    width: 100%;
     height: 100%;
     margin: auto;
 }
@@ -29,7 +33,7 @@ body {
     height: 100%;
 
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 0.75fr 3fr;
     grid-template-rows: minmax(30%, auto) 1fr;
 
 }
@@ -118,13 +122,23 @@ aside {
     background-color: var(--default-color);
 }
 
+
+#logoSection img {
+    min-width: 50px;
+    min-height: 50px;
+}
+
 nav > * {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 2rem;
+    padding-left: 5%;
 }
 
+#settings {
+    margin-top: 20%;
+}
 
 /*
 
@@ -144,18 +158,33 @@ nav > * {
 }
 
 .ongoingproject {
-    background-color: white !important;
+    background-color: var(--default-white) !important;
     border-radius: 15px;
     padding: 1% 5% 1% 5%;
     border-left: 10px solid  #facc15;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 #projects {
     padding: 3%;
-
     display: grid;
     gap: 1.4rem;
 
-    grid-template-rows: repeat(3, minmax(4%, 20%));
-    grid-template-columns: repeat(2, minmax(1%, 1fr));
+    grid-template-rows: repeat(3, minmax(40%, 60%));
+    grid-template-columns: repeat(2, minmax(10%, 2fr));
 }
+
+
+#announcements, #trending {
+    margin-top: 1.4rem;
+    background-color: var(--default-white);
+    border-radius: 15px;
+    padding: 1% 5% 1% 5%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#announcements div:not(:nth-child(3)):not(:nth-child(3)) {
+    border-bottom: 2px solid black;
+}
+
+
