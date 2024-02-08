@@ -50,12 +50,32 @@ header {
     grid-template:repeat(2, minmax(auto, 1fr)) / minmax(70%, 2fr) minmax(30%, 1fr)
 }
 
+#currentSession {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 5%;
+
+    padding-left: 5%;
+}
+
+#currentSession img {
+    min-width: 10%;
+    min-height: 30%;
+}
+
 #searchBarSection {
     display: flex;
     flex-direction: row;
 
     align-items: center;
     grid-area: 1 / 1 / 2 / 2;
+}
+
+#searchBarSection img {
+    min-width: 15%;
+    min-height: 15%;
 }
 
 #searchBarSection > input {
@@ -82,8 +102,8 @@ header {
 
 #buttonContainer button {
 
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
 
     color: white;
     background-color: var(--default-color);
@@ -94,6 +114,21 @@ header {
     font-size: 1rem;
 }
 
+
+#userGreeting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#userGreeting img {
+    min-height: 50%;
+    min-width: 8%;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
 
 
 
@@ -195,6 +230,14 @@ nav > * {
     display:grid;
 
     grid-template:repeat(4, minmax(auto, 1fr)) / minmax(30%, 2fr) minmax(70%, 1fr);
+}
+
+.iconsection {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-end;
+    gap: 0.5em;
 }
 
 
