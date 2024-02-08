@@ -1,6 +1,6 @@
 
 :root {
-    --default-color: #3b82f6;
+    --default-color: #a9a9a9;
     --default-grey: #f3f4f6;
     --default-white: #f9fafb;
     --default-p: #686a6c;
@@ -111,6 +111,9 @@ aside {
 }
 
 #logoSection {
+
+    font-family: "Lora", serif;
+    letter-spacing: 0.1rem;
     display: flex;
     justify-content: center;
 
@@ -118,7 +121,7 @@ aside {
     align-items: center;
     gap: 1rem;
 
-    color: #ffffff;
+    color: black;
     background-color: var(--default-color);
 }
 
