@@ -1,0 +1,61 @@
+
+
+:root {
+    --default-color: #a9a9a9;
+    --default-grey: #f3f4f6;
+    --default-white: #f9fafb;
+    --default-p: #686a6c;
+}
+
+
+html {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+
+    font-style: normal;
+
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+
+    height: 50%;
+}
+
+#siteWrapper {
+    margin: auto;
+    background-color: var(--default-grey);
+
+    padding: 3%;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#inputArea {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 50%;
+}
+
+#list {
+    min-width: 50%;
+    min-height: 100%;
+}
+
+#shelf {
+    min-height: 100%;
+    min-width: 100%;
+}
