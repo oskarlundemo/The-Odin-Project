@@ -144,8 +144,6 @@ form {
 }
 
 
-
-
 input:focus {
     outline: none;
 }
@@ -160,7 +158,6 @@ input {
         padding: 0.25em 0.75em;
     }
 }
-
 
 
 #spinner {
@@ -240,11 +237,16 @@ input {
     font-size: 10px;
 }
 
-#downArrow {
-    left: 50%;
-    top: 10%;
-    position: fixed;
-    z-index: 2000;
 
-    width: 20px;
+.arrow{
+    position: fixed;
+    transform: translate(-50%, -50%);
+
+    left: 50%;
+    top: 27%;
+    z-index: 2000;
+    font-size: 50px;
+
 }
+
+
