@@ -150,13 +150,19 @@ input:focus {
 
 input {
     border: 0;
-    border-bottom: 2px solid var(--secondary-color)
+    border-bottom: 2px solid var(--secondary-color);
+    background: transparent;
+    font-size: 20px;
 }
 
 @media (min-width: 768px) {
     .button-54 {
         padding: 0.25em 0.75em;
     }
+}
+
+#spinner.active {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 
@@ -168,12 +174,12 @@ input {
     justify-content: space-around;
 
     position: fixed;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(0);
     padding: 2%;
     left: 50%;
     top: 50%;
 
-    transition: 250ms ease-in-out;
+    transition: 1s ease-in-out;
     z-index: 1000;
     border-radius: 10px;
 }
@@ -214,6 +220,7 @@ input {
     background: var(--secondary-color)
 }
 
+
 #spinBtn {
     position: fixed;
     transform: translate(-50%, -50%) scale(1);
@@ -221,6 +228,7 @@ input {
     left: 50%;
     top: 50%;
     z-index: 2000;
+    transition: 1s ease-in-out;
 
     height: 60px;
     width: 60px;
@@ -230,7 +238,6 @@ input {
 
     font-family: monospace;
     cursor: pointer;
-    transition: font-size 0.3s;
 }
 
 #spinBtn:hover {
@@ -238,15 +245,20 @@ input {
 }
 
 
-.arrow{
+#arrow.active {
+    transform: translate(-50%, -50%) scale(1);
+
+}
+
+#arrow{
     position: fixed;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
 
     left: 50%;
     top: 27%;
     z-index: 2000;
     font-size: 50px;
-
+    transition: ease-in-out 1s;
 }
 
 
