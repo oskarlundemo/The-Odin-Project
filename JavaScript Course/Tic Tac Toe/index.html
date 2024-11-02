@@ -16,7 +16,7 @@
     <div id = "headerContainer">
         <h1>Tic tac toe!</h1>
         <p>Welcome to the ultimate game of tic-tac-toe!</p>
-        <h2>It is <span id = "currentPlayer"></span> turn</h2>
+        <h2>Lägg in typewriter här <span id = "currentPlayer"></span></h2>
     </div>
 
 
@@ -37,5 +37,49 @@
 
 </div>
 
+
+<div id = "userGreeting" class = "">
+
+    <form method = "POST" action = "">
+
+        <div class = "usernameContainer">
+            <img src="images/person.svg" alt = "User icon">
+            <input type="text" id = "player1" placeholder="Player 1">
+        </div>
+
+        <div class = "usernameContainer">
+            <img src="images/person.svg" alt = "User icon">
+            <input type="text" id = "player2" placeholder="Player 2">
+        </div>
+
+        <input type="submit" value="Start game!" class = "button-54" id = "startBtn">
+    </form>
+
+
+</div>
+
+
+<img src="images/downwardarrow.svg" id = "downArrow">
+
+<div id = "spinner">
+
+
+    <button id = "spinBtn" class = "button-71">Spin</button>
+
+        <div id = "wheel">
+            <div class = "one">
+                <p>Spelare 1</p>
+            </div>
+            <div class = "two">
+                <p>Spelare 2</p>
+            </div>
+        </div>
+
+
+</div>
+
 </body>
+
+<div id = "overlay" class="active"></div>
+
 </html>
