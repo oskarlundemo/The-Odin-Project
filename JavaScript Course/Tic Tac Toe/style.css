@@ -14,6 +14,14 @@ body, html {
     color: var(--secondary-color);
 }
 
+footer {
+    text-align: center;
+    background-color: var(--primary-color);
+    font-family: monospace !important;
+}
+
+
+
 #wrapper {
     display: grid;
     grid-template: 0.5fr 1fr 0.5fr / 0.2fr 1fr 0.2fr;
@@ -49,6 +57,12 @@ body, html {
     text-align: center;
 }
 
+#headerContainer div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
 .cell {
     background-color: var(--primary-color);
     z-index: 10;
@@ -59,8 +73,217 @@ body, html {
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 14rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Creates a shadow effect */
 }
 
 .cell:hover {
     background-color: var(--secondary-color);
 }
+
+#overlay {
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 250ms ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 900;
+}
+
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#userGreeting.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#userGreeting {
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    padding: 2%;
+    left: 50%;
+    top: 50%;
+
+    transition: 250ms ease-in-out;
+    background-color: var(--primary-color);
+    width: 40%;
+    box-shadow: 2px 4px 10px rgb(0, 0, 0, 0.8);
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.usernameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+
+.button-54 {
+    font-family: "Open Sans",
+    sans-serif;font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-54:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+input {
+    border: 0;
+    border-bottom: 2px solid var(--secondary-color);
+    background: transparent;
+    font-size: 20px;
+}
+
+@media (min-width: 768px) {
+    .button-54 {
+        padding: 0.25em 0.75em;
+    }
+}
+
+#spinner.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+#spinner {
+    width: 50%;
+    height: 40%;
+    min-width: 600px;
+    display: flex;
+    justify-content: space-around;
+
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    padding: 2%;
+    left: 50%;
+    top: 50%;
+
+    transition: 1s ease-in-out;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+#wheel > div {
+    height: 100%;
+    width: 100%;
+}
+
+#wheel {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    background: var(--default-white);
+    animation: spin 2s linear infinite;
+    border-radius: 50%;
+    border: 10px solid black;
+    position: relative;
+    overflow: hidden;
+    transition: 1s;
+}
+
+
+#wheel div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+    font-size: 2em;
+}
+
+.one {
+    background: var(--primary-color)
+}
+
+.two {
+    background: var(--secondary-color)
+}
+
+
+#spinBtn {
+    position: fixed;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 2%;
+    left: 50%;
+    top: 50%;
+    z-index: 2000;
+    transition: 1s ease-in-out;
+
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid black;
+
+
+    font-family: monospace;
+    cursor: pointer;
+}
+
+#spinBtn:hover {
+    font-size: 10px;
+}
+
+
+#arrow.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#arrow{
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    left: 50%;
+    top: 27%;
+    z-index: 2000;
+    font-size: 50px;
+    transition: ease-in-out 1s;
+}
+
+#turnSelector {
+    transform: scale(0);
+    text-align: center;
+    transition: 1s;
+}
+
+#turnSelector.active {
+    transform: scale(1)
+}
+
+
