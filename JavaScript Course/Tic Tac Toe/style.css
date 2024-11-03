@@ -14,6 +14,14 @@ body, html {
     color: var(--secondary-color);
 }
 
+footer {
+    text-align: center;
+    background-color: var(--primary-color);
+    font-family: monospace !important;
+}
+
+
+
 #wrapper {
     display: grid;
     grid-template: 0.5fr 1fr 0.5fr / 0.2fr 1fr 0.2fr;
@@ -49,6 +57,12 @@ body, html {
     text-align: center;
 }
 
+#headerContainer div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
 .cell {
     background-color: var(--primary-color);
     z-index: 10;
@@ -59,6 +73,8 @@ body, html {
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 14rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Creates a shadow effect */
 }
 
 .cell:hover {
@@ -77,6 +93,7 @@ body, html {
     opacity: 0;
     z-index: 900;
 }
+
 
 #overlay.active {
     opacity: 1;
@@ -196,7 +213,7 @@ input {
     background: var(--default-white);
     animation: spin 2s linear infinite;
     border-radius: 50%;
-    border: 15px solid black;
+    border: 10px solid black;
     position: relative;
     overflow: hidden;
     transition: 1s;
@@ -247,18 +264,26 @@ input {
 
 #arrow.active {
     transform: translate(-50%, -50%) scale(1);
-
 }
 
 #arrow{
     position: fixed;
     transform: translate(-50%, -50%) scale(0);
-
     left: 50%;
     top: 27%;
     z-index: 2000;
     font-size: 50px;
     transition: ease-in-out 1s;
+}
+
+#turnSelector {
+    transform: scale(0);
+    text-align: center;
+    transition: 1s;
+}
+
+#turnSelector.active {
+    transform: scale(1)
 }
 
 
