@@ -1,9 +1,10 @@
 
 
 :root {
-    --side-bar: #FFFFFF;
     --main-section: #FAFAFA;
-    --light-gray: #D3D3D3;
+    --side-bar: #E0E0E0;
+    --header: #FAFAFA;
+    --buttons: #5a7ca6;
 }
 
 
@@ -11,7 +12,8 @@ body, html {
     width: 100%;
     height: 100%;
     margin: 0;
-    font-family: 'Monospaced', sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-image: linear-gradient(#ff9a8b 0%, #6a6bb8 50%, #3b3b98 100%);
 }
 
 body {
@@ -29,13 +31,17 @@ body {
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 0.5fr 3fr;
     min-width: 960px;
-    border: 2px solid var(--light-gray);
-    border-radius: 10px;
     margin: 5rem 0 5rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--side-bar);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    gap: 0.2rem;
+    background-color: var(--side-bar);
 }
 
 nav {
-    background-color: var(--light-gray);
+    background-color: var(--side-bar);
     grid-area: 2 / 1 / 2 / 2;
     display: flex;
     align-items: center;
@@ -53,6 +59,7 @@ main {
     background-color: var(--main-section);
     grid-area: 2 / 2 / 2 / 3;
     padding: 1em;
+
 }
 
 header {
@@ -61,10 +68,14 @@ header {
     flex-direction: column;
     justify-content: center;
     grid-column: 1 / 3;
+    background-color: var(--header);
 }
 
 h1, h2 {
     margin: 0;
+    background-image: linear-gradient(to right, #ff9a8b, #6a6bb8);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 #addTodo {
@@ -73,12 +84,12 @@ h1, h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ececec;
+    background-color: var(--side-bar);
     border-radius: 10px;
 }
 
 #addTodoBtn {
-    background-color: #4CAF50;
+    background-color: var(--buttons);
     color: #FFFFFF;
     border: none;
     padding: 10px 20px;
@@ -89,7 +100,7 @@ h1, h2 {
 }
 
 #addTodoBtn:hover {
-    background-color: #388E3C;
+    background-color: #ff9a8b;
 }
 
 #categories {

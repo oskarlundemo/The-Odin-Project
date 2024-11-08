@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="js/app.js" defer></script>
+    <script src="js/app.js" defer type = module></script>
 
     <title>Listly</title>
 </head>
@@ -16,12 +16,12 @@
 
     <header>
 
-        <h1>Listly 📝</h1>
-        <h2>Get productive</h2>
+        <h1>Listly</h1>
+        <h2>Get productive!</h2>
 
     </header>
 
-    <main>
+    <main id = "mainGrid">
 
         <div id = "addTodo">
             <button id = "addTodoBtn">New todo!</button>
@@ -31,10 +31,10 @@
 
     <nav>
 
-        <h2>Projects <span id = "addProject">+</span></h2>
+        <h2>Projects</h2>
 
         <ul id = "categories">
-            <li>Miscellaneous </li>
+            <li>Miscellaneous</li>
             <!-- Categories will be dynamically added here -->
         </ul>
     </nav>
