@@ -1,5 +1,5 @@
 
-export { renderTodo, renderTodos}
+export {renderTodo, renderTodos}
 
 const renderTodo = (todo) => {
     const todoElement = document.createElement('li');
@@ -39,3 +39,14 @@ const renderTodos = (todos) => {
     });
 }
 
+export function createTodoElement () {
+    const todoContainer = document.createElement('div');
+    const mainGrid = document.getElementById('mainGrid');
+
+    const test = document.createElement('h1');
+
+    todoContainer.innerHTML = test;
+
+    mainGrid.appendChild(todoContainer);
+    alert('Oskar')
+}
