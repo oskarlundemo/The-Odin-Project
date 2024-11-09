@@ -1,11 +1,11 @@
 
 
-export {Project};
 
 
-class Project {
 
-    constructor(listOfTodos, description) {
+export class Project {
+
+    constructor(listOfTodos = [], description) {
         this.listOfTodos = listOfTodos;
         this.description = description;
         this.nextID = 1;
@@ -19,4 +19,5 @@ class Project {
     deleteProject (id) {
         this.listOfTodos = this.listOfTodos.filter(project => project.id!== id);
     }
+
 }
