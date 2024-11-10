@@ -1,6 +1,8 @@
 
 export {renderTodo, renderTodos}
 
+import {Project} from './project.js'
+
 const renderTodo = (todo) => {
     const todoElement = document.createElement('li');
     todoElement.textContent = todo.title;
@@ -39,14 +41,61 @@ const renderTodos = (todos) => {
     });
 }
 
+export function createProjectElement () {
+
+    const projectDescription = document.createElement('input');
+    projectDescription.classList.add('hidden');
+
+    const newProject = document.createElement('li');
+    const listOfProjects = document.getElementById("projects");
+
+    projectDescription.addEventListener('keydown', (e) => {
+
+        if(projectDescription.value.length === 0 && e.key === 'Backspace') {
+            projectDescription.classList.add('hidden');
+
+            setTimeout(() => {
+                listOfProjects.lastElementChild.remove();
+            }, 500);
+        }
+
+        if (e.key === 'Enter') {
+
+            const createNewProject = new Project(projectDescription.value)
+
+            projectDescription.classList.add('hidden');
+
+            setTimeout(() => {
+                listOfProjects.lastElementChild.remove();
+                newProject.textContent = projectDescription.value
+
+
+                listOfProjects.append(newProject);
+            }, 500);
+
+        }
+    })
+
+
+    setTimeout(() => {
+        projectDescription.classList.remove('hidden');
+    }, 10);
+
+    if (listOfProjects.lastElementChild.tagName.toLowerCase() !== 'input') {
+        listOfProjects.append(projectDescription);
+    }
+}
+
+
 export function createTodoElement () {
-    const todoContainer = document.createElement('div');
+    const newCard = document.createElement('div');
+    newCard.classList.add('hidden')
     const mainGrid = document.getElementById('mainGrid');
 
-    const test = document.createElement('h1');
+    setTimeout(() => {
+        newCard.classList.remove('hidden');
+        newCard.classList.add('todoCard')
+    }, 10);
 
-    todoContainer.innerHTML = test;
-
-    mainGrid.appendChild(todoContainer);
-    alert('Oskar')
+    mainGrid.append(newCard);
 }

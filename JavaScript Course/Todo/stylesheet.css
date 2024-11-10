@@ -53,12 +53,14 @@ nav {
 
 main {
     display: grid;
-
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 
     background-color: var(--main-section);
     grid-area: 2 / 2 / 2 / 3;
     padding: 1em;
+
+    gap: 2rem;
+    overflow: scroll;
 
 }
 
@@ -71,6 +73,13 @@ header {
     background-color: var(--header);
 }
 
+header div:last-child {
+    justify-content: space-between;
+    display: flex;
+    margin: 0 4rem 0 4rem;
+}
+
+
 h1, h2 {
     margin: 0;
     background-image: linear-gradient(to right, #ff9a8b, #6a6bb8);
@@ -78,7 +87,7 @@ h1, h2 {
     color: transparent;
 }
 
-#addTodo {
+.todoCard {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -86,9 +95,23 @@ h1, h2 {
     justify-content: center;
     background-color: var(--side-bar);
     border-radius: 10px;
+
+
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease-in-out, box-shadow 0.3s ease; /* Added box-shadow */
 }
 
-#addTodoBtn {
+.todoCard:hover{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    opacity: 0;
+    transform: translate(20px);
+}
+
+.button {
     background-color: var(--buttons);
     color: #FFFFFF;
     border: none;
@@ -99,16 +122,48 @@ h1, h2 {
     transition: background-color 0.3s;
 }
 
-#addTodoBtn:hover {
+.button:hover {
     background-color: #ff9a8b;
 }
 
-#categories {
+#projects {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-#categories li {
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #888484;
+    font-size: 20px;
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+}
+
+input .hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+li {
     color: #333333;
     padding: 5px 0;
+    transition: font-size 0.3s;
+    text-align: center;
+    cursor: pointer;
 }
+
+li:hover {
+    font-size: 1.1rem;
+    background-image: linear-gradient(to right, #ff9a8b, #6a6bb8);
+    -webkit-background-clip: text;
+    color: #800020;
+}
+
