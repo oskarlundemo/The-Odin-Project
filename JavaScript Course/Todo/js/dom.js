@@ -41,7 +41,7 @@ const renderTodos = (todos) => {
     });
 }
 
-export function createProjectElement () {
+export function createProjectElement (projects) {
 
     const projectDescription = document.createElement('input');
     projectDescription.classList.add('hidden');
@@ -61,14 +61,14 @@ export function createProjectElement () {
 
         if (e.key === 'Enter') {
 
-            const createNewProject = new Project(projectDescription.value)
+            projects.addProject([], projectDescription.value);
 
             projectDescription.classList.add('hidden');
 
             setTimeout(() => {
                 listOfProjects.lastElementChild.remove();
                 newProject.textContent = projectDescription.value
-
+                newProject.project = projects;
 
                 listOfProjects.append(newProject);
             }, 500);
@@ -87,7 +87,18 @@ export function createProjectElement () {
 }
 
 
-export function createTodoElement () {
+export function createTodoElement (projects) {
+
+
+    const projectGrabber = document.getElementById('projects');
+
+    projectGrabber.addEventListener('click', (event) => {
+
+        if (event.target && event.target.tagName === 'li')
+            console.log("event.target.projecs.dataset.id");
+    })
+
+
     const newCard = document.createElement('div');
     newCard.classList.add('hidden')
     const mainGrid = document.getElementById('mainGrid');
