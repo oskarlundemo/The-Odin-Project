@@ -12,7 +12,7 @@ export class Project {
     }
 
     addProject (listOfTodos, description) {
-        const newProject = new Project(this.nextID++, description, listOfTodos);
+        const newProject = new Project(this.nextID++, this.description = description, listOfTodos);
         return newProject;
     }
 
