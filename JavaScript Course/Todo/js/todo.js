@@ -1,6 +1,6 @@
 
 
-export { TodoList };
+export { TodoList, Todo };
 
 
 class Todo {
@@ -23,8 +23,7 @@ class TodoList {
         this.nextID = 1;
     }
 
-    addTodo (text, priority) {
-        const newTodo = new Todo(this.nextID++, text, priority)
+    addTodo (newTodo) {
         this.todos.push(newTodo);
         return newTodo;
     }

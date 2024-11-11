@@ -2,6 +2,7 @@
 export {renderTodo, renderTodos}
 
 import {Project} from './project.js'
+import {Todo} from "./todo.js";
 
 const renderTodo = (todo) => {
     const todoElement = document.createElement('li');
@@ -89,7 +90,6 @@ export function createProjectElement (projects) {
 
 export function createTodoElement (projects) {
 
-
     const projectGrabber = document.getElementById('projects');
 
     projectGrabber.addEventListener('click', (event) => {
@@ -98,10 +98,45 @@ export function createTodoElement (projects) {
             console.log("event.target.projecs.dataset.id");
     })
 
-
     const newCard = document.createElement('div');
-    newCard.classList.add('hidden')
+    const titleInput = document.createElement('input');
+
+    const descriptionInput = document.createElement('textarea');
+    const checkBox = document.createElement('input');
+    const dateInput = document.createElement('input');
+    dateInput.type = 'date';
+
+    checkBox.type = 'radio';
+    checkBox.name = 'status';  // Add a name attribute to group radio buttons
+    checkBox.class = 'completedRadio';  // Add an ID for better access if needed
+
+    const radioLabel = document.createElement('label');
+    radioLabel.innerHTML = "Completed ";
+    radioLabel.append(checkBox);
+
+    const urgencyRating = document.createElement('select');
+
+
+    ['Low', 'Medium', 'High'].forEach(optionText => {
+        const option = document.createElement('option');
+        option.value = optionText.toLowerCase();
+        option.textContent = optionText;
+        urgencyRating.appendChild(option);
+    });
+
+
+    newCard.classList.add('hidden');
     const mainGrid = document.getElementById('mainGrid');
+
+    newCard.append(dateInput);
+    newCard.append(titleInput);
+    newCard.append(descriptionInput);
+
+    newCard.appendChild(descriptionInput);
+    newCard.appendChild(radioLabel);  // Append the label that contains the radio button
+    newCard.appendChild(urgencyRating);
+
+    const newTodo = new Todo({})
 
     setTimeout(() => {
         newCard.classList.remove('hidden');
