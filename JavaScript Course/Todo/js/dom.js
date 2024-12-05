@@ -49,6 +49,15 @@ export function createProjectElement (projects) {
 
     const newProject = document.createElement('li');
     const listOfProjects = document.getElementById("projects");
+    const currentProject = document.getElementById('projectTitle')
+
+    listOfProjects.addEventListener('click', function (e) {
+
+        if(e.target && e.target.nodeName === 'LI') {
+            currentProject.textContent = e.target.textContent;
+            console.log(e.target.textContent);
+        }
+    })
 
     projectDescription.addEventListener('keydown', (e) => {
 
@@ -77,7 +86,6 @@ export function createProjectElement (projects) {
         }
     })
 
-
     setTimeout(() => {
         projectDescription.classList.remove('hidden');
     }, 10);
@@ -85,6 +93,9 @@ export function createProjectElement (projects) {
     if (listOfProjects.lastElementChild.tagName.toLowerCase() !== 'input') {
         listOfProjects.append(projectDescription);
     }
+
+
+
 }
 
 
@@ -107,7 +118,7 @@ export function createTodoElement (projects) {
     dateInput.type = 'date';
 
     checkBox.type = 'radio';
-    checkBox.name = 'status';  // Add a name attribute to group radio buttons
+
     checkBox.class = 'completedRadio';  // Add an ID for better access if needed
 
     const radioLabel = document.createElement('label');
@@ -115,7 +126,6 @@ export function createTodoElement (projects) {
     radioLabel.append(checkBox);
 
     const urgencyRating = document.createElement('select');
-
 
     ['Low', 'Medium', 'High'].forEach(optionText => {
         const option = document.createElement('option');
