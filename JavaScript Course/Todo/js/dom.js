@@ -1,46 +1,7 @@
 
-export {renderTodo, renderTodos}
 
-import {Project} from './project.js'
-import {Todo} from "./todo.js";
+import {Todo, TodoList} from "./todo.js";
 
-const renderTodo = (todo) => {
-    const todoElement = document.createElement('li');
-    todoElement.textContent = todo.title;
-    todoElement.classList.add('todo-item');
-
-    if (todo.completed) {
-        todoElement.classList.add('completed');
-    }
-
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', () => {
-        deleteTodo(todo.id);
-    });
-
-    const priorityButton = document.createElement('button');
-    priorityButton.textContent = 'Change Priority';
-    priorityButton.addEventListener('click', () => {
-        changePriority(todo.id);
-    });
-
-    todoElement.appendChild(deleteButton);
-    todoElement.appendChild(priorityButton);
-
-    const todoList = document.getElementById('todo-list');
-    todoList.appendChild(todoElement);
-}
-
-
-const renderTodos = (todos) => {
-    const todoList = document.getElementById('todo-list');
-    todoList.innerHTML = '';
-
-    todos.forEach(todo => {
-        todoList.appendChild(renderTodos(todo));
-    });
-}
 
 export function createProjectElement (projects) {
 
@@ -49,6 +10,16 @@ export function createProjectElement (projects) {
 
     const newProject = document.createElement('li');
     const listOfProjects = document.getElementById("projects");
+    const currentProject = document.getElementById('projectTitle')
+
+
+    listOfProjects.addEventListener('click', function (e) {
+
+        if(e.target && e.target.nodeName === 'LI') {
+            currentProject.textContent = e.target.textContent;
+            console.log(e.target.textContent);
+        }
+    })
 
     projectDescription.addEventListener('keydown', (e) => {
 
@@ -62,8 +33,7 @@ export function createProjectElement (projects) {
 
         if (e.key === 'Enter') {
 
-            projects.addProject([], projectDescription.value);
-
+            projects.addProject(projectDescription.value);
             projectDescription.classList.add('hidden');
 
             setTimeout(() => {
@@ -77,7 +47,6 @@ export function createProjectElement (projects) {
         }
     })
 
-
     setTimeout(() => {
         projectDescription.classList.remove('hidden');
     }, 10);
@@ -85,15 +54,20 @@ export function createProjectElement (projects) {
     if (listOfProjects.lastElementChild.tagName.toLowerCase() !== 'input') {
         listOfProjects.append(projectDescription);
     }
+
+
+
 }
 
 
 export function createTodoElement (projects) {
 
+    const mainGrid = document.getElementById('mainGrid');
+    const testHead = document.getElementById('projectTitle');
+
     const projectGrabber = document.getElementById('projects');
 
     projectGrabber.addEventListener('click', (event) => {
-
         if (event.target && event.target.tagName === 'li')
             console.log("event.target.projecs.dataset.id");
     })
@@ -102,20 +76,11 @@ export function createTodoElement (projects) {
     const titleInput = document.createElement('input');
 
     const descriptionInput = document.createElement('textarea');
-    const checkBox = document.createElement('input');
+    const saveButton = document.createElement('button');
     const dateInput = document.createElement('input');
     dateInput.type = 'date';
 
-    checkBox.type = 'radio';
-    checkBox.name = 'status';  // Add a name attribute to group radio buttons
-    checkBox.class = 'completedRadio';  // Add an ID for better access if needed
-
-    const radioLabel = document.createElement('label');
-    radioLabel.innerHTML = "Completed ";
-    radioLabel.append(checkBox);
-
     const urgencyRating = document.createElement('select');
-
 
     ['Low', 'Medium', 'High'].forEach(optionText => {
         const option = document.createElement('option');
@@ -124,19 +89,32 @@ export function createTodoElement (projects) {
         urgencyRating.appendChild(option);
     });
 
-
+    saveButton.textContent = 'Save';
     newCard.classList.add('hidden');
-    const mainGrid = document.getElementById('mainGrid');
 
     newCard.append(dateInput);
     newCard.append(titleInput);
     newCard.append(descriptionInput);
 
     newCard.appendChild(descriptionInput);
-    newCard.appendChild(radioLabel);  // Append the label that contains the radio button
     newCard.appendChild(urgencyRating);
+    newCard.append(saveButton);
 
-    const newTodo = new Todo({})
+    saveButton.addEventListener("click", function () {
+
+        const newTodo = new Todo(
+            titleInput.value,
+            descriptionInput.value,
+            dateInput.value,
+            urgencyRating.value
+        )
+
+        console.log(testHead.textContent);
+        const findProject = projects.projectData.find(project => project.description === testHead.textContent);
+        console.log(findProject)
+
+    })
+
 
     setTimeout(() => {
         newCard.classList.remove('hidden');
