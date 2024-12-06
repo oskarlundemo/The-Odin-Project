@@ -1,23 +1,18 @@
-
-
-
+import {TodoList} from "./todo.js";
 
 
 export class Project {
 
-    constructor(listOfTodos = [], description) {
-        this.listOfTodos = listOfTodos;
-        this.description = description;
-        this.nextID = 1;
+    constructor () {
+        this.projectData = [];
     }
 
-    addProject (listOfTodos, description) {
-        const newProject = new Project(this.nextID++, this.description = description, listOfTodos);
-        return newProject;
+    addProject (description) {
+        const newProject = new TodoList(description);
+        this.projectData.push(newProject);
     }
 
     deleteProject (id) {
-        this.listOfTodos = this.listOfTodos.filter(project => project.id!== id);
+        this.projectData = this.projectData.filter(project => project.id!== id);
     }
-
 }

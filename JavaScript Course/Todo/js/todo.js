@@ -18,9 +18,10 @@ class Todo {
 
 class TodoList {
 
-    constructor () {
+    constructor (description) {
         this.todos = [];
-        this.nextID = 1;
+        this.description = description;
+        this.id = Math.random();
     }
 
     addTodo (newTodo) {
