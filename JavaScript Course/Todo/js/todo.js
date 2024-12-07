@@ -11,6 +11,7 @@ class Todo {
         this.completed = false;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.id = Math.random();
     }
 }
 
