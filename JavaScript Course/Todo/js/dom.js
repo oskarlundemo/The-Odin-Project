@@ -23,8 +23,15 @@ export function createProjectElement (projects) {
 
 
     listOfProjects.addEventListener('click', function (e) {
+        const mainGrid = document.getElementById('mainGrid');
+
         if(e.target && e.target.nodeName === 'LI') {
+            while (mainGrid.firstChild) {
+                mainGrid.removeChild(mainGrid.firstChild);
+            }
             currentProject.textContent = e.target.textContent;
+            currentProject.dataset.id = e.target.dataset.id;
+            renderTodos(projects, currentProject.dataset.id);
         }
     })
 
@@ -54,9 +61,26 @@ export function createProjectElement (projects) {
         projectDescription.classList.remove('hidden');
     }, 10);
 
-
-    console.log(projects);
     return projects;
+}
+
+
+
+function renderTodos (projects, current){
+
+    const currentLists = [];
+    console.log(projects);
+    console.log(current);
+
+    projects.projectData.forEach(listOfTodos => {
+
+        if (listOfTodos.description.id === current) {
+            currentLists.push(listOfTodos);
+        }
+    })
+
+    console.log(currentLists)
+
 }
 
 
@@ -112,16 +136,17 @@ export function createTodoElement (projects) {
         )
 
 
-        console.log(currentTitle.textContent);
-        projects.projectData.forEach(function (t) {
+        projects.projectData.forEach(function (listOfTodos) {
 
-            if (t.description === currentTitle.textContent)
-                t.addTodo(newTodo);
+            console.log("Nu är vi i dom js ");
+            console.log(listOfTodos.description.description)
 
-            console.log(t);
+            if (listOfTodos.description.description === currentTitle.textContent)
+                listOfTodos.addTodo(newTodo);
         })
 
-        console.log(projects)
+        console.log(projects);
+
     })
 
 
