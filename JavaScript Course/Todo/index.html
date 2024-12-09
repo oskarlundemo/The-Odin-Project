@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="stylesheet.css">
     <script src="js/app.js" defer type = module></script>
 
+
+
     <title>Listly</title>
 </head>
 <body>
@@ -16,31 +18,39 @@
 
     <header>
 
-        <h1>Listly</h1>
-        <h2>Get productive!</h2>
+        <h1 id ="headerLogo">Listly</h1>
+        <h2 id = "headerSlogan">Get productive!</h2>
 
         <div>
-            <button id = "addProjectBtn" class ="button">New project!</button>
-            <button id = "addTodoBtn" class = "button">New todo!</button>
+
         </div>
     </header>
 
     <div id = "filterSection">
         <h2 id = "projectTitle"></h2>
+        <button id = "addTodoBtn" class = "button">New todo!</button>
     </div>
 
-    <main id = "mainGrid">
 
+
+    <main id = "mainGrid">
+        <div id = "sampleDiv">
+        </div>
     </main>
 
-    <nav>
 
-        <h2>Projects</h2>
+        <nav>
 
-        <ul id = "projects">
+            <div id = "projectHeader">
+                <h2>Projects</h2>
+                <img id = "addProjectBtn" src="./icons/add.svg">
+            </div>
 
-        </ul>
-    </nav>
+
+            <ul id = "projects">
+            </ul>
+        </nav>
+
 
 
 </div>
