@@ -5,12 +5,13 @@ export { TodoList, Todo };
 
 class Todo {
 
-    constructor(title, description, dueDate, priority) {
+    constructor (title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
         this.completed = false;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.id = Math.random();
     }
 }
 
