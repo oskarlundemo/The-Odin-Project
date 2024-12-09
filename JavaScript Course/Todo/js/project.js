@@ -10,6 +10,8 @@ export class Project {
     addProject (description) {
         const newProject = new TodoList(description);
         this.projectData.push(newProject);
+
+        return newProject.id;
     }
 
     deleteProject (id) {

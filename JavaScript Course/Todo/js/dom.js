@@ -8,7 +8,6 @@ export function createProjectElement (projects) {
     const projectDescription = document.createElement('input');
     projectDescription.classList.add('hidden');
 
-    const newList = new TodoList();
 
     const newProject = document.createElement('li');
     const listOfProjects = document.getElementById("projects");
@@ -26,12 +25,11 @@ export function createProjectElement (projects) {
         const mainGrid = document.getElementById('mainGrid');
 
         if(e.target && e.target.nodeName === 'LI') {
-            while (mainGrid.firstChild) {
-                mainGrid.removeChild(mainGrid.firstChild);
-            }
+
+            clearMainGrid();
             currentProject.textContent = e.target.textContent;
             currentProject.dataset.id = e.target.dataset.id;
-            renderTodos(projects, currentProject.dataset.id);
+            renderTodos(projects, parseFloat(currentProject.dataset.id));
         }
     })
 
@@ -47,12 +45,12 @@ export function createProjectElement (projects) {
             projectDescription.classList.add('hidden');
 
             setTimeout(() => {
-                projects.addProject(newList);
+
                 listOfProjects.lastElementChild.remove();
                 newProject.textContent = projectDescription.value;
-                newProject.dataset.id = newList.id;
-                newList.description = projectDescription.value;
                 listOfProjects.append(newProject);
+                newProject.dataset.id = projects.addProject(projectDescription.value);
+
             }, 500);
         }
     })
@@ -66,20 +64,68 @@ export function createProjectElement (projects) {
 
 
 
+
+function clearMainGrid () {
+    const mainGrid = document.getElementById('mainGrid');
+
+    while (mainGrid.firstChild) {
+        mainGrid.removeChild(mainGrid.firstChild);
+    }
+}
+
+
+
+
 function renderTodos (projects, current){
 
     const currentLists = [];
-    console.log(projects);
-    console.log(current);
+    const mainGrid = document.getElementById('mainGrid');
 
-    projects.projectData.forEach(listOfTodos => {
+    projects.projectData.forEach((item, index) => {
 
-        if (listOfTodos.description.id === current) {
-            currentLists.push(listOfTodos);
+        if (item.id === current) {
+            currentLists.push(...item.todos); // Spread the todos array into currentLists
         }
-    })
+    });
 
-    console.log(currentLists)
+    console.log(currentLists);
+    console.log(projects);
+
+
+    currentLists.forEach(todo => {
+
+        const card = document.createElement('div');
+        card.classList.add('todoCard');
+
+
+        const date = document.createElement('input');
+        date.type = 'date';
+        date.value = todo.dueDate;
+
+        const title = document.createElement('h2');
+        title.textContent = todo.title;
+
+        const description = document.createElement('p');
+        description.textContent = todo.description;
+
+        const priority = document.createElement('p');
+        priority.textContent = `Priority: ${todo.priority}`;
+
+        const completeCheckbox = document.createElement('input');
+        completeCheckbox.type = 'checkbox';
+        completeCheckbox.checked = todo.complete;
+
+
+        card.appendChild(date);
+        card.appendChild(title);
+        card.appendChild(description);
+        card.appendChild(priority);
+        card.appendChild(completeCheckbox);
+
+        console.log(todo);
+
+        mainGrid.appendChild(card);
+    })
 
 }
 
@@ -127,7 +173,6 @@ export function createTodoElement (projects) {
     newCard.append(saveButton);
 
     saveButton.addEventListener("click", function () {
-
         const newTodo = new Todo(
             titleInput.value,
             descriptionInput.value,
@@ -135,20 +180,17 @@ export function createTodoElement (projects) {
             urgencyRating.value
         )
 
-
         projects.projectData.forEach(function (listOfTodos) {
 
-            console.log("Nu är vi i dom js ");
-            console.log(listOfTodos.description.description)
-
-            if (listOfTodos.description.description === currentTitle.textContent)
+            if (listOfTodos.id === parseFloat(currentTitle.dataset.id))
                 listOfTodos.addTodo(newTodo);
         })
 
-        console.log(projects);
 
+        clearMainGrid();
+
+        renderTodos(projects, parseFloat(currentTitle.dataset.id));
     })
-
 
     setTimeout(() => {
         newCard.classList.remove('hidden');
