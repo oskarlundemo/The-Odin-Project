@@ -90,36 +90,50 @@ function renderTodos (projects, current){
 
         const card = document.createElement('div');
         card.classList.add('todoCard');
-
+        card.dataset.id = todo.id;
 
         const headerIcons = document.createElement('div');
         const editIcon = document.createElement('img');
         editIcon.src = './icons/edit.svg';
+        editIcon.classList.add("editdelete");
+        editIcon.id = "edit";
+
+        editIcon.addEventListener("click", (event) => editTodo(event, projects));
+
         const deleteIcon = document.createElement('img');
+        deleteIcon.classList.add("editdelete");
         deleteIcon.src = './icons/delete.svg';
-
-        headerIcons.appendChild(editIcon);
-        headerIcons.appendChild(deleteIcon);
-
 
         const date = document.createElement('input');
         date.type = 'date';
         date.value = todo.dueDate;
         date.disabled = true;
+        date.id = "dateRender";
+
+        deleteIcon.onclick = (ev) => deleteTodo(ev);
+
+        headerIcons.appendChild(date);
+        headerIcons.appendChild(editIcon);
+        headerIcons.appendChild(deleteIcon);
+
 
         const title = document.createElement('input');
-        title.textContent = todo.title;
+        title.value = todo.title;
         title.disabled = true;
+        title.id = "titleRender";
 
         const description = document.createElement('textarea');
-        description.textContent = todo.description;
+        description.value = todo.description;
         description.disabled = true;
+        description.id = "descriptionRender";
 
         const ratingDiv = document.createElement('div');
         const urgencyRating = document.createElement('select');
         urgencyRating.name = 'urgencyRating';
+        urgencyRating.id = "urgencyRender";
+
         const urgencyLabel = document.createElement('label');
-        urgencyLabel.innerText = 'Urgency';
+        urgencyLabel.innerText = 'Priority';
         urgencyLabel.htmlFor = 'urgencyRating';
 
         ratingDiv.append(urgencyLabel);
@@ -134,7 +148,6 @@ function renderTodos (projects, current){
             urgencyRating.appendChild(option);
         });
 
-
         urgencyRating.value = todo.priority;
 
         const priority = document.createElement('p');
@@ -144,6 +157,7 @@ function renderTodos (projects, current){
         const footerContainer = document.createElement('div');
         const completeCheckbox = document.createElement('input');
         completeCheckbox.type = 'checkbox';
+        completeCheckbox.classList.add('custom-checkbox')
         completeCheckbox.checked = todo.complete;
         completeCheckbox.id = 'completeCheckbox';
 
@@ -156,7 +170,6 @@ function renderTodos (projects, current){
 
 
         card.appendChild(headerIcons);
-        card.appendChild(date);
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(ratingDiv);
@@ -168,8 +181,89 @@ function renderTodos (projects, current){
 }
 
 
+function editTodo (event, projects) {
+
+    const editIcon = document.getElementById('edit');
+    const card = Array.from(event.target.parentNode.parentNode.children);
+
+    console.log(event.target.parentNode.parentNode.dataset.id)
+
+    console.log(projects);
+
+    if (editIcon.src.includes('edit.svg')) {
+        editIcon.src = './icons/check.svg';
+        enableInput(card);
+    } else {
+        editIcon.src = './icons/edit.svg';
+
+        console.log(projects);
+
+        const title = document.getElementById('titleRender');
+        const date = document.getElementById('dateRender');
+        const description = document.getElementById('descriptionRender');
+        const urgencyRating = document.getElementById('urgencyRender');
+
+            projects.projectData.forEach(listOfTodos => {
+                const todo = listOfTodos.todos.filter(todo => todo.id ===
+                    parseFloat(event.target.parentNode.parentNode.dataset.id));
+
+                todo.
+            })
 
 
+
+            disableInput(card);
+
+            //Save to array
+    }
+
+}
+
+function enableInput (arrayOfChildren) {
+
+    arrayOfChildren.forEach(element => {
+
+        if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && element.disabled) {
+            element.disabled = false;
+        }
+
+        if (element.hasChildNodes()) {
+            const children = Array.from(element.children);
+
+            children.forEach(child => {
+                if (child.tagName === 'INPUT' || child.tagName === 'SELECT') {
+                    child.disabled = false;
+                }
+            });
+        }
+    })
+}
+
+function disableInput (arrayOfChildren) {
+
+    arrayOfChildren.forEach(element => {
+
+        if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && !element.disabled) {
+            element.disabled = true;
+        }
+
+        if (element.hasChildNodes()) {
+            const children = Array.from(element.children);
+
+            children.forEach(child => {
+                if (child.tagName === 'INPUT' || child.tagName === 'SELECT') {
+                    child.disabled = true;
+                }
+            });
+        }
+    })
+}
+
+
+
+function deleteTodo () {
+
+}
 
 
 export function createTodoElement (projects) {
@@ -189,12 +283,11 @@ export function createTodoElement (projects) {
     const urgencyRating = document.createElement('select');
     urgencyRating.name = 'urgencyRating';
     const urgencyLabel = document.createElement('label');
-    urgencyLabel.innerText = 'Urgency';
+    urgencyLabel.innerText = 'Priority';
     urgencyLabel.htmlFor = 'urgencyRating';
 
     ratingDiv.append(urgencyLabel);
     ratingDiv.append(urgencyRating);
-
 
     ['Low', 'Medium', 'High'].forEach(optionText => {
         const option = document.createElement('option');
@@ -204,6 +297,7 @@ export function createTodoElement (projects) {
     });
 
     saveButton.textContent = 'Save';
+    saveButton.classList.add('button')
     newCard.classList.add('hidden');
 
     newCard.append(dateInput);
@@ -215,6 +309,7 @@ export function createTodoElement (projects) {
     newCard.append(saveButton);
 
     saveButton.addEventListener("click", function () {
+
         const newTodo = new Todo(
             titleInput.value,
             descriptionInput.value,
@@ -223,11 +318,9 @@ export function createTodoElement (projects) {
         )
 
         projects.projectData.forEach(function (listOfTodos) {
-
             if (listOfTodos.id === parseFloat(currentTitle.dataset.id))
                 listOfTodos.addTodo(newTodo);
         })
-
 
         clearMainGrid();
 
@@ -240,6 +333,5 @@ export function createTodoElement (projects) {
     }, 10);
 
 
-    if (mainGrid)
     mainGrid.append(newCard);
 }
