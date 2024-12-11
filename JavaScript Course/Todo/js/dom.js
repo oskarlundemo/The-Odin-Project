@@ -12,7 +12,6 @@ export function createProjectElement (projects) {
     const listOfProjects = document.getElementById("projects");
     const currentProject = document.getElementById('projectTitle')
 
-
     if (listOfProjects.lastElementChild === null ||
         listOfProjects.lastElementChild.tagName.toLowerCase() !== 'input') {
 
@@ -25,11 +24,17 @@ export function createProjectElement (projects) {
 
     listOfProjects.addEventListener('click', function (e) {
 
-        if(e.target && e.target.nodeName === 'LI') {
+        const editMenuProject = document.getElementById('projectSettings');
 
+        if(e.target && e.target.nodeName === 'LI') {
             clearMainGrid();
             currentProject.textContent = e.target.textContent;
             currentProject.dataset.id = e.target.dataset.id;
+            editMenuProject.classList.remove('hidden');
+
+            const addBtn = document.getElementById('addTodoBtn');
+            addBtn.classList.remove('buttonTest');
+
             renderTodos(projects, parseFloat(currentProject.dataset.id));
         }
     })
@@ -44,6 +49,7 @@ export function createProjectElement (projects) {
 
         if (e.key === 'Enter' && projectDescription.value.trim().length > 0) {
             projectDescription.classList.add('hidden');
+
 
             setTimeout(() => {
 
@@ -60,6 +66,63 @@ export function createProjectElement (projects) {
         projectDescription.classList.remove('hidden');
     }, 10);
 
+
+    const editProjectTitle = document.getElementById('editProjectTitle');
+
+    editProjectTitle.addEventListener('click', e => {
+
+        const editTitleInput = document.createElement('input');
+        currentProject.replaceWith(editTitleInput);
+        editTitleInput.value = currentProject.textContent;
+        editTitleInput.id = "editInpt";
+
+        editTitleInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && editTitleInput.value.trim().length > 0) {
+
+                const id = parseFloat(currentProject.dataset.id);
+
+                projects.projectData.forEach(listOfTodos => {
+                    if (listOfTodos.id === id) listOfTodos.editTodoListName(editTitleInput.value);
+
+                    currentProject.textContent = editTitleInput.value;
+                    editTitleInput.replaceWith(currentProject);
+                })
+
+                const getLiElements = document.getElementById('projects')
+                const updateList = Array.from(getLiElements.children);
+
+                updateList.forEach(project => {
+                    if (parseFloat(project.dataset.id) === id)
+                        project.textContent = currentProject.textContent;
+                })
+            }
+        })
+
+    })
+
+    const deleteProject = document.getElementById('deleteProject');
+
+    deleteProject.addEventListener('click', e => {
+        const id = parseFloat(currentProject.dataset.id);
+        projects.deleteProject(id);
+
+        const getLiElements = document.getElementById('projects')
+        const updateList = Array.from(getLiElements.children);
+        const projectSetting = document.getElementById('projectSettings')
+
+        updateList.forEach(project => {
+            if (parseFloat(project.dataset.id) === id)
+                project.remove();
+        })
+
+        const addBtn = document.getElementById('addTodoBtn');
+        addBtn.classList.add('buttonTest');
+
+        currentProject.textContent = '';
+        currentProject.dataset.id = '';
+        projectSetting.classList.add('hidden');
+    })
+
     return projects;
 }
 
@@ -72,7 +135,6 @@ function clearMainGrid () {
         mainGrid.removeChild(mainGrid.firstChild);
     }
 }
-
 
 
 function renderTodos (projects, current){
@@ -90,6 +152,8 @@ function renderTodos (projects, current){
 
         const card = document.createElement('div');
         card.classList.add('todoCard');
+        card.classList.add('hidden');
+
         card.dataset.id = todo.id;
 
         const headerIcons = document.createElement('div');
@@ -98,19 +162,22 @@ function renderTodos (projects, current){
         editIcon.classList.add("editdelete");
         editIcon.id = "edit";
 
-        editIcon.addEventListener("click", (event) => editTodo(event, projects));
-
         const deleteIcon = document.createElement('img');
         deleteIcon.classList.add("editdelete");
         deleteIcon.src = './icons/delete.svg';
+
+        deleteIcon.addEventListener("click", (event) =>
+            deleteTodo(event, projects));
+
+
+        editIcon.addEventListener("click", (event) =>
+            editTodo(event, projects));
 
         const date = document.createElement('input');
         date.type = 'date';
         date.value = todo.dueDate;
         date.disabled = true;
         date.id = "dateRender";
-
-        deleteIcon.onclick = (ev) => deleteTodo(ev);
 
         headerIcons.appendChild(date);
         headerIcons.appendChild(editIcon);
@@ -153,7 +220,6 @@ function renderTodos (projects, current){
         const priority = document.createElement('p');
         priority.textContent = `Priority: ${todo.priority}`;
 
-
         const footerContainer = document.createElement('div');
         const completeCheckbox = document.createElement('input');
         completeCheckbox.type = 'checkbox';
@@ -175,8 +241,28 @@ function renderTodos (projects, current){
         card.appendChild(ratingDiv);
         card.appendChild(footerContainer);
 
-        mainGrid.appendChild(card);
+        setTimeout(() => {
+            card.classList.remove('hidden');
+        }, 10);
+
+        mainGrid.append(card);
     })
+
+}
+
+
+function deleteTodo (event, projects) {
+    const currentTitle = document.getElementById('projectTitle');
+
+    projects.projectData.forEach(listOfTodos => {
+        const todo = listOfTodos.todos.filter(todo => todo.id ===
+            parseFloat(event.target.parentNode.parentNode.dataset.id));
+
+        if (todo) listOfTodos.deleteTodo(parseFloat(event.target.parentNode.parentNode.dataset.id))
+    })
+
+    clearMainGrid();
+    renderTodos(projects, parseFloat(currentTitle.dataset.id))
 
 }
 
@@ -186,35 +272,36 @@ function editTodo (event, projects) {
     const editIcon = document.getElementById('edit');
     const card = Array.from(event.target.parentNode.parentNode.children);
 
-    console.log(event.target.parentNode.parentNode.dataset.id)
-
-    console.log(projects);
-
     if (editIcon.src.includes('edit.svg')) {
         editIcon.src = './icons/check.svg';
         enableInput(card);
     } else {
         editIcon.src = './icons/edit.svg';
 
-        console.log(projects);
-
         const title = document.getElementById('titleRender');
         const date = document.getElementById('dateRender');
         const description = document.getElementById('descriptionRender');
         const urgencyRating = document.getElementById('urgencyRender');
+        const completeCheckbox = document.getElementById('completeCheckbox');
 
             projects.projectData.forEach(listOfTodos => {
                 const todo = listOfTodos.todos.filter(todo => todo.id ===
                     parseFloat(event.target.parentNode.parentNode.dataset.id));
 
-                todo.
+                if (todo) {
+
+                    listOfTodos.editTodo(
+                        parseFloat(event.target.parentNode.parentNode.dataset.id),
+                        title.value,
+                        description.value,
+                        date.value,
+                        urgencyRating.value,
+                        completeCheckbox.checked
+                    )
+                }
             })
 
-
-
             disableInput(card);
-
-            //Save to array
     }
 
 }
@@ -259,11 +346,6 @@ function disableInput (arrayOfChildren) {
     })
 }
 
-
-
-function deleteTodo () {
-
-}
 
 
 export function createTodoElement (projects) {
@@ -321,8 +403,9 @@ export function createTodoElement (projects) {
             if (listOfTodos.id === parseFloat(currentTitle.dataset.id))
                 listOfTodos.addTodo(newTodo);
         })
-
         clearMainGrid();
+
+        console.log(projects)
 
         renderTodos(projects, parseFloat(currentTitle.dataset.id));
     })
@@ -331,7 +414,6 @@ export function createTodoElement (projects) {
         newCard.classList.remove('hidden');
         newCard.classList.add('todoCard')
     }, 10);
-
 
     mainGrid.append(newCard);
 }
