@@ -4,22 +4,44 @@
 
 ## Overview
 A brief description of what the project does and why it was created.
+This is a basic todo website that was apart of the Odin Project
 
 ## What I Learned
 - New concepts or technologies explored
+Modularisation and trying to divide my code into smaller independant pieces. That togheter make the
+system work. Example of TodoList objects containg todos.
+
 - Challenges faced and how they were solved
-- Insights gained into software development practices
+Adding and removing elements dynamically from the DOM. I solved this issue by adding a small
+delay timer which gave the elements extra time to apply the transtion specified in the css.
+
+Also trying to couple the elements with the datastructure. Right now I binded them togheter with
+the dataset attribute of the html-element. However I could see that this is not good practice since
+this means information that should not be available is available through the "siteinpection-mode"
+
 
 ## Code Structure
 - Explanation of code organization
-- Any parts of the code you're particularly proud of
+I have to admit that I really only thought about the structure more critically for the objects
+Project, TodoList and Tod o and the rest is kinda on the fly. So it does not supports me that some
+functions in the dom.js file should be independent or placed in their own separate file.
 
-## How to Use
-- Step-by-step instructions for running the project
+- Any parts of the code you're particularly proud of
+The strucuture of Projects which holds all the TodoLists which in return holds all the todos
+relating to each project.
 
 ## Future Plans
 - Features or improvements you’d like to add
+There are definitely some styling fixes and details that could be fixed. I know there are no
+good excuses, but since I now I could fix theses issuses I would rather begina a more challening
+project and widening my skills.
 
 ## Reflection
 - What you’d do differently next time
+Work more in the console before adding the HTML-elements to the mix. This made it take way
+longer time since I debugged with elements instead of just making the logic work in the console
+and afterward implement it in the DOM.
+
 - Skills or concepts you want to learn next
+Definitely more advanced CSS, to make it more appealing and user-friendly. I feel like that is something
+really crucial to create a nice website. And course learn more about design principles to structure my code better.

@@ -25,24 +25,30 @@ class TodoList {
         this.id = Math.random();
     }
 
+    editTodoListName (name) {
+        this.description = name;
+    }
+
     addTodo (newTodo) {
         this.todos.push(newTodo);
-        return newTodo;
+    }
+
+    editTodo (id, newTitle, newDescription, newDueDate, newPriority, newCompleted) {
+        const changedTodo = this.todos.find(todo => todo.id === id);
+
+        if (changedTodo) {
+            changedTodo.title = newTitle;
+            changedTodo.description = newDescription;
+            changedTodo.dueDate = newDueDate;
+            changedTodo.priority = newPriority;
+            changedTodo.completed = newCompleted;
+        }
     }
 
     deleteTodo (id) {
         this.todos = this.todos.filter(todo => todo.id !== id);
     }
 
-    changePriority (id, newPriority) {
-        const todo = this.todos.find(todo => todo.id === id);
-        if (todo) todo.priority = newPriority;
-    }
-
-    setComplete (id, completed = true) {
-        const todo = this.todos.find(todo => todo.id === id);
-        if(todo) todo.complete = completed;
-    }
 
     getToodos () {
         return this.todos;
