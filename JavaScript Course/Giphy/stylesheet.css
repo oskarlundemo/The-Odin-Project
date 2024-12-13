@@ -1,0 +1,220 @@
+
+:root {
+    --primary-text-color: #ffff
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0d1117, #1a1f2e);
+    flex-direction: column;
+    animation: gradientMove 10s ease infinite;
+    background-size: 200%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 0.1fr 0.2fr 0.2fr 0.2fr 0.2fr 0.1fr; /* Five rows */
+    grid-template-columns: 1fr;  /* One column */
+    width: 70%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 2rem 0 2rem 0;
+}
+
+header {
+    text-align: center;
+    color: var(--primary-text-color);
+    font-family: "Lora", serif;
+    font-style: normal;
+    grid-area: 5 / 1 / 2 / 2; /* Header in the first row */
+    transition: grid-area 1s ease; /* Smooth transition for grid area change */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+header > :first-child {
+    margin: 0;
+}
+
+h1 {
+    letter-spacing: 0.05em;
+    font-size: 5em;
+    text-shadow: 2px 0 5px whitesmoke;
+
+}
+
+header > div {
+    max-width: 500px;
+}
+
+p {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2em;
+    font-family: monospace;
+
+    color: #e0e0e0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    animation: typing 6s 1s 1 normal;
+}
+
+.glass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 1px var(--primary-text-color);
+    margin-bottom: 5px;
+
+    color: var(--primary-text-color);
+    font-family: monospace;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: solid 1px #00e676;
+    transition: 200ms ease-in-out;
+}
+
+.searchBar {
+    display: flex;
+    width: clamp(220px, 20%, 300px);
+    height: 40px;
+    padding-left: 15px;
+    gap: 0.5rem;
+    justify-self: center;
+
+    grid-row: 4;
+    grid-column: 1;
+    margin-bottom: 10rem;
+}
+
+
+
+.btn {
+    background: linear-gradient(#5fc0ea, #485fa6);
+    color: var(--primary-text-color);
+    border: none;
+    height: 100%;
+    width: clamp(200px, 50px, 100%);
+    border-radius: 50px;
+    letter-spacing: 0.02rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    animation: fadeLinear 2s 1s normal;
+    background: linear-gradient(#5fc0ea, #5fc0ea);
+}
+
+
+#gifContainer {
+    grid-area: 2 / 1 / 2 / 2; /* Header in the first row */
+    border-radius: 20px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+
+.swipe {
+    animation: swipeRight 2s ease-in-out 1;
+}
+
+.slideTop {
+    animation: slideInTop 2s ease-in-out 0s 1;
+}
+
+.slideBottom {
+    animation: slideInBottom 2s ease-in-out;
+    margin-bottom: 0;
+}
+
+.swipeLeft {
+    animation: swipeLeft 3s ease-in-out 1;
+}
+
+@keyframes typing {
+    0% {
+        width: 0
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(-100%); /* Start outside the left boundary */
+        opacity: 0;
+    }
+    50% {
+        opacity: 1; /* Fade in */
+    }
+    100% {
+        transform: translateX(0); /* Settle at the final position */
+        opacity: 1;
+    }
+}
+
+@keyframes slideInTop {
+    0% {transform: translateY(-100%);}
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideInBottom {
+    0% {transform: translateY(500%);}
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
