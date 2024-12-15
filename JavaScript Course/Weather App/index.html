@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="./js/app.js" type = module></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
     <title>Weatherly</title>
 </head>
 <body>
@@ -18,16 +14,31 @@
 
 <div class = "grid-container">
 
-    <nav>
-        <ul class = "dropDownItem hidden">
-            <li class = "liItem"><a href = "#">Home</a></li>
-            <li class = "liItem"><a href = "#">About</a></li>
-            <li class = "liItem"><a href = "#">Services</a></li>
-            <li class = "liItem"><a href = "#">Contact</a></li>
-        </ul>
-    </nav>
-
     <aside class = "sidebar">
+
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="35px" fill="#FFFFFF" id = "menuIcon">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+
+        <ul class = "dropDownItem">
+
+            <li>
+            <button class = "dropdown-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                    <path d="M480-80q-83 0-141.5-58.5T280-280q0-48 21-89.5t59-70.5v-320q0-50 35-85t85-35q50 0 85 35t35 85v320q38 29 59 70.5t21 89.5q0 83-58.5 141.5T480-80Zm-40-440h80v-40h-40v-40h40v-80h-40v-40h40v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240Z"/></svg>
+                <span>Units: °C/°F</span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+            </button>
+                <ul class = "sub-menu hidden">
+                    <li><a href="#">°C</a>
+                        <input type="checkbox" id="celsius">
+                    </li>
+                    <li><a href="#">°F</a>
+                        <input type="checkbox" id="farenheit">
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </aside>
 
 
