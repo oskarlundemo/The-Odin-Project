@@ -6,12 +6,9 @@ import {start} from "./dom.js";
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
     document.querySelector('.searchBtn').addEventListener('click', function () {
         let location = document.querySelector('.searchBar').value;
-        start();
-
-        // const data = new Data(location);
+        start(location);
     })
 
 })
