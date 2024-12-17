@@ -1,14 +1,18 @@
 
 
-import {Data} from "./data.js";
-import {start} from "./dom.js";
+import {Forecast} from "./forecast.js";
+import {getData} from "./data.js";
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
-    document.querySelector('.searchBtn').addEventListener('click', function () {
-        let location = document.querySelector('.searchBar').value;
-        start(location);
+    document.querySelector('.searchBar').addEventListener('keydown',  event => {
+        if (event.key === 'Enter')
+            getData(document.querySelector('.searchBar').value);
+    })
+
+    document.querySelector('.searchBtn').addEventListener('click', () => {
+        getData(document.querySelector('.searchBar').value);
     })
 
 })
