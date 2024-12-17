@@ -18,11 +18,12 @@
     <main>
 
         <section class = "currentDay">
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M240-200q-17 0-28.5-11.5T200-240q0-17 11.5-28.5T240-280q17 0 28.5 11.5T280-240q0 17-11.5 28.5T240-200Zm480 0q-17 0-28.5-11.5T680-240q0-17 11.5-28.5T720-280q17 0 28.5 11.5T760-240q0 17-11.5 28.5T720-200ZM360-40q-17 0-28.5-11.5T320-80q0-17 11.5-28.5T360-120q17 0 28.5 11.5T400-80q0 17-11.5 28.5T360-40Zm120-160q-17 0-28.5-11.5T440-240q0-17 11.5-28.5T480-280q17 0 28.5 11.5T520-240q0 17-11.5 28.5T480-200ZM600-40q-17 0-28.5-11.5T560-80q0-17 11.5-28.5T600-120q17 0 28.5 11.5T640-80q0 17-11.5 28.5T600-40ZM300-320q-91 0-155.5-64.5T80-540q0-83 55-145t136-73q32-57 87.5-89.5T480-880q90 0 156.5 57.5T717-679q69 6 116 57t47 122q0 75-52.5 127.5T700-320H300Zm0-80h400q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-40q0-66-47-113t-113-47q-48 0-87.5 26T333-704l-10 24h-25q-57 2-97.5 42.5T160-540q0 58 41 99t99 41Zm180-200Z"/></svg>
-            <h1>Stockholm</h1>
-            <h2>4 °C</h2>
-            <p>Description</p>
-            <p>H: <span>5</span> L: <span>-2</span></p>
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
+            </svg>
+            <h1></h1>
+            <h2></h2>
+            <p id = "description"></p>
+            <p><span id = "highest"></span><span id = "lowest"></span></p>
         </section>
 
         <section class = "weatherContent glass">
@@ -38,20 +39,21 @@
 
         <ul class = "dropDown">
             <li>
-            <button class = "dropdown-btn" onclick = toggleSubMenu(this)>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-                    <path d="M480-80q-83 0-141.5-58.5T280-280q0-48 21-89.5t59-70.5v-320q0-50 35-85t85-35q50 0 85 35t35 85v320q38 29 59 70.5t21 89.5q0 83-58.5 141.5T480-80Zm-40-440h80v-40h-40v-40h40v-80h-40v-40h40v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240Z"/></svg>
-                <span>Units: °C/°F</span>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
-            </button>
+                    <button class = "dropdown-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                            <path d="M480-80q-83 0-141.5-58.5T280-280q0-48 21-89.5t59-70.5v-320q0-50 35-85t85-35q50 0 85 35t35 85v320q38 29 59 70.5t21 89.5q0 83-58.5 141.5T480-80Zm-40-440h80v-40h-40v-40h40v-80h-40v-40h40v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240Z"/></svg>
+                        <span>Units: °C/°F</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+                    </button>
+
                 <ul class = "sub-menu">
                     <div>
-                        <li><a href="#">°C</a>
-                            <input type="checkbox" id="celsius">
+                        <li>
+                            <a href="#">Celsius</a>
                         </li>
-                        <li><a href="#">°F</a>
-                            <input type="checkbox" id="farenheit">
+                        <li>
+                            <a href="#">Fahrenheit</a>
                         </li>
                     </div>
                 </ul>
@@ -67,7 +69,7 @@
 
 </div>
 
-<header>
+<header class>
     <h1>Weatherly</h1>
 
     <p>Bringing the forecast with a side of sunshine... or maybe rain, we’re not perfect.</p>
