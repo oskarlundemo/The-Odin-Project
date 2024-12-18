@@ -21,14 +21,25 @@ export function invalidInput (errorMsg) {
 }
 
 
-export function initializeUI (data) {
+export async function initializeUI(data) {
     const allElements = Array.from(
         document.querySelectorAll('.currentDay *')); // Selects all child elements
 
-    console.log(data.currentConditions.conditions);
-    imageSelector(data.currentConditions.conditions)
+    const table = document.querySelector('table');
+    const headerWeahter = document.querySelector('.currentDay');
+    table.classList.remove('hidden');
+    headerWeahter.classList.remove('hidden');
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach(element => {
+        if (element.tagName !== 'HEADER')
+        element.classList.remove('hidden');
+    })
 
     allElements.forEach(element => {
+        if (element.tagName === 'IMG')
+            element.src = imageSelector(data.currentConditions.conditions)
+
         if (element.tagName === 'H1')
             element.textContent = data.city + ', ' + data.country;
 
@@ -41,47 +52,55 @@ export function initializeUI (data) {
         if (element.id === 'highest')
             element.textContent = 'H: ' + data.currentConditions.maxt + '°C / ';
 
-        if (element.id ==='lowest') {
-            element.textContent = 'L: '+ data.currentConditions.mint + '°C';
+        if (element.id === 'lowest') {
+            element.textContent = 'L: ' + data.currentConditions.mint + '°C';
         }
-
     });
 
-    console.log(allElements); // Array of elements inside .currentDay
+    const upcomingProjections = document.querySelector('.weatherContent')
+
+    for (const day of data.futureProjection) {
+
+        const projectionContainer = document.createElement('div');
+        projectionContainer.classList.add('projectionContainer');
+
+        const date = document.createElement('h3');
+        date.textContent = parseTimeString(day.datetimeStr);
+
+        const icon = document.createElement('img');
+        icon.src = await imageSelector(day.conditions); // Use returned markup
+
+        const temp = document.createElement('p');
+        temp.attributes = 'temp';
+        temp.textContent = `H: ${day.maxt} °C / L: ${day.mint} °C`;
+
+        projectionContainer.append(date);
+        projectionContainer.append(icon);
+        projectionContainer.append(temp);
+
+        upcomingProjections.append(projectionContainer);
+    }
+
 }
 
-async function imageSelector(description) {
-    const srcWeather = document.querySelector('.currentDay').firstElementChild;
-    if (description.toLowerCase().includes('sun')) {
-        srcWeather.innerHTML = await switchSvg('./icons/sun.svg')
-        srcWeather.style.fill = 'yellow';
-    }
-    else if (description.toLowerCase().includes('cloud')) {
-        srcWeather.innerHTML = await switchSvg('./icons/cloud.svg')
-        srcWeather.style.fill = 'grey';
-    }
 
-    else if (description.toLowerCase().includes('rain'))
-        srcWeather.innerHTML = await switchSvg('./icons/rain.svg')
-    else if (description.toLowerCase().includes('snow'))
-        srcWeather.innerHTML = await switchSvg('./icons/snow.svg')
-    else {
-        srcWeather.innerHTML = await switchSvg('./icons/sun.svg')
-        srcWeather.style.fill = 'yellow';
-    }
+function parseTimeString (timeStr) {
+    const [year, month] = timeStr.split('-').map(Number);
+    const day = timeStr.split('-')[2].split('T')[0];
+    const date = new Date(Date.UTC(year, month - 1, day));
+
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return weekdays[date.getUTCDay()];
 }
 
 
-async function switchSvg (svgFilePath) {
-    try {
-        const response = await fetch(svgFilePath);  // Fetch the SVG file
-        const svgSoruce = await response.text();
-        let path = svgSoruce.split('>');
 
-        return path[1] + path[2] + '>';
-    } catch (err) {
-        console.error('Error loading SVG:', err);
-    }
+function imageSelector(description) {
+    return description.toLowerCase().includes('sun') ? './icons/sun.svg' :
+        description.toLowerCase().includes('cloud') ? './icons/cloud.svg' :
+            description.toLowerCase().includes('rain') ? './icons/rain.svg' :
+                description.toLowerCase().includes('snow') ? './icons/snow.svg' :
+                    './icons/sun.svg';
 }
 
 
@@ -98,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menu = document.querySelector('.dropdown-btn');
     menu.addEventListener('click', (ev) => {
+        menu.classList.toggle('active');
         const subMenu = document.querySelector('.sub-menu');
         const svg = menu.lastElementChild
 

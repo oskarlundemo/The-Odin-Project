@@ -14,26 +14,35 @@
 
 <div class = "grid-container">
 
+    <header>
+        <h1>Weatherly</h1>
+
+        <p>Bringing the forecast with a side of sunshine... or maybe rain, we’re not perfect.</p>
+
+        <div class = "searchContainer">
+            <input type="text" placeholder="Enter a location" class ="searchBar">
+            <button class = "searchBtn btn">Search</button>
+        </div>
+    </header>
+
 
     <main>
 
-        <section class = "currentDay">
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
-            </svg>
+        <section class = "currentDay hidden">
+            <img height="100px" width="100px">
             <h1></h1>
             <h2></h2>
             <p id = "description"></p>
             <p><span id = "highest"></span><span id = "lowest"></span></p>
         </section>
 
-        <section class = "weatherContent glass">
+        <table class = "weatherContent glass hidden">
 
-
-        </section>
+        </table>
 
     </main>
 
-    <aside class = "sidebar">
+    <aside class = "sidebar hidden">
         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="35px" fill="#FFFFFF" id = "menuIcon">
             <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
 
@@ -61,25 +70,19 @@
         </ul>
     </aside>
 
-    <footer>
+    <footer class = 'hidden'>
 
+        <div class = "searchContainer">
+            <input type="text" placeholder="Enter a location" class ="searchBar">
+            <button class = "searchBtn btn">Search</button>
+        </div>
+
+        <p>Lundemo, Oskar 🫶</p>
     </footer>
-
 
 
 </div>
 
-<header class>
-    <h1>Weatherly</h1>
-
-    <p>Bringing the forecast with a side of sunshine... or maybe rain, we’re not perfect.</p>
-
-    <div class = "searchContainer">
-        <input type="text" placeholder="Enter a location" class ="searchBar">
-        <button class = "searchBtn btn">Search</button>
-    </div>
-
-</header>
 
 
 </body>
