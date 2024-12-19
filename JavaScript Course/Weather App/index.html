@@ -33,7 +33,7 @@
             <h1></h1>
             <h2></h2>
             <p id = "description"></p>
-            <p><span id = "highest"></span><span id = "lowest"></span></p>
+            <p><span id ="temperatures"></span></p>
         </section>
 
         <table class = "weatherContent glass hidden">
@@ -42,43 +42,30 @@
 
     </main>
 
-    <aside class = "sidebar hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="35px" fill="#FFFFFF" id = "menuIcon">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-
-        <ul class = "dropDown">
-            <li>
-                    <button class = "dropdown-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-                            <path d="M480-80q-83 0-141.5-58.5T280-280q0-48 21-89.5t59-70.5v-320q0-50 35-85t85-35q50 0 85 35t35 85v320q38 29 59 70.5t21 89.5q0 83-58.5 141.5T480-80Zm-40-440h80v-40h-40v-40h40v-80h-40v-40h40v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240Z"/></svg>
-                        <span>Units: °C/°F</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-                            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
-                    </button>
-
-                <ul class = "sub-menu">
-                    <div>
-                        <li>
-                            <a href="#">Celsius</a>
-                        </li>
-                        <li>
-                            <a href="#">Fahrenheit</a>
-                        </li>
-                    </div>
-                </ul>
-            </li>
-        </ul>
-    </aside>
 
     <footer class = 'hidden'>
-
         <div class = "searchContainer">
-            <input type="text" placeholder="Enter a location" class ="searchBar">
-            <button class = "searchBtn btn">Search</button>
+            <input type="text" placeholder="Enter a location" class ="searchBar" id = "newSearch">
+            <button class = "new searchBtn btn">Search</button>
         </div>
-
         <p>Lundemo, Oskar 🫶</p>
     </footer>
+
+
+    <div class="checkbox hidden">
+
+        <div class = "toggleContainer">
+            <label for="celsius" class="toggle"><span>°C</span></label>
+            <input type="checkbox" id="celsius" checked/>
+        </div>
+
+        <div class = "toggleContainer">
+            <label for="fahren" class="toggle"><span>°F</span></label>
+            <input type="checkbox" id="fahren"/>
+        </div>
+
+    </div>
+
 
 
 </div>

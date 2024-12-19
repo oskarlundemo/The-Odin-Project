@@ -2,10 +2,20 @@
 
 export class Forecast {
 
-    constructor (data) {
-        this.city = data.address.substring(0, data.address.indexOf(','));
-        this.country = data.address.substring(data.address.lastIndexOf(',') + 2, data.address.length);
-        this.currentConditions = data.values[0];
-        this.futureProjection = data.values.splice(1, data.values.length);
+    constructor (data, input) {
+        const locationData = data.locations?.[input];
+
+        if (!locationData) {
+            throw new Error('Invalid location');
+        }
+
+        this.city = locationData.address.substring(0, locationData.address.indexOf(','));
+        this.country = locationData.address.substring(locationData.address.lastIndexOf(',') + 2, locationData.address.length);
+        this.currentConditions = locationData.values[0];
+        this.futureProjection = locationData.values.splice(1, locationData.values.length);
+        this.unit = data.columns?.maxt.unit;
     }
 }
+
+
+
