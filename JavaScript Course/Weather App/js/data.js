@@ -1,23 +1,20 @@
 import {Forecast} from "./forecast.js";
-import {swipeHeader, invalidInput, initializeUI} from "./dom.js";
+import {invalidInput, initializeUI} from "./dom.js";
 
 
 
-export async function getData(input) {
+export async function getData(input, unit) {
     const apiKey = 'W4UHL2984MKFPDC9W65DSRR6Z';
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&contentType=json&unitGroup=metric&key=${apiKey}&locations=${encodeURIComponent(input)}`;
+    const testUnit = 'metric';
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&contentType=json&unitGroup=${testUnit}&key=${apiKey}&locations=${encodeURIComponent(input)}`;
 
     try {
         const response = await fetch(url, {"method": "GET",});
         const weatherData = await response.json();
-        console.log(weatherData);
-        swipeHeader();
-        let forecast = new Forecast(weatherData.locations?.[input])
-
-        initializeUI(forecast);
+        let forecast = await new Forecast(weatherData, input)
+        await initializeUI(forecast);
 
         console.log(forecast);
-        // Return new Forecast här
         return forecast;
     } catch (err) {
         invalidInput('Invalid input');
