@@ -1,0 +1,51 @@
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.red-box,
+.blue-box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.red-box {
+    background: red;
+    transform: rotate(45deg) translate(200%) rotateX(60deg) perspective(10rem);
+}
+
+.blue-box {
+    background: blue;
+    transform: translate(200%) rotate(45deg) perspective(23rem) rotateY(45deg);
+    box-shadow: 0 0 5px 1px;
+}
+
+
+@keyframes sick {
+    0% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes zoomInAndOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
