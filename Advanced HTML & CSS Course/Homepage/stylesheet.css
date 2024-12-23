@@ -7,7 +7,7 @@
 
 
 :root {
-    --color-primary: hsl(216, 50%, 90%);
+    --color-primary: hsl(216, 47%, 59%);
     --color-secondary: hsl(216, 50%, 10%);
     --color-tertiary: hsl(276, 80%, 20%);
     --color-accent: hsl(156, 80%, 20%);
@@ -22,10 +22,6 @@
 }
 
 
-html {
-    height: 100%;
-    width: 100%;
-}
 
 p {
     font-family: 'Roboto', sans-serif;
@@ -33,35 +29,44 @@ p {
 
 h1,h2,h3 {
     font-family: 'Playfair Display', sans-serif;
-    color: var(--color-secondary);
 }
 
 body {
     display:flex;
     flex-direction: column;
     background-color: var(--color-white);
-    height: 100%;
     justify-content: space-between;
     margin: 0;
     gap: 2rem;
+    flex-grow: 1;
 }
 
 body > * {
     padding: 0 5rem 0 5rem;
 }
 
+.header-portrait {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 60%;
 
-
-.header-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+    }
 }
 
 .profile-name {
     position: absolute;
-    transform: translateY(-400%);
-    color: var(--color-primary)
+    text-align: center;
+    transform: translateX(-50%);
+    color:var(--color-white);
+    font-size: 40px;
+    font-weight: lighter;
 }
 
 .skewed-background {
@@ -73,28 +78,36 @@ body > * {
     background-color: var(--color-primary);
     transform: skewY(-10deg);
     transform-origin: top left;
-    z-index: -1; /* Place it behind the content */
+    z-index: -1;
 }
-
-
 
 header {
     display: flex;
     flex-direction: row;
-    padding: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .header-textarea {
+    padding: 4rem 0 4rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    width: 60%;
 }
 
 .header-textarea-container {
     background-color: var(--color-white);
-    margin: 1rem 0 1rem 0;
     padding: 1rem;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-weight: lighter;
+    }
+
 }
 
 .header-icon-section {
@@ -102,31 +115,39 @@ header {
     flex-direction: row;
     justify-content: flex-end;
     gap: 0.5rem;
+    height: 10%;
 }
 
-.header-icon-section img {
-    object-fit: cover;
-    width: 5%;
-}
 
 section {
+    height: 200%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
+
+}
+
+
+main {
+    height: 100%;
+}
+
+.main-title {
+    font-size: 40px;
+    margin-bottom: 0;
+    font-weight: lighter;
 }
 
 article {
     display: flex;
     flex-direction: column;
     background-color: var(--color-white);
-    height: 100%;
     width: 100%;
     flex-grow: 1;
 
-    border: 1px solid lightgrey;
-    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
 }
 
 .text-section-article {
@@ -144,36 +165,28 @@ article {
 .icon-section-article {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1rem;
+    width: 20%;
 }
-
-.icon-section-article img {
-    width: 10%;
-    object-fit: contain;
-}
-
 
 .image-section-article {
-    background-color: #5a7ca6;
-
-    color: var(--color-white);
     font-family: "Playfair Display", sans-serif;
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    height: 200px;
+    height: 50%;
+    img {
+        object-fit: fill;
+        height: 10%;
+    }
 }
 
 footer {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
     background-color: var(--color-primary);
+    color: var(--color-white);
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .footer-image-container {
@@ -181,16 +194,37 @@ footer {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-}
+    width: 50%;
 
-.footer-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 .footer-contact-container {
-    padding: 1rem;
+    color: var(--color-white);
+
+    h2 {
+        margin-top: 0;
+        font-weight: lighter;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        svg {
+            height: 20px;
+            fill: var(--color-white);
+        }
+    }
 }
 
+.footer-icon-container {
+    display: flex;
+}
 
