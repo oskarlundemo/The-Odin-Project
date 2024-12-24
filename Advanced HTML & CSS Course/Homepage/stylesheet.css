@@ -71,7 +71,6 @@ body > * {
     text-shadow: 0 2px 5px rgb(0 0 0 / 0.6);
     text-align: center;
     z-index: 10; /* Ensure it sits above the image */
-
 }
 
 .skewed-background {
@@ -234,5 +233,47 @@ footer {
 
 .footer-icon-container {
     display: flex;
+}
+
+@media (max-width: 400px) {
+
+    body {
+        width: 100%;
+
+        > * {
+            padding: 0;
+        }
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-textarea {
+        padding: 0;
+        width: 100%;
+    }
+
+    .header-portrait {
+        width: 100%;
+    }
+
+    .header-textarea-container {
+        padding: 0;
+    }
+
+    .profile-name {
+        transform: translateX(-20%);
+    }
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+
 }
 
