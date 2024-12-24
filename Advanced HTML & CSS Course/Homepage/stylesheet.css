@@ -58,15 +58,19 @@ body > * {
         object-fit: cover;
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
     }
+    z-index: -1;
 }
 
 .profile-name {
-    position: absolute;
-    text-align: center;
-    transform: translateX(-50%);
-    color:var(--color-white);
-    font-size: 40px;
+    position: absolute; /* Position it on top of the image */
+    left: 28%;
+    transform: translateX(-50%); /* Center horizontally */
+    color: var(--color-white);
+    font-size: 50px;
     font-weight: lighter;
+    text-shadow: 0 2px 5px rgb(0 0 0 / 0.6);
+    text-align: center;
+    z-index: 10; /* Ensure it sits above the image */
 }
 
 .skewed-background {
@@ -170,12 +174,15 @@ article {
 
 .image-section-article {
     font-family: "Playfair Display", sans-serif;
-    height: 50%;
-    img {
-        object-fit: fill;
-        height: 10%;
-    }
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-weight: lighter;
+    padding: 5rem;
+    text-wrap: nowrap;
 }
+
 
 footer {
     display: flex;
@@ -226,5 +233,47 @@ footer {
 
 .footer-icon-container {
     display: flex;
+}
+
+@media (max-width: 400px) {
+
+    body {
+        width: 100%;
+
+        > * {
+            padding: 0;
+        }
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-textarea {
+        padding: 0;
+        width: 100%;
+    }
+
+    .header-portrait {
+        width: 100%;
+    }
+
+    .header-textarea-container {
+        padding: 0;
+    }
+
+    .profile-name {
+        transform: translateX(-20%);
+    }
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+
 }
 
