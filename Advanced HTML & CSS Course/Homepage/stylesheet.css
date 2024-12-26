@@ -68,7 +68,7 @@ body > * {
 .profile-name {
     position: absolute; /* Position it on top of the image */
     left: 28%;
-    transform: translateX(-50%); /* Center horizontally */
+    transform: translateX(-45%); /* Center horizontally */
     color: var(--color-white);
     font-size: 50px;
     font-weight: lighter;
@@ -240,10 +240,35 @@ footer {
 
 @media (max-width: 800px) {
 
+    body {
+        width: 100%;
+
+        > * {
+            padding: 1rem;
+        }
+    }
+
 
     header {
-        display: grid;
-        grid-template: repeat(2, minmax(100px, 0.5fr)) / repeat(2, minmax(100px, 0.5fr));
+        display: inline-block;
+        background-color: var(--color-white);
+        margin: 2rem;
+        img {
+            height: 300px;
+            width: 250px;
+            object-fit: cover;
+            float: left;
+            transform: translateY(-10%) translateX(-15%);
+        }
+
+        p {
+            text-wrap: wrap;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
     }
 
     .header-icon-section {
@@ -253,13 +278,13 @@ footer {
     .header-portrait {
         height: 100%;
         width: 100%;
-
+        flex-direction: column;
     }
 
     .header-textarea {
-        grid-area: 1 / 2 / 3 / 2;
         width: 100%;
         padding: 0;
+        text-wrap: wrap;
     }
 
 
@@ -274,9 +299,9 @@ footer {
     }
 
 
-
-
-
+    .footer-image-container {
+        height: 400px;
+    }
 
 
     section {
@@ -298,6 +323,10 @@ footer {
         > * {
             padding: 0;
         }
+    }
+
+    .skewed-background {
+        height: 30%;
     }
 
     header {
