@@ -43,38 +43,9 @@ body {
 }
 
 
+
 body > * {
     padding: 0 5rem 0 5rem;
-}
-
-
-
-.header-portrait {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 60%;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
-    }
-    z-index: -1;
-}
-
-.profile-name {
-    position: absolute; /* Position it on top of the image */
-    left: 28%;
-    transform: translateX(-45%); /* Center horizontally */
-    color: var(--color-white);
-    font-size: 50px;
-    font-weight: lighter;
-    text-shadow: 0 2px 5px rgb(0 0 0 / 0.6);
-    text-align: center;
-    z-index: 10; /* Ensure it sits above the image */
 }
 
 .skewed-background {
@@ -88,34 +59,74 @@ body > * {
     transform-origin: top left;
     z-index: -1;
     padding: 0;
+    min-width: 400px;
 }
+
+h1 {
+    font-weight: 800;
+}
+
 
 header {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    width: auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
-.header-textarea {
-    padding: 4rem 0 4rem 0;
+
+.header-text-container {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    justify-content: center;
+    margin: 6rem 0 6rem 0;
+    background-color: var(--color-white);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+    padding: 1rem;
+    width: 40%;
 }
 
-.header-textarea-container {
-    background-color: var(--color-white);
-    padding: 1rem;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+.header-image-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
 
-    h1 {
-        font-weight: lighter;
+    position: relative;
+    width: 60%;
+
+    img {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        background:green;
+        object-fit: cover;
     }
+}
 
+
+.profile-name {
+    z-index: 2;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: -13px;
+    text-align: center;
+    font-size: 50px;
+    color: var(--color-white);
+    font-weight: 700;
 }
 
 .header-icon-section {
@@ -123,7 +134,10 @@ header {
     flex-direction: row;
     justify-content: flex-end;
     gap: 0.5rem;
-    height: 10%;
+
+    svg {
+        height: 40px;
+    }
 }
 
 
@@ -240,6 +254,47 @@ footer {
 
 @media (max-width: 800px) {
 
+
+    .header-image-section {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 1rem;
+
+        position: relative;
+        width: 60%;
+
+        img {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            background:green;
+            object-fit: cover;
+        }
+    }
+
+
+    .profile-name {
+        z-index: 2;
+        position: absolute;
+        top:  100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: -13px;
+        text-align: center;
+        font-size: 50px;
+        color: var(--color-accent);
+        font-weight: 700;
+        transform: translateX(90%);
+
+    }
+
     body {
         width: 100%;
 
@@ -250,53 +305,27 @@ footer {
 
 
     header {
-        display: inline-block;
-        background-color: var(--color-white);
-        margin: 2rem;
+        display: flex;
+        justify-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .header-image-section {
+
+        float: left;
+
         img {
-            height: 300px;
-            width: 250px;
+            position: relative;
             object-fit: cover;
-            float: left;
-            transform: translateY(-10%) translateX(-15%);
-        }
 
-        p {
-            text-wrap: wrap;
         }
-
-        h1 {
-            text-align: center;
-        }
-
     }
 
-    .header-icon-section {
-        display: none;
-    }
-
-    .header-portrait {
-        height: 100%;
+    .header-text-container {
         width: 100%;
-        flex-direction: column;
+        margin: 0;
     }
 
-    .header-textarea {
-        width: 100%;
-        padding: 0;
-        text-wrap: wrap;
-    }
-
-
-    .header-breadtext {
-        h1 {
-            text-align: center;
-        }
-    }
-
-    .profile-name {
-        transform: translateX(50%) translateY(-450%);
-    }
 
 
     .footer-image-container {
@@ -317,6 +346,10 @@ footer {
 
 @media (max-width: 400px) {
 
+    html {
+        min-width: 400px;
+    }
+
     body {
         width: 100%;
 
@@ -332,42 +365,53 @@ footer {
     header {
         display: flex;
         flex-direction: column;
+        box-shadow: none;
+        justify-content: center;
         align-items: center;
-        padding: 2rem 1rem 0 1rem;
     }
+
+
+    .header-image-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1em;
+        height: 400px;
+        width: 300px;
+        img {
+            box-shadow: 2px 5px 0 rgba(0, 0, 0, 0.3); /* Use rgba for color with opacity */
+            background: none;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
 
     .header-icon-section {
-        height: 20px; /* Inte snyggt måste fixas! */
-    }
-
-    .header-portrait {
-        width: 100%;
         display: flex;
-        align-items: center;
-        img {
-            height: 500px;
-            border: none;
-            box-shadow: none;
-        }
+        flex-direction: row;
+        height: 40px;
+        background: transparent;
     }
 
-    .header-textarea {
-        padding: 0;
-        width: 100%;
-    }
 
-    .header-textarea-container {
-        padding: 0;
+    .header-text-container {
         box-shadow: none;
-        background-color: transparent;
-
-        h1 {
-            text-align: center;
-        }
+        background: transparent;
+        padding: 1rem;
+        height: 100%;
+        width: 100%;
     }
 
     .profile-name {
-        transform: translateX(-20%);
+        top: 80%;
+        left: 5%;
+        font-size: 40px;
+        width: 300px;
+        transform: translateX(0%);
+        color: var(--color-white)
     }
 
     .main-title {
