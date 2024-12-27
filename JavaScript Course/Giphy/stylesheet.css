@@ -38,7 +38,7 @@ header {
     color: var(--primary-text-color);
     font-family: "Lora", serif;
     font-style: normal;
-    grid-area: 5 / 1 / 2 / 2; /* Header in the first row */
+    grid-area: 5 / 1 / 2 / 2; /* Header.jsx in the first row */
     transition: grid-area 1s ease; /* Smooth transition for grid area change */
     display: flex;
     flex-direction: column;
@@ -128,7 +128,7 @@ input:focus {
 
 
 #gifContainer {
-    grid-area: 2 / 1 / 2 / 2; /* Header in the first row */
+    grid-area: 2 / 1 / 2 / 2; /* Header.jsx in the first row */
     border-radius: 20px;
     display: flex;
     gap: 1rem;
