@@ -6,7 +6,7 @@ import '../index.css'
 export function DropdownModule (props) {
     return (
         <form className={props.className}>
-            <div className="titleSection">
+            <div className="titleSection" onClick={ExposeMenu}>
 
                 <div>
                     <h2>{props.title}</h2>
@@ -36,4 +36,13 @@ export function DropdownModule (props) {
             </div>
         </form>
     )
+}
+
+
+
+function ExposeMenu () {
+    let test = document.querySelector('.downArrow');
+    let test2 = document.querySelector('.inputSection')
+    test.classList.toggle('rotate');
+    test2.classList.toggle('active');
 }

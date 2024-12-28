@@ -28,16 +28,27 @@ form {
 }
 
 .downArrow {
-    rotate: 180deg;
+    transform: rotate(-180deg);
+    transition: transform ease-in-out 0.4s;
+
+}
+
+.rotate {
+    transform: rotate(0deg);
 }
 
 
 .inputSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    opacity: 0; /* Fully transparent */
+    display: grid; /* Use grid layout */
+    grid-template-columns: 1fr; /* Single column layout */
+    grid-template-rows: 0; /* Initially no rows */
 }
 
+.active {
+    opacity: 1; /* Fully opaque */
+    grid-template-rows: 1fr; /* Allow it to occupy one row */
+}
 
 button {
     display: flex;
