@@ -1,5 +1,5 @@
-
 import '../styles/PersonalDetails.css'
+
 
 
 
@@ -7,7 +7,7 @@ import '../styles/PersonalDetails.css'
 export default function PersonalDetails () {
 
     return (
-        <form>
+        <form className ="personal-info">
             <h2>Personal Details</h2>
             <InputCard
                 label = "First name"
@@ -41,7 +41,7 @@ export default function PersonalDetails () {
 }
 
 
-function InputCard ({label, type, name, placeholder}) {
+export function InputCard ({label, type, name, placeholder}) {
 
     return (
         <div className ="input-card">

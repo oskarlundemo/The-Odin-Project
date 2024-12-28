@@ -1,0 +1,7 @@
+
+
+
+header {
+    grid-area: 1 / 2 / 1 / 2;
+    background-color: var(--color-secondary);
+}
