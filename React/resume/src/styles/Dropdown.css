@@ -1,66 +1,64 @@
-form {
-    background-color: var(--color-white);
-    color: var(--color-secondary);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-radius: 10px;
-    padding: 2rem 1rem 2rem 1rem;
 
-    svg {
-        fill: black;
-    }
-}
 
-.titleSection {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--color-secondary);
-    border-radius: 15px;
-
-    > div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-    }
-}
 
 .downArrow {
     transform: rotate(-180deg);
     transition: transform ease-in-out 0.4s;
-
-}
-
-.rotate {
-    transform: rotate(0deg);
 }
 
 
-.inputSection {
-    opacity: 0; /* Fully transparent */
-    display: grid; /* Use grid layout */
-    grid-template-columns: 1fr; /* Single column layout */
-    grid-template-rows: 0; /* Initially no rows */
-}
-
-.active {
-    opacity: 1; /* Fully opaque */
-    grid-template-rows: 1fr; /* Allow it to occupy one row */
-}
-
-button {
+#education {
     display: flex;
-    align-items: center;
-    color: var(--color-secondary);
-    border-radius: 5px;
-    padding: 1rem 2rem;
-    border: 1px solid var(--color-light-grey);
-    box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
-    max-width: fit-content;
+    justify-content: center;
+    width: 100%;
 }
 
-button:hover {
-    cursor: pointer;
+.dropdown-div {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
 }
+
+#education ul {
+    list-style: none;
+    width: 100%;
+
+}
+
+#education > ul > li:first-child {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+#education > svg {
+    flex-shrink: 0;
+}
+
+.dropdown-btn {
+    text-align: left;
+    background: none;
+    width: 100%;
+
+}
+
+#education .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+    width: 100%;
+
+    > div {
+        overflow: hidden;
+    }
+}
+
+#education .sub-menu.show {
+    grid-template-rows: 1fr;
+}
+
