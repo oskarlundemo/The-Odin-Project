@@ -249,7 +249,7 @@ input:focus {
 }
 
 
-.sidebar {
+.dropdownmodule {
     position: fixed;
     right: 0;
     background: transparent;
@@ -270,12 +270,12 @@ input:focus {
     z-index: 1000;
 }
 
-.sidebar.open {
+.dropdownmodule.open {
     width: 200px;
     transition: all 200ms ease-in;
 }
 
-.sidebar.close {
+.dropdownmodule.close {
     width: auto;
     transition: all 200ms ease-in;
 }
@@ -365,7 +365,6 @@ a:hover {
 .sub-menu.show {
     grid-template-rows: 1fr;
     padding: 0;
-
 }
 
 
