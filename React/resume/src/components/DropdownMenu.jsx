@@ -3,12 +3,13 @@ import '../index.css'
 import {InputCard} from "./PersonalDetails.jsx";
 
 export function DropdownModule (props) {
+
     return (
 
-        <div id = 'education'>
+        <div className = "dropdownmodule" id = {props.id}>
         <ul className="dropdown-div">
             <li>
-            <button className="dropdown-btn">
+            <button className="dropdown-btn" onClick={ExposeMenu}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#FFFFFF">
                     <path d={props.path}/>
@@ -25,9 +26,42 @@ export function DropdownModule (props) {
 
             <ul className="sub-menu">
                 <div>
-                    <li><InputCard/></li>
-                    <li><InputCard/></li>
-                    <li><InputCard/></li>
+                    <li>
+                        <InputCard
+                            label={props.organization}
+                            type="text"
+                            name="text"
+                            placeholder={props.organizationdescription}>
+                        </InputCard>
+                    </li>
+
+                    <li>
+                        <InputCard
+                            label={props.organizationTitle}
+                            type="text"
+                            name="text"
+                            placeholder={props.organizationProgram}>
+                        </InputCard>
+                    </li>
+
+                    <li>
+                        <InputCard
+                            label={props.description}
+                            type="textarea"
+                            name="text"
+                            placeholder={props.furtherDescription}>
+                        </InputCard>
+                    </li>
+
+
+                    <li>
+                        <InputCard
+                            label={props.time}
+                            type="text"
+                            name="text"
+                            placeholder={props.timeperiod}>
+                        </InputCard>
+                    </li>
                 </div>
             </ul>
             </li>
@@ -37,9 +71,7 @@ export function DropdownModule (props) {
 }
 
 
-function ExposeMenu() {
-    let test = document.querySelector('.downArrow');
-    let test2 = document.querySelector('.inputSection')
-    test.classList.toggle('show');
-    test2.classList.toggle('active');
+function ExposeMenu(e) {
+    e.currentTarget.nextSibling.classList.toggle('show');
+    e.currentTarget.parentElement.querySelector('.downArrow').classList.toggle('rotate');
 }
