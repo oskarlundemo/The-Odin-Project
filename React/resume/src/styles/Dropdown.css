@@ -46,18 +46,26 @@
 }
 
 
+.save-btn button {
+    box-shadow: var(--default-box-shadow);
+    border: var(--color-border-box);
+}
+
+.button {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+    padding: 1rem;
+    cursor: pointer;
+    font-size: inherit;
+    border-radius: 10px;
+}
+
 .dropdown-btn {
     display: flex;
     align-items: center;
     gap: 2rem;
     justify-content: space-between;
-
-    background-color: var(--color-white);
-    color: var(--color-secondary);
-    padding: 1rem;
     border: none;
-    cursor: pointer;
-    font-size: inherit;
 }
 
 .dropdownmodule .sub-menu {

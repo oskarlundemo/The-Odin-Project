@@ -9,7 +9,7 @@ export function DropdownModule (props) {
         <div className = "dropdownmodule" id = {props.id}>
         <ul className="dropdown-div">
             <li>
-            <button className="dropdown-btn" onClick={ExposeMenu}>
+            <button className="dropdown-btn button" onClick={ExposeMenu}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#FFFFFF">
                     <path d={props.path}/>
@@ -59,7 +59,7 @@ export function DropdownModule (props) {
                             label={props.time}
                             type="text"
                             name="text"
-                            placeholder={props.timeperiod}>
+                            placeholder={props.period}>
                         </InputCard>
                     </li>
                 </div>
