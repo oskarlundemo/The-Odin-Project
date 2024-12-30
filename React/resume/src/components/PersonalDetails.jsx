@@ -20,14 +20,14 @@ export default function PersonalDetails () {
                 label = "Email"
                 type = "mail"
                 name = "email"
-                placeholder = "Enter email">
+                placeholder = "example@domain.se">
             </InputCard>
 
             <InputCard
                 label = "Phone number"
                 type = "text"
                 name = "text"
-                placeholder = "Enter phone number">
+                placeholder = "+46 07 456 789">
             </InputCard>
 
             <InputCard
@@ -44,9 +44,13 @@ export default function PersonalDetails () {
 export function InputCard ({label, type, name, placeholder}) {
 
     return (
-        <div className ="input-card">
+        <div className="input-card">
             <label>{label}</label>
-            <input type={type} name={name} placeholder={placeholder}></input>
+            {type === "textarea" ? (
+                <textarea name={name} placeholder={placeholder}></textarea>
+            ) : (
+                <input type={type} name={name} placeholder={placeholder}></input>
+            )}
         </div>
     )
 }

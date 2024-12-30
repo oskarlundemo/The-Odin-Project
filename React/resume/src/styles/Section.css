@@ -1,0 +1,11 @@
+
+
+h2 {
+    color: var(--color-tertiary);
+    text-align: left;
+    border-bottom: 1px solid var(--color-tertiary);
+}
+
+section {
+    padding: 0 2rem;
+}

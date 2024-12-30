@@ -1,16 +1,40 @@
 
-
-
 .downArrow {
     transform: rotate(-180deg);
-    transition: transform ease-in-out 0.4s;
+    transition: transform ease-in-out 0.5s;
+}
+
+.downArrow.rotate {
+    transform: rotate(0deg);
 }
 
 
-#education {
+.dropdownmodule {
     display: flex;
     justify-content: center;
     width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-box);
+    box-shadow: var(--default-box-shadow);
+
+    ul {
+        list-style: none;
+        width: 100%;
+
+
+        > li:first-child {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    svg {
+        flex-shrink: 1;
+        fill: black;
+    }
 }
 
 .dropdown-div {
@@ -19,46 +43,59 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-
 }
 
-#education ul {
-    list-style: none;
-    width: 100%;
-
-}
-
-#education > ul > li:first-child {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    width: 100%;
-
-}
-
-#education > svg {
-    flex-shrink: 0;
-}
 
 .dropdown-btn {
-    text-align: left;
-    background: none;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
 
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
 }
 
-#education .sub-menu {
+.dropdownmodule .sub-menu {
     display: grid;
     grid-template-rows: 0fr;
     transition: 300ms ease-in-out;
-    width: 100%;
+    padding: 0;
+    background-color: var(--color-white);
 
     > div {
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
+
+        label {
+            color: var(--color-secondary);
+        }
+
+        li {
+            padding: 1rem;
+            cursor: pointer;
+        }
+    }
+
+    input, textarea {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid var(--color-tertiary);
+        background-color: var(--color-light-grey);
+    }
+
+    textarea {
+        resize: none;
+        font-family: inherit;
     }
 }
 
-#education .sub-menu.show {
+.dropdownmodule .sub-menu.show {
     grid-template-rows: 1fr;
 }
 
