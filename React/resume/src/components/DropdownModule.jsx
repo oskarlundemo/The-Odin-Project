@@ -1,15 +1,21 @@
 import '../styles/Dropdown.css'
 import '../index.css'
 import {InputCard} from "./PersonalDetails.jsx";
+import {useState} from "react";
 
 export function DropdownModule (props) {
+
+    const [isActive, setIsActive] = useState(false);
+    const toggleClass = () => {
+        setIsActive(!isActive);
+    }
 
     return (
 
         <div className = "dropdownmodule" id = {props.id}>
         <ul className="dropdown-div">
             <li>
-            <button className="dropdown-btn button" onClick={ExposeMenu}>
+            <button className="dropdown-btn button" onClick={ () => {toggleClass()}}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#FFFFFF">
                     <path d={props.path}/>
@@ -17,14 +23,14 @@ export function DropdownModule (props) {
 
                 <span>{props.title}</span>
 
-                <svg xmlns="http://www.w3.org/2000/svg" className="downArrow" height="24px" viewBox="0 -960 960 960"
+                <svg xmlns="http://www.w3.org/2000/svg" className={`downArrow ${isActive ? 'rotate' : ''}`} height="24px" viewBox="0 -960 960 960"
                      width="24px"
                      fill="#FFFFFF">
                     <path d="M480-360 280-560h400L480-360Z"/>
                 </svg>
             </button>
 
-            <ul className="sub-menu">
+                <ul className={`sub-menu ${isActive ? 'show' : ''}`}>
                 <div>
                     <li>
                         <InputCard
@@ -68,10 +74,4 @@ export function DropdownModule (props) {
         </ul>
         </div>
     )
-}
-
-
-function ExposeMenu(e) {
-    e.currentTarget.nextSibling.classList.toggle('show');
-    e.currentTarget.parentElement.querySelector('.downArrow').classList.toggle('rotate');
 }
