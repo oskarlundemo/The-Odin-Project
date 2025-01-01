@@ -3,11 +3,9 @@ import '../styles/Education.css'
 import {useState} from "react";
 
 
-export default function EducationModule({title}) {
-    // Use state to track the list of dropdown modules
-    const [dropdownModules, setDropdownModules] = useState([]); // Initial state with one module
+export default function EducationModule({title, onAddElement}) {
+    const [dropdownModules, setDropdownModules] = useState([]);
 
-    // Function to add a new DropdownModule when button is clicked
     const addDropdownModule = () => {
         setDropdownModules([dropdownModules, <DropdownModule key={dropdownModules.length + 1}
 
@@ -40,13 +38,9 @@ export default function EducationModule({title}) {
                 {dropdownModules}
             </div>
 
-            <button className="button moduleBtn" onClick={addDropdownModule}>
+            <button className="button moduleBtn" onClick={() => {addDropdownModule()}}>
                 + {title}
             </button>
         </div>
-
-
-
-
     );
 };

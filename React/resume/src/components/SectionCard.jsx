@@ -6,7 +6,6 @@ import {useState} from "react";
 
 export default function SectionCard ({title, organization, period, description}) {
 
-
     return (
         <div className="section-card">
             <h2>{title && title}</h2>

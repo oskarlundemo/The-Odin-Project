@@ -4,14 +4,11 @@ import Section from "./Section.jsx";
 
 
 
-export default function Main () {
+export default function Main ({elements}) {
     return (
         <main>
-
-            <Section title="Education"/>
-
+            <Section elements={elements} title="Education"/>
             <Section title ="Work"></Section>
-
         </main>
     )
 }
