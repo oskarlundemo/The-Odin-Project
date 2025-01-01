@@ -1,6 +1,8 @@
 import BookCard from "../src/components/BookCard.jsx";
 import {useEffect, useState} from "react";
 import {getBooks} from "../src/services/api.js";
+import '../src/styles/Home.css'
+import '../src/styles/Form.css';
 
 export default function Home () {
 
@@ -54,7 +56,7 @@ export default function Home () {
             </form>
 
 
-            <div className="movies-gird">
+            <div className="book-grid">
                 {books.map(book => (
                     <BookCard book={book} key={book.id}/>
                 ))}

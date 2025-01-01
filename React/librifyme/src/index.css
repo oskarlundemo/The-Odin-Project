@@ -11,7 +11,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  --default-box-shadow: box-shadow 2px 5px 0px rgb(204, 202, 202);
+
+
+  --color-primary: hsl(250, 50%, 10%);
+  --color-secondary: hsl(250, 50%, 90%);
+  --color-tertiary: hsl(310, 80%, 80%);
+  --color-accent: hsl(190, 80%, 80%);
 }
+
 
 a {
   font-weight: 500;
@@ -26,6 +36,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }

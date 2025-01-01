@@ -1,0 +1,42 @@
+
+
+
+
+
+
+
+.book-card {
+    box-shadow: var(--default-box-shadow);
+    background-color: var(--color-secondary);
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 1rem;
+    padding: 1rem 0.5rem;
+    align-items: center;
+}
+
+.book-cover {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+
+.favorite-button {
+    background-color: transparent;
+    margin-top: 0.5rem;
+    border-radius: 50px;
+}
+
+
+.book-info {
+
+
+    h2 {
+
+    }
+}
