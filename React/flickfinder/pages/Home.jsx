@@ -26,22 +26,26 @@ export default function Home () {
             }
         }
         loadPopularMovies();
-    })
+    }, []);
 
 
     const handleSearch = async (e) => {
         e.preventDefault();
         if (!searchQuery.trim()) return
+        if (loading) return
 
+        setLoading(true)
         try {
-            const movies = await searchMovies(searchQuery);
-            setMovies(movies);
+            const searchResults = await searchMovies(searchQuery)
+            setMovies(searchResults)
+            setError(null)
         } catch (err) {
-            console.error(err);
-            setMovies([]);
-            alert('No results found');
+            console.log(err)
+            setError("Failed to search movies...")
+        } finally {
+            setLoading(false)
         }
-    }
+    };
 
 
     return (
@@ -70,7 +74,7 @@ export default function Home () {
 
             {loading ? (
                     <div className="loading">Loading...</div>) :
-                <div className="book-grid">
+                <div className="movie-grid">
                     {movies.map(movie => (
                         <MovieCard movie={movie} key={movie.id}/>
                     ))}
