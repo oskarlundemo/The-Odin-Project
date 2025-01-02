@@ -1,0 +1,60 @@
+
+
+
+
+
+.movie-card {
+    box-shadow: var(--default-box-shadow);
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    color: var(--color-white)
+}
+
+.movie-poster {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+
+}
+
+.movie-overlay:hover {
+    opacity: 1;
+    transition: opacity ease-in-out 0.5s;
+}
+
+.movie-overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 0;
+
+    color: var(--color-white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+
+    transition: transform ease-in-out 0.5s;
+}
+
+
+.favorite-button {
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+
