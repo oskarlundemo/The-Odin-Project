@@ -1,9 +1,9 @@
 
 
 
-.book-grid {
+.movie-grid {
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    grid-template: repeat(3, 1fr) / repeat(5, 1fr);
     gap: 1em;
     background-color: transparent;
     border-radius: 10px;
