@@ -58,7 +58,7 @@
 
     input:focus {
         outline: none;
-
+        font-family: inherit;
     }
 
     transition: ease-in-out 0.2s;
