@@ -5,16 +5,19 @@ import MovieCard from "../src/components/MovieCard.jsx";
 
 export default function Favorites () {
 
-    const {favorites} = useMovieContext();
+    const { favorites } = useMovieContext();
 
     if (favorites) {
         return (
-            <div className="movie-grid">
-                {favorites.map(movie => (
-                    <MovieCard movie={movie} key={movie.id}/>
-                ))}
+            <div className="favorites">
+                <h2>Your Favorites</h2>
+                <div className="movies-grid">
+                    {favorites.map((movie) => (
+                        <MovieCard movie={movie} key={movie.id} />
+                    ))}
+                </div>
             </div>
-        )
+        );
     }
 
     return (
