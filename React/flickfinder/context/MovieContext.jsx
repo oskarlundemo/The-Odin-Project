@@ -1,35 +1,28 @@
-import {createContext, useState, useEffect, useContext} from "react";
+import {createContext, useState, useContext, useEffect} from "react"
 
-
-
-const MovieContext = createContext();
+const MovieContext = createContext()
 
 export const useMovieContext = () => useContext(MovieContext)
 
 export const MovieProvider = ({children}) => {
-
-    const [favorites, setFavorite] = useState([])
+    const [favorites, setFavorites] = useState([])
 
     useEffect(() => {
-        const savedFavorites = localStorage.getItem('favorites')
+        const storedFavs = localStorage.getItem("favorites")
 
-        if (savedFavorites) {
-            setFavorite(JSON.parse(savedFavorites))
-        }
+        if (storedFavs) setFavorites(JSON.parse(storedFavs))
     }, [])
-
 
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites))
     }, [favorites])
 
-
-    const addToFavorite = (movie) => {
-        setFavorite([prev => [...prev, movie]])
+    const addToFavorites = (movie) => {
+        setFavorites(prev => [...prev, movie])
     }
 
-    const removeFromFavorite = (movieId) => {
-        setFavorite(prev => prev.filter(movie => movie.id!== movieId))
+    const removeFromFavorites = (movieId) => {
+        setFavorites(prev => prev.filter(movie => movie.id !== movieId))
     }
 
     const isFavorite = (movieId) => {
@@ -38,9 +31,9 @@ export const MovieProvider = ({children}) => {
 
     const value = {
         favorites,
-        addToFavorite,
-        removeFromFavorite,
-        isFavorite,  // helper function to check if a movie is already in favorites list  // or not.  // It returns a boolean value.  // It uses the some() method to iterate over the favorites array and check if the movie id is present.  // If it finds a match, it returns true; otherwise, it returns false.  // This way, we can easily check if a movie is in the favorites list or not.  // This function is
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite
     }
 
     return <MovieContext.Provider value={value}>
