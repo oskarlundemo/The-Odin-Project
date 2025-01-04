@@ -16,6 +16,8 @@
   --module-color: hsl(210, 25%, 95%);   /* Soft light blue for modules */
   --text-color: hsl(210, 15%, 20%);     /* Dark blue for text */
   --button-color: hsl(210, 75%, 50%);
+  --default-black: hsl(0, 0%, 0%);     /* Dark blue for text */
+
 
   --header-background-color: hsl(216, 71%, 81%); /* Light pastel blue */
   --header-text-color: hsl(220, 15%, 20%);       /* Dark blue for text */
