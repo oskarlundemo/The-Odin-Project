@@ -1,6 +1,8 @@
 import {useContext} from "react";
 import { AppContext } from "../../context/AppContext.jsx";
 import '../styles/NavBar.css'
+import {Education} from "./Education.jsx";
+import {Work} from "./Work.jsx";
 
 export const NavBar = () => {
 
@@ -17,6 +19,8 @@ export const NavBar = () => {
 
     return (
         <nav className="sidebar">
+
+            <div className="personal-details">
             <h2>Personal Details</h2>
             <form className="personal-info">
 
@@ -69,8 +73,11 @@ export const NavBar = () => {
                     onChange={handleInputChange}
                     value={details.city}
                 />
+              </form>
+            </div>
 
-            </form>
+            <Education/>
+            <Work/>
 
         </nav>
     )
