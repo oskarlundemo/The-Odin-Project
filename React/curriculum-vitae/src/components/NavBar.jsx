@@ -1,25 +1,73 @@
 import {useContext} from "react";
 import { AppContext } from "../../context/AppContext.jsx";
-
+import '../styles/NavBar.css'
 
 export const NavBar = () => {
 
-    const {setInputValue} = useContext(AppContext);
+    const {setInputValue: setDetails, inputValue: details} = useContext(AppContext);
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value)
-    }
+        const { name, value } = e.target;
+
+        setDetails((prevDetails) => ({
+            ...prevDetails,
+            [name]: value,
+        }));
+    };
 
     return (
         <nav className="sidebar">
+            <h2>Personal Details</h2>
             <form className="personal-info">
-                <h2>Personal Details</h2>
 
+                <label>First name</label>
                 <input
                     type="text"
+                    name="firstName"
                     placeholder="First name"
                     className="personal-info-input"
                     onChange={handleInputChange}
+                    value={details.firstName}
+                />
+
+                <label>Last name</label>
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last name"
+                    className="personal-info-input"
+                    onChange={handleInputChange}
+                    value={details.lastName}
+                />
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="john@domain.com"
+                    className="personal-info-input"
+                    onChange={handleInputChange}
+                    value={details.email}
+                />
+
+                <label>Phone</label>
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="+46 070 213 ..."
+                    className="personal-info-input"
+                    onChange={handleInputChange}
+                    value={details.phone}
+                />
+
+                <label>City</label>
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="Last name"
+                    className="personal-info-input"
+                    onChange={handleInputChange}
+                    value={details.city}
                 />
 
             </form>

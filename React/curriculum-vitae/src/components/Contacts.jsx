@@ -1,11 +1,10 @@
-
-import '../styles/ContactInfo.css'
-import '../index.css'
 import {useContext} from "react";
+import {AppContext} from "../../context/AppContext.jsx";
+import '../styles/Contacts.css'
 
 
 
-export default function ContactSection () {
+export default function Contacts () {
 
     const {inputValue} = useContext(AppContext);
 
@@ -15,7 +14,7 @@ export default function ContactSection () {
                 src='/phone.svg'
                 alt='Icon of phone number'
                 data={inputValue.phone}
-                >
+            >
             </ContactCard>
 
             <ContactCard
@@ -28,7 +27,7 @@ export default function ContactSection () {
             <ContactCard
                 src='/location.svg'
                 alt='Icon of phone number'
-                data={inputValue.location}
+                data={inputValue.city}
             >
             </ContactCard>
         </div>

@@ -1,0 +1,23 @@
+
+
+
+.sidebar {
+    background-color: var(--module-color);
+    border-radius: var(--module-radius);
+
+    color: var(--text-color);
+    box-shadow: var(--deafult-box-shadow)
+}
+
+
+.personal-info {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+
+
+    label {
+        text-align: left;
+    }
+}
