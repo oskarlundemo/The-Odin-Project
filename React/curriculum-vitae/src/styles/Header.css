@@ -4,8 +4,13 @@
     background-color: var(--header-background-color);
     color: var(--header-text-color);
 
+    height: 20%;
+
     h1 {
+
+        font-size: var(--h1-font-size);
         margin: 0;
         padding: 1rem 2rem;
+        min-height: var(--h1-font-size);
     }
 }

@@ -11,7 +11,7 @@ export const Header = () => {
 
     return (
         <header className="site-header">
-            <h1>{`${inputValue.firstName} ${inputValue.lastName}`}</h1>
+            <h1>{(inputValue.firstName || inputValue.lastName) ? `${inputValue.firstName} ${inputValue.lastName}` : ""} </h1>
             <Contacts/>
         </header>
     )

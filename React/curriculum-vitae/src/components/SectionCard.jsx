@@ -2,13 +2,17 @@
 
 import '../styles/SectionCard.css'
 
-export const SectionCard = ({title}) =>  {
+export const SectionCard = ({organization, title, description, period}) =>  {
+
 
 
     return (
         <div className="section-card">
-            <h2>{title}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non tellus euismod, consectetur nisi vel, consectetur ligula. Sed et urna vel purus dictum fermentum.</p>
+            <div>
+                <h2>{title} - {organization}</h2>
+                <h2>{period}</h2>
+            </div>
+            <p>{description}</p>
         </div>
     )
 }
