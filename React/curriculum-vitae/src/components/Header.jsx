@@ -7,11 +7,11 @@ import Contacts from "./Contacts.jsx";
 
 
 export const Header = () => {
-    const {inputValue} = useContext(AppContext);
+    const {personalInfo} = useContext(AppContext);
 
     return (
         <header className="site-header">
-            <h1>{(inputValue.firstName || inputValue.lastName) ? `${inputValue.firstName} ${inputValue.lastName}` : ""} </h1>
+            <h1>{(personalInfo.firstName || personalInfo.lastName) ? `${personalInfo.firstName} ${personalInfo.lastName}` : ""} </h1>
             <Contacts/>
         </header>
     )

@@ -2,8 +2,6 @@ import './App.css'
 import NavBar from "./components/NavBar.jsx";
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
-import Contacts from "./components/Contacts.jsx";
-
 function App() {
 
   return (
@@ -11,7 +9,8 @@ function App() {
                 <NavBar/>
                 <main className="main-content">
                     <Header/>
-                    <Section/>
+                    <Section title ="Work"/>
+                    <Section title = "Education"/>
                 </main>
             </div>
   )

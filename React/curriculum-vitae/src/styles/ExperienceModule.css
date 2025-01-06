@@ -71,6 +71,7 @@
 
 
 
+
 .sub-menu {
     display: grid;
     grid-template-rows: 0fr;
@@ -97,3 +98,14 @@
 .sub-menu.show {
     grid-template-rows: 1fr;
 }
+
+
+.downArrow {
+    transform: rotate(-90deg);
+    transition: transform ease-in-out 200ms;
+}
+
+.downArrow.show {
+    transform: rotate(0deg);
+}
+
