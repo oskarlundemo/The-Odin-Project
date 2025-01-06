@@ -6,7 +6,7 @@ import {Work} from "./Work.jsx";
 
 export const NavBar = () => {
 
-    const {setInputValue: setDetails, inputValue: details} = useContext(AppContext);
+    const {setPersonalInfo: setDetails, personalInfo: details} = useContext(AppContext);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

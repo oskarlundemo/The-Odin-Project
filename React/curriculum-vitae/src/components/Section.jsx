@@ -4,12 +4,12 @@ import '../styles/Section.css'
 import {SectionCard} from "./SectionCard.jsx";
 
 
-
-export default function Section () {
+export default function Section ({title, cards}) {
     return (
-        <section className="section-container">
-            <SectionCard title={"Work"}/>
-            <SectionCard title={"Education"}/>
+        <section className={`${title}-container`}>
+            <h2>{title}</h2>
+            {cards}
+            <SectionCard></SectionCard>
         </section>
     )
 }

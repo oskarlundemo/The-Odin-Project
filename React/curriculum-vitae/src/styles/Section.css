@@ -1,14 +1,12 @@
 
 
-
-
-.section-container {
-
-    background-color: var(--module-color);
-}
-
-.section-container {
+section {
     h2 {
         margin: 0;
+        text-align: left;
+        border-bottom: 1px solid var(--header-background-color);
     }
+
+    background-color: var(--module-color);
+    padding: 0 1rem 1rem 1rem;
 }

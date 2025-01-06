@@ -5,9 +5,32 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    background-color: var(--background-color);
+    margin: 1rem;
+    border-radius: var(--module-radius);
+
+    p {
+        text-align: left;
+    }
+}
+
+
+.section-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-card-date {
+    font-size: var(--default-font-size);
+    margin:0;
+}
+
+.section-card-header {
 
     h2 {
-        text-align: left;
-        border-bottom: 1px solid var(--header-background-color);
+        border: none;
+        font-weight: lighter;
     }
+
+    border-bottom: 1px solid var(--header-background-color);
 }
