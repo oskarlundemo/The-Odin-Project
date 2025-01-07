@@ -5,19 +5,17 @@ import {AppContext} from "../../context/AppContext.jsx";
 
 
 
-export const ExperienceCard = () => {
-
-    const { experienceInfo: input, setExperienceInfo: setInput } = useContext(AppContext);
+export const ExperienceCard = ({card, onCardChange}) => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        setInput((prevInfo) => ({
-            ...prevInfo,
+        // Notify the parent of the card's changes
+        onCardChange({
+            ...card,
             [name]: value,
-        }));
+        });
     };
-
 
     return (
         <div className="experience-card-container">
@@ -28,7 +26,7 @@ export const ExperienceCard = () => {
                 name="organization"
                 placeholder="Name of your organization"
                 onChange={handleInputChange}
-                value={input.organization}
+                value={card.organization}
             />
 
 
@@ -38,7 +36,7 @@ export const ExperienceCard = () => {
                 name="occupation"
                 placeholder="The name of your title"
                 onChange={handleInputChange}
-                value={input.occupation}
+                value={card.occupation}
             />
 
 
@@ -48,7 +46,7 @@ export const ExperienceCard = () => {
                     type="date"
                     name="startdate"
                     onChange={handleInputChange}
-                    value={input.startdate}
+                    value={card.startdate}
                 />
 
                 <label>End date</label>
@@ -56,7 +54,7 @@ export const ExperienceCard = () => {
                     type="date"
                     name="enddate"
                     onChange={handleInputChange}
-                    value={input.enddate}
+                    value={card.enddate}
                 />
             </div>
 
@@ -66,7 +64,7 @@ export const ExperienceCard = () => {
                 name="description"
                 placeholder="Describe your tasks"
                 onChange={handleInputChange}
-                value={input.description}
+                value={card.description}
             />
 
         </div>

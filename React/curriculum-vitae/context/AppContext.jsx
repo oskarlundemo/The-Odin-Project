@@ -1,6 +1,4 @@
 import React, {createContext, useState} from "react";
-import {ExperienceCard} from "../src/components/ExperienceCard.jsx";
-import {SectionCard} from "../src/components/SectionCard.jsx";
 
 
 export const AppContext = createContext();

@@ -21,30 +21,23 @@ export const App = () => {
             occupation: input.occupation,
             startdate: input.startdate,
             enddate: input.enddate,
-            description: input.description
+            description: input.description,
         };
 
-
-        setWorkCards(prevWorkCards => {
-            return [...prevWorkCards, newWorkCard];
-        });
-        console.log("Work card added:", newWorkCard);
+        setWorkCards((prevWorkCards) => [...prevWorkCards, newWorkCard]);
     };
 
     const handleAddEducationCard = () => {
         const newEducationCard = {
             id: educationCards.length + 1,
-            organization: "New School",
-            occupation: "Degree Program",
-            startdate: "Start Date",
-            enddate: "End Date",
-            description: "New Description",
+            organization: input.organization,
+            occupation: input.occupation,
+            startdate: input.startdate,
+            enddate: input.enddate,
+            description: input.description,
         };
 
-        setEducationCards(prevEducationCards => {
-            return [...prevEducationCards, newEducationCard];
-        });
-        console.log("Education card added:", newEducationCard);
+        setEducationCards((prevEducationCards) => [...prevEducationCards, newEducationCard]);
     };
 
 

@@ -9,13 +9,30 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
     const [experienceCards, setExperienceCards] = useState([]);
 
     const handleButtonClick = () => {
-        setExperienceCards([...experienceCards, <ExperienceCard key={experienceCards.length + 1}/>]);
+        const newExperienceCard = {
+            id: experienceCards.length + 1,
+            organization: "",
+            occupation: "",
+            startdate: "",
+            enddate: "",
+            description: "",
+        };
+
+        setExperienceCards([...experienceCards, newExperienceCard]);
     }
 
     const [activeIndex, setActiveIndex] = useState(null);
     const toggleModule = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     }
+
+    const handleCardChange = (id, updatedCard) => {
+        setExperienceCards((prevWorkCards) =>
+            prevWorkCards.map((card) =>
+                card.id === id ? { ...card, ...updatedCard } : card
+            )
+        );
+    };
 
 
     return (
@@ -52,7 +69,11 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
                             <ul className={`sub-menu ${activeIndex === index ? 'show' : ''}`}>
                                 <div>
                                     <li key={index} className="experience-card">
-                                        {card}
+                                        <ExperienceCard
+                                            key={card.id}
+                                            card={card}
+                                            onCardChange={handleCardChange}
+                                        />
                                     </li>
                                 </div>
                             </ul>
