@@ -19,7 +19,6 @@ export const ExperienceCard = () => {
     };
 
 
-
     return (
         <div className="experience-card-container">
 
