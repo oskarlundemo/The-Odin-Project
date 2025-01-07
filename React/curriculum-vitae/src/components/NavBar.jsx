@@ -4,7 +4,7 @@ import '../styles/NavBar.css'
 import {Education} from "./Education.jsx";
 import {Work} from "./Work.jsx";
 
-export const NavBar = () => {
+export const NavBar = ({onAddWork, onAddEducation}) => {
 
     const {setPersonalInfo: setDetails, personalInfo: details} = useContext(AppContext);
 
@@ -76,8 +76,8 @@ export const NavBar = () => {
               </form>
             </div>
 
-            <Education/>
-            <Work/>
+            <Education onAddEducation={onAddEducation}/>
+            <Work onAddEducation={onAddWork}/>
 
         </nav>
     )

@@ -4,9 +4,7 @@ import {ExperienceCard} from "./ExperienceCard.jsx";
 
 
 
-
-export const ExperienceModule = ({title, svg}) => {
-
+export const ExperienceModule = ({title, svg, onAddExperience}) => {
 
     const [experienceCards, setExperienceCards] = useState([]);
 
@@ -14,12 +12,10 @@ export const ExperienceModule = ({title, svg}) => {
         setExperienceCards([...experienceCards, <ExperienceCard key={experienceCards.length + 1}/>]);
     }
 
-
     const [activeIndex, setActiveIndex] = useState(null);
     const toggleModule = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     }
-
 
 
     return (
@@ -34,7 +30,7 @@ export const ExperienceModule = ({title, svg}) => {
 
                     {experienceCards.map((card, index) => (
 
-                        <div className="experience-card-holder">
+                        <div key={index} className="experience-card-holder">
                             <div className="experience-card-header" onClick={() => toggleModule(index)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                      width="24px"
@@ -66,8 +62,7 @@ export const ExperienceModule = ({title, svg}) => {
 
             </div>
 
-
-            <button onClick={handleButtonClick} className={`${title}-btn btn`}>{title} +</button>
+            <button onClick={() => {handleButtonClick(); onAddExperience();}} className={`${title}-btn btn`}>{title} +</button>
         </div>
     )
 }

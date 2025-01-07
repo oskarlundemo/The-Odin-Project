@@ -2,15 +2,60 @@ import './App.css'
 import NavBar from "./components/NavBar.jsx";
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
-function App() {
+import {useContext, useState} from "react";
+import {AppContext} from "../context/AppContext.jsx";
 
-  return (
+export const App = () => {
+
+
+    const { experienceInfo: input} = useContext(AppContext);
+
+
+    const [workCards, setWorkCards] = useState([])
+    const [educationCards, setEducationCards] = useState([])
+
+    const handleAddWorkCard = () => {
+        const newWorkCard = {
+            id: workCards.length + 1,
+            organization: input.organization,
+            occupation: input.occupation,
+            startdate: input.startdate,
+            enddate: input.enddate,
+            description: input.description
+        };
+
+
+        setWorkCards(prevWorkCards => {
+            return [...prevWorkCards, newWorkCard];
+        });
+        console.log("Work card added:", newWorkCard);
+    };
+
+    const handleAddEducationCard = () => {
+        const newEducationCard = {
+            id: educationCards.length + 1,
+            organization: "New School",
+            occupation: "Degree Program",
+            startdate: "Start Date",
+            enddate: "End Date",
+            description: "New Description",
+        };
+
+        setEducationCards(prevEducationCards => {
+            return [...prevEducationCards, newEducationCard];
+        });
+        console.log("Education card added:", newEducationCard);
+    };
+
+
+
+    return (
             <div className="app-wrapper">
-                <NavBar/>
+                <NavBar onAddWork={handleAddWorkCard} onAddEducation={handleAddEducationCard}></NavBar>
                 <main className="main-content">
                     <Header/>
-                    <Section title ="Work"/>
-                    <Section title = "Education"/>
+                    <Section title="Work" sectionCards={workCards}/>
+                    <Section title="Education" sectionCards={educationCards}/>
                 </main>
             </div>
   )
