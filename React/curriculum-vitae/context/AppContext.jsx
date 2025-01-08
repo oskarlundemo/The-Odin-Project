@@ -6,7 +6,6 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 
 
-
     const [input, setInput] = useState({
         organization: '',
         occupation: '',

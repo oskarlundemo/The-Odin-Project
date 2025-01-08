@@ -1,24 +1,22 @@
 import '../styles/SectionCard.css'
+import {useContext} from "react";
+import {AppContext} from "../../context/AppContext.jsx";
 
 
 export const SectionCard = ({ card }) => {
-    const {
-        organization = "Unknown Organization",
-        occupation = "Unknown Role",
-        startdate = "Unknown Start Date",
-        enddate = "Unknown End Date",
-        description = "No description provided",
-    } = card || {}; // Destructure safely with fallback values
+
+    const {experienceInfo: info} = useContext(AppContext);
+
 
     return (
         <div className="section-card">
             <div className="section-card-container">
                 <div className="section-card-header">
-                    <h2>{organization} - {occupation}</h2>
-                    <h2 className="section-card-date">{startdate} - {enddate}</h2>
+                    <h2>{info.organization} - {info.occupation}</h2>
+                    <h2 className="section-card-date">{info.startdate} - {info.enddate}</h2>
                 </div>
             </div>
-            <p>{description}</p>
+            <p>{info.description}</p>
         </div>
     );
 };

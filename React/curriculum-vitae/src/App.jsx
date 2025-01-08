@@ -10,7 +10,6 @@ export const App = () => {
 
     const { experienceInfo: input} = useContext(AppContext);
 
-
     const [workCards, setWorkCards] = useState([])
     const [educationCards, setEducationCards] = useState([])
 
@@ -39,6 +38,13 @@ export const App = () => {
 
         setEducationCards((prevEducationCards) => [...prevEducationCards, newEducationCard]);
     };
+
+
+    const handleExperienceChange = (id, card) => {
+        setWorkCards((prewWorkCards) =>
+        prewWorkCards.map((workCard) => card.id === id ? {...workCard,...card} : workCard))
+    };
+
 
 
 

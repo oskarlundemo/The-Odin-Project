@@ -1,21 +1,15 @@
 
 import '../styles/ExperienceCard.css'
-import {useContext, useState} from "react";
-import {AppContext} from "../../context/AppContext.jsx";
 
 
 
-export const ExperienceCard = ({card, onCardChange}) => {
+export const ExperienceCard = ({card, onCardChange, onExperienceChange}) => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-
-        // Notify the parent of the card's changes
-        onCardChange({
-            ...card,
-            [name]: value,
-        });
+        onCardChange(card.id, { [name]: value });
     };
+
 
     return (
         <div className="experience-card-container">
@@ -24,7 +18,7 @@ export const ExperienceCard = ({card, onCardChange}) => {
             <input
                 type="text"
                 name="organization"
-                placeholder="Name of your organization"
+                placeholder="Organization name"
                 onChange={handleInputChange}
                 value={card.organization}
             />
