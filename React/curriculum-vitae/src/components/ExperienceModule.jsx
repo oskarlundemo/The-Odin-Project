@@ -32,8 +32,13 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
                 card.id === id ? { ...card, ...updatedCard } : card
             )
         );
+
     };
 
+    const handleDeleteClick = (id) => {
+        setExperienceCards(prevWorkCards =>
+            prevWorkCards.filter(card => card.id!== id));
+    }
 
     return (
         <div className="experience-module">
@@ -45,11 +50,11 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
 
             <div className="card-container">
 
-                    {experienceCards.map((card, index) => (
+                    {experienceCards.map((card) => (
 
-                        <div key={index} className="experience-card-holder">
-                            <div className="experience-card-header" onClick={() => toggleModule(index)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        <div key={card.id} className="experience-card-holder">
+                            <div className="experience-card-header" onClick={() => toggleModule(card.id)}>
+                                <svg onClick={() => handleDeleteClick(card.id)} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                      width="24px"
                                      fill="#434343">
                                     <path
@@ -58,7 +63,7 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
 
                                 <h2>{card.organization}</h2>
 
-                                <svg className={`downArrow ${activeIndex === index ? 'show' : ''}`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                <svg className={`downArrow ${activeIndex === card.id ? 'show' : ''}`} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                      width="24px"
                                      fill="#FFFFFF">
                                     <path d="M480-360 280-560h400L480-360Z"/>
@@ -66,13 +71,14 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
 
                             </div>
 
-                            <ul className={`sub-menu ${activeIndex === index ? 'show' : ''}`}>
+                            <ul className={`sub-menu ${activeIndex === card.id ? 'show' : ''}`}>
                                 <div>
-                                    <li key={index} className="experience-card">
+                                    <li key={card.id} className="experience-card">
                                         <ExperienceCard
                                             key={card.id}
                                             card={card}
                                             onCardChange={handleCardChange}
+                                            onExperienceChange={onAddExperience}
                                         />
                                     </li>
                                 </div>
@@ -83,7 +89,7 @@ export const ExperienceModule = ({title, svg, onAddExperience}) => {
 
             </div>
 
-            <button onClick={() => {handleButtonClick(); onAddExperience();}} className={`${title}-btn btn`}>{title} +</button>
+            <button onClick={() => {handleButtonClick()}} className={`${title}-btn btn`}>{title} +</button>
         </div>
     )
 }

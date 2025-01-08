@@ -17,6 +17,8 @@ export const NavBar = ({onAddWork, onAddEducation}) => {
         }));
     };
 
+
+
     return (
         <nav className="sidebar">
 
@@ -76,8 +78,8 @@ export const NavBar = ({onAddWork, onAddEducation}) => {
               </form>
             </div>
 
-            <Education onAddEducation={onAddEducation}/>
-            <Work onAddEducation={onAddWork}/>
+            <Education onAddEducation={onAddEducation} />
+            <Work onAddWork={onAddWork} />
 
         </nav>
     )
