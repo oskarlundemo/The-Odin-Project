@@ -5,15 +5,14 @@
     flex-direction: column;
     gap: 1rem;
     align-items: center;
-    width: 220px;
+    min-width: 220px;
 }
 
 .experience-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
+    gap: 0.5rem;
     width: 100%;
 
     border-bottom: 1px solid var(--header-background-color);
@@ -25,10 +24,6 @@
     h2 {
         margin: 0;
     }
-}
-
-.btn {
-    width: fit-content;
 }
 
 
@@ -63,8 +58,13 @@
     border-radius: var(--module-radius);
     padding: 1rem 0.5rem;
 
+    .delete-icon:hover {
+        fill: var(--default-error-color)
+    }
+
     svg {
         fill: black;
+        cursor: pointer;
     }
 }
 
@@ -74,8 +74,6 @@
     flex-direction: column;
     gap: 1rem;
 }
-
-
 
 
 .sub-menu {

@@ -5,6 +5,7 @@ section {
         margin: 0;
         text-align: left;
         border-bottom: 1px solid var(--header-background-color);
+        color: var(--default-black);
     }
 
     background-color: var(--module-color);

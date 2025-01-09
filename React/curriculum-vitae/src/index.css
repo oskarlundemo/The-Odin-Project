@@ -5,24 +5,23 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --background-color: hsl(0, 0%, 100%); /* White */
-  --module-color: hsl(210, 25%, 95%);   /* Soft light blue for modules */
+  --background-color: hsl(0, 0%, 95%); /* White */
+  --module-color: hsl(0, 0%, 100%);   /* Soft light blue for modules */
   --text-color: hsl(210, 15%, 20%);     /* Dark blue for text */
   --button-color: hsl(210, 75%, 50%);
   --default-black: hsl(0, 0%, 0%);     /* Dark blue for text */
+  --default-error-color: hsl(0, 100%, 50%); /* Dark blue for text */
 
 
   --header-background-color: hsl(216, 71%, 81%); /* Light pastel blue */
   --header-text-color: hsl(220, 15%, 20%);       /* Dark blue for text */
-
-
 
   --h1-font-size: 3rem;   /* Font size for h1 */
   --h2-font-size: 2.25rem;/* Font size for h2 */
@@ -31,15 +30,6 @@
 
   --deafult-box-shadow: 0px 2px 5px 0px rgba(0 0 0 / 0.2);
   --module-radius: 10px;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -57,34 +47,23 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid var(--background-color);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  background-color: transparent;
 }
 
 
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: 200ms ease-in-out;
+  box-shadow: var(--deafult-box-shadow);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset; /* For WebKit browsers */
 }
