@@ -1,20 +1,15 @@
 
 
-
 input {
     padding: 0.5rem;
     border-radius: 5px;
     border: none;
     margin-bottom: 0.5rem;
-
 }
-
 
 h2 {
     text-wrap: wrap;
 }
-
-
 
 
 .experience-card-container {
@@ -29,13 +24,22 @@ h2 {
         flex-direction: column;
     }
 
+    input, textarea {
+        background-color: var(--background-color)
+    }
+
     textarea {
         padding: 0.5rem;
         border-radius: 5px;
-        border: none;
         margin-bottom: 0.5rem;
         resize: none;
         font-family: inherit;
         height: 80px;
     }
+
+    input[type="date"] {
+        font-family: inherit;
+    }
 }
+
+

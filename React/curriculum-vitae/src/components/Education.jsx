@@ -4,11 +4,14 @@ import {ExperienceModule} from "./ExperienceModule.jsx";
 
 
 
-export const Education = ({onAddEducation}) => {
+export const Education = ({onAddEducation, onUpdateEducation, onDeleteEducation}) => {
 
     return (
         <ExperienceModule
             onAddExperience={onAddEducation}
+            onDeleteExperience={onDeleteEducation}
+            onUpdateExperience={onUpdateEducation}
+
             title={"Education"}
             svg={<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                       fill="#FFFFFF">

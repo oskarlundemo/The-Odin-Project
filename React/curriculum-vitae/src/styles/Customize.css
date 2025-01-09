@@ -1,0 +1,23 @@
+
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+
+    border-radius: var(--module-radius);
+    padding: 1rem;
+    box-shadow: var(--deafult-box-shadow);
+
+    background-color: var(--module-color);
+    gap: 1rem;
+
+    > div {
+        padding: 0.5rem;
+        border-radius: var(--module-radius);
+        cursor: pointer;
+    }
+}
+
+.active {
+    background-color: var(--background-color);
+}

@@ -3,8 +3,9 @@ import { AppContext } from "../../context/AppContext.jsx";
 import '../styles/NavBar.css'
 import {Education} from "./Education.jsx";
 import {Work} from "./Work.jsx";
+import {ColorPicker} from "./ColorPicker.jsx";
 
-export const NavBar = ({onAddWork, onAddEducation}) => {
+export const NavBar = ({onAddWork, onUpdateWork, onDeleteWork, onAddEducation, onUpdateEducation, onDeleteEducation}) => {
 
     const {setPersonalInfo: setDetails, personalInfo: details} = useContext(AppContext);
 
@@ -16,8 +17,6 @@ export const NavBar = ({onAddWork, onAddEducation}) => {
             [name]: value,
         }));
     };
-
-
 
     return (
         <nav className="sidebar">
@@ -78,8 +77,19 @@ export const NavBar = ({onAddWork, onAddEducation}) => {
               </form>
             </div>
 
-            <Education onAddEducation={onAddEducation} />
-            <Work onAddWork={onAddWork} />
+            <Education
+                onAddEducation={onAddEducation}
+                onDeleteEducation={onDeleteEducation}
+                onUpdateEducation={onUpdateEducation}
+            />
+            <Work
+                onAddWork={onAddWork}
+                onUpdateWork={onUpdateWork}
+                onDeleteWork={onDeleteWork}
+            />
+
+            <ColorPicker/>
+
 
         </nav>
     )

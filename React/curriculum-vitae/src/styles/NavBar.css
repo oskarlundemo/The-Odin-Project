@@ -1,6 +1,11 @@
 
 
 
+.hidden {
+    display: none !important;
+}
+
+
 .sidebar {
     color: var(--text-color);
     display: flex;
@@ -17,19 +22,13 @@
     }
 }
 
-
-
 .personal-details {
-
     h2 {
         margin: 0;
         text-wrap: nowrap;
         border-bottom: 1px solid var(--header-background-color);
     }
-
 }
-
-
 
 .personal-info {
     border-radius: 10px;
@@ -44,12 +43,13 @@
     input {
         padding: 0.5rem;
         border-radius: 5px;
-        border: none;
         margin-bottom: 0.5rem;
+        background-color: var(--background-color)
     }
 
     > input:last-child {
         margin-bottom: 0;
     }
-
 }
+
+

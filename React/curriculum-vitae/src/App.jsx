@@ -2,62 +2,87 @@ import './App.css'
 import NavBar from "./components/NavBar.jsx";
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
-import {useContext, useState} from "react";
-import {AppContext} from "../context/AppContext.jsx";
+import {useState} from "react";
+import {Customize} from "./components/Customize.jsx";
 
 export const App = () => {
-
-
-    const { experienceInfo: input} = useContext(AppContext);
 
     const [workCards, setWorkCards] = useState([])
     const [educationCards, setEducationCards] = useState([])
 
-    const handleAddWorkCard = () => {
+    const handleAddWorkCard = (card) => {
         const newWorkCard = {
             id: workCards.length + 1,
-            organization: input.organization,
-            occupation: input.occupation,
-            startdate: input.startdate,
-            enddate: input.enddate,
-            description: input.description,
+            organization: card.organization,
+            occupation: card.occupation,
+            startdate: card.startdate,
+            enddate: card.enddate,
+            description: card.description,
         };
-
         setWorkCards((prevWorkCards) => [...prevWorkCards, newWorkCard]);
     };
 
-    const handleAddEducationCard = () => {
+    const handleAddEducationCard = (card) => {
         const newEducationCard = {
             id: educationCards.length + 1,
-            organization: input.organization,
-            occupation: input.occupation,
-            startdate: input.startdate,
-            enddate: input.enddate,
-            description: input.description,
+            organization: card.organization,
+            occupation: card.occupation,
+            startdate: card.startdate,
+            enddate: card.enddate,
+            description: card.description,
         };
-
-        setEducationCards((prevEducationCards) => [...prevEducationCards, newEducationCard]);
+        setEducationCards((prevWorkCards) => [...prevWorkCards, newEducationCard]);
     };
 
 
-    const handleExperienceChange = (id, card) => {
-        setWorkCards((prewWorkCards) =>
-        prewWorkCards.map((workCard) => card.id === id ? {...workCard,...card} : workCard))
+    const deleteWorkCard = (card) => {
+        setWorkCards((prevWorkCards) =>
+            prevWorkCards.filter((workCard) => workCard.id!== card.id)
+        )
+    }
+
+    const deleteEducationCard = (card) => {
+        setEducationCards((prevEducationCards) =>
+            prevEducationCards.filter((educationCard) => educationCard.id!== card.id)
+        )
+    }
+
+    const workUpdate = (id, updatedCard) => {
+        setWorkCards(prevWorkCards =>
+        prevWorkCards.map((workCard) =>
+            workCard.id === id? {...workCard,...updatedCard} : workCard))
     };
 
-
+    const educationUpdate = (id, updatedCard) => {
+        setEducationCards(prevEducationCard =>
+            prevEducationCard.map((educationCard) =>
+                educationCard.id === id? {...educationCard,...updatedCard} : educationCard))
+    };
 
 
     return (
-            <div className="app-wrapper">
-                <NavBar onAddWork={handleAddWorkCard} onAddEducation={handleAddEducationCard}></NavBar>
-                <main className="main-content">
-                    <Header/>
-                    <Section title="Work" sectionCards={workCards}/>
-                    <Section title="Education" sectionCards={educationCards}/>
-                </main>
-            </div>
-  )
+        <div className="app-wrapper">
+
+            <Customize/>
+
+            <NavBar onAddWork={handleAddWorkCard}
+                    onUpdateWork={workUpdate}
+                    onDeleteWork={deleteWorkCard}
+
+                    onAddEducation={handleAddEducationCard}
+                    onDeleteEducation={deleteEducationCard}
+                    onUpdateEducation={educationUpdate}
+            ></NavBar>
+
+
+
+            <main className="main-content">
+                <Header/>
+                <Section title="Work" sectionCards={workCards}/>
+                <Section title="Education" sectionCards={educationCards}/>
+            </main>
+        </div>
+    )
 }
 
 export default App

@@ -2,11 +2,13 @@ import {ExperienceModule} from "./ExperienceModule.jsx";
 import '../styles/ExperienceModule.css'
 
 
-export const Work = ({onAddWork}) => {
+export const Work = ({onAddWork, onUpdateWork, onDeleteWork}) => {
 
     return (
         <ExperienceModule
             onAddExperience={onAddWork}
+            onUpdateExperience={onUpdateWork}
+            onDeleteExperience={onDeleteWork}
             title={"Work"}
             svg={<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                       fill="#FFFFFF">
