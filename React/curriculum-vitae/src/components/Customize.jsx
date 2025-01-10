@@ -1,6 +1,7 @@
 
 import '../styles/Customize.css'
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {AppContext} from "../../context/AppContext.jsx";
 
 
 
@@ -9,11 +10,24 @@ export const Customize = () => {
 
     const [isSelected, setSelected] = useState(true);
 
+    const selected = (e) => {
+        const target = e.currentTarget; // Use currentTarget to reference the div
+        if (!target.classList.contains('active')) {
+            setSelected(!isSelected);
+        }
+    };
+
+    const {showCustom, hiddenCustom} = useContext(AppContext);
+    const toggleCustomization = () => {if (!hiddenCustom) showCustom(true);}
+    const toggleContent = () => {showCustom(false);}
+
 
     return (
         <div className="edit-container">
-
-            <div className={`content-container ${isSelected ? 'active' : ''}`}>
+            <div onClick={(ev) => {
+                toggleContent()
+                selected(ev)
+            }} className={`content-container ${isSelected ? 'active' : ''}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#434343">
                     <path
@@ -21,7 +35,10 @@ export const Customize = () => {
                 </svg>
             </div>
 
-            <div className={`cutomize-container ${isSelected ? '' : 'active'}`}>
+            <div onClick={(ev) => {
+                toggleCustomization()
+                selected(ev)
+            }} className={`cutomize-container ${isSelected ? '' : 'active'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#434343">
                     <path

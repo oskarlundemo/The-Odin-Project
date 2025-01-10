@@ -1,7 +1,7 @@
 import { AppContext } from "../../context/AppContext.jsx";
 import '../styles/Header.css'
 import Contacts from "./Contacts.jsx";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 
 
 
