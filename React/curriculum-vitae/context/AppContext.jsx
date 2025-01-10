@@ -6,6 +6,10 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 
 
+
+    const [hiddenCustom, showCustom] = useState(false);
+
+
     const [input, setInput] = useState({
         organization: '',
         occupation: '',
@@ -26,7 +30,13 @@ export const AppProvider = ({ children }) => {
 
 
     return (
-        <AppContext.Provider value={{personalInfo: details, setPersonalInfo: setDetails, experienceInfo: input, setExperienceInfo: setInput}}>
+        <AppContext.Provider value={{personalInfo: details,
+            setPersonalInfo: setDetails,
+            experienceInfo: input,
+            setExperienceInfo: setInput,
+            hiddenCustom: hiddenCustom,
+            showCustom: showCustom,
+        }}>
             {children}
         </AppContext.Provider>
     );

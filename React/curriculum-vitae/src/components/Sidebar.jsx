@@ -1,13 +1,15 @@
 import {useContext} from "react";
 import { AppContext } from "../../context/AppContext.jsx";
-import '../styles/NavBar.css'
+import '../styles/Sidebar.css'
 import {Education} from "./Education.jsx";
 import {Work} from "./Work.jsx";
 import {ColorPicker} from "./ColorPicker.jsx";
 
-export const NavBar = ({onAddWork, onUpdateWork, onDeleteWork, onAddEducation, onUpdateEducation, onDeleteEducation}) => {
+export const Sidebar = ({onAddWork, onUpdateWork, onDeleteWork, onAddEducation, onUpdateEducation, onDeleteEducation}) => {
 
     const {setPersonalInfo: setDetails, personalInfo: details} = useContext(AppContext);
+    const {hiddenCustom} = useContext(AppContext);
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -19,7 +21,7 @@ export const NavBar = ({onAddWork, onUpdateWork, onDeleteWork, onAddEducation, o
     };
 
     return (
-        <nav className="sidebar">
+        <aside className={`sidebar ${hiddenCustom ? 'hidden' : ''}`}>
 
             <div className="personal-details">
             <h2>Personal Details</h2>
@@ -91,8 +93,8 @@ export const NavBar = ({onAddWork, onUpdateWork, onDeleteWork, onAddEducation, o
             <ColorPicker/>
 
 
-        </nav>
+        </aside>
     )
 
 }
-export default NavBar;
+export default Sidebar;

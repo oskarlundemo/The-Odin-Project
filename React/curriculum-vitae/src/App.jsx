@@ -1,5 +1,5 @@
 import './App.css'
-import NavBar from "./components/NavBar.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 import Header from "./components/Header.jsx";
 import Section from "./components/Section.jsx";
 import {useState} from "react";
@@ -65,14 +65,14 @@ export const App = () => {
 
             <Customize/>
 
-            <NavBar onAddWork={handleAddWorkCard}
-                    onUpdateWork={workUpdate}
-                    onDeleteWork={deleteWorkCard}
+            <Sidebar onAddWork={handleAddWorkCard}
+                     onUpdateWork={workUpdate}
+                     onDeleteWork={deleteWorkCard}
 
-                    onAddEducation={handleAddEducationCard}
-                    onDeleteEducation={deleteEducationCard}
-                    onUpdateEducation={educationUpdate}
-            ></NavBar>
+                     onAddEducation={handleAddEducationCard}
+                     onDeleteEducation={deleteEducationCard}
+                     onUpdateEducation={educationUpdate}
+            ></Sidebar>
 
 
 

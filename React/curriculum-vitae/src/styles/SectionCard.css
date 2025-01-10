@@ -11,6 +11,7 @@
 
     p {
         text-align: left;
+        color: var(--default-black)
     }
 }
 

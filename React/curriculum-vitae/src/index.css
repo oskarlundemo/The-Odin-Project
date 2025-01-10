@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--background-color);
 
@@ -14,14 +13,14 @@
 
   --background-color: hsl(0, 0%, 95%); /* White */
   --module-color: hsl(0, 0%, 100%);   /* Soft light blue for modules */
-  --text-color: hsl(210, 15%, 20%);     /* Dark blue for text */
+  --text-color: hsl(210, 15%, 20%);
   --button-color: hsl(210, 75%, 50%);
-  --default-black: hsl(0, 0%, 0%);     /* Dark blue for text */
+  --default-black: hsl(0, 0%, 0%);
   --default-error-color: hsl(0, 100%, 50%); /* Dark blue for text */
-
 
   --header-background-color: hsl(216, 71%, 81%); /* Light pastel blue */
   --header-text-color: hsl(220, 15%, 20%);       /* Dark blue for text */
+  --module-border-bottom: hsl(0, 0%, 70%);
 
   --h1-font-size: 3rem;   /* Font size for h1 */
   --h2-font-size: 2.25rem;/* Font size for h2 */
@@ -32,12 +31,20 @@
   --module-radius: 10px;
 }
 
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  margin: 1rem;
+}
+
+
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  height: 100%;
 }
 
 h1 {
