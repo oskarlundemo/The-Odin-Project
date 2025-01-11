@@ -1,0 +1,14 @@
+
+
+
+
+.pokemon-card {
+    border: 1px solid lightgrey;
+    padding: 1rem 0.5rem;
+    border-radius: 5px;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
