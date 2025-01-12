@@ -15334,7 +15334,7 @@ var require_react_dom_development = __commonJS({
         function mountDehydratedSuspenseComponent(workInProgress2, suspenseInstance, renderLanes2) {
           if ((workInProgress2.mode & ConcurrentMode) === NoMode) {
             {
-              error("Cannot hydrate Suspense in legacy mode. Switch from ReactDOM.hydrate(element, container) to ReactDOMClient.hydrateRoot(container, <App />).render(element) or remove the Suspense components from the server rendered components.");
+              error("Cannot hydrate Suspense in legacy mode. Switch from ReactDOM.hydrate(element, container) to ReactDOMClient.hydrateRoot(container, <AppTest />).render(element) or remove the Suspense components from the server rendered components.");
             }
             workInProgress2.lanes = laneToLanes(SyncLane);
           } else if (isSuspenseInstanceFallback(suspenseInstance)) {
@@ -21205,10 +21205,10 @@ var require_react_dom_development = __commonJS({
           if (options2 !== null && options2 !== void 0) {
             {
               if (options2.hydrate) {
-                warn("hydrate through createRoot is deprecated. Use ReactDOMClient.hydrateRoot(container, <App />) instead.");
+                warn("hydrate through createRoot is deprecated. Use ReactDOMClient.hydrateRoot(container, <AppTest />) instead.");
               } else {
                 if (typeof options2 === "object" && options2 !== null && options2.$$typeof === REACT_ELEMENT_TYPE) {
-                  error("You passed a JSX element to createRoot. You probably meant to call root.render instead. Example usage:\n\n  let root = createRoot(domContainer);\n  root.render(<App />);");
+                  error("You passed a JSX element to createRoot. You probably meant to call root.render instead. Example usage:\n\n  let root = createRoot(domContainer);\n  root.render(<AppTest />);");
                 }
               }
             }
@@ -21247,7 +21247,7 @@ var require_react_dom_development = __commonJS({
           warnIfReactDOMContainerInDEV(container);
           {
             if (initialChildren === void 0) {
-              error("Must provide initial children as second argument to hydrateRoot. Example usage: hydrateRoot(domContainer, <App />)");
+              error("Must provide initial children as second argument to hydrateRoot. Example usage: hydrateRoot(domContainer, <AppTest />)");
             }
           }
           var hydrationCallbacks = options2 != null ? options2 : null;

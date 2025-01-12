@@ -1,0 +1,24 @@
+
+
+
+.site-header {
+    position: sticky;
+    height: fit-content;
+}
+
+.sub-header {
+    background-color: var(--dark-blue);
+
+    h2 {
+        margin: 0;
+        padding: 0.2rem 2rem;
+        color: var(--easy-white);
+    }
+}
+
+.main-header {
+    background-color: var(--light-blue);
+    flex-direction: column;
+}
+
+
