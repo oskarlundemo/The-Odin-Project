@@ -8,7 +8,6 @@ import {MovieProvider} from "../context/MovieContext.jsx";
 function App() {
 
   return (
-
       <MovieProvider>
           <NavBar/>
           <main className="main-content">
