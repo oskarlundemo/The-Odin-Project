@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1;
 
     position: fixed;
     right: 0;
@@ -18,7 +19,6 @@
     width: 0px;
     background-color: var(--easy-white);
     height: 100vh;
-    border-left: 1px solid var(--default-black);
 
     transition: width 0.3s ease-in-out;
 
@@ -33,6 +33,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    svg {
+        fill: var(--default-black);
+    }
+
+    svg:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+    }
 }
 
 .sidebar-main {
@@ -45,12 +55,16 @@
     align-items: center;
     gap: 1rem;
 
+    > div {
+        width: 100%;
+    }
+
 }
 
 button {
     border: none;
     height: fit-content;
-    width: 100%;
+    width: 200px;
 }
 
 a {
@@ -74,3 +88,4 @@ a {
     background-color: var(--light-blue);
     color: var(--default-black);
 }
+

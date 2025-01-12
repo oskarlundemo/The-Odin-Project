@@ -1,8 +1,13 @@
-const BASE_URL = 'https://fakestoreapi.com/products/1'
+const BASE_URL = 'https://fakestoreapi.com/products/categories'
 
 
 export const getGarments = async () => {
-    const response = await fetch(BASE_URL, { mode: 'no-cors' });
-    const data = await response.json();
-    console.log(data.result);
+    try {
+        const response = await fetch(BASE_URL);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (err) {
+        console.error("Fel" + err);
+    }
 }

@@ -2,6 +2,8 @@ import {NavBar} from "./NavBar.jsx";
 import '../styles/Header.css';
 
 export const Header = () => {
+
+
     return (
         <header className="site-header">
 
