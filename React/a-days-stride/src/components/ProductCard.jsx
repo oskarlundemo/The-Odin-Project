@@ -4,12 +4,6 @@ import '../styles/ProductCard.css'
 
 export const ProductCard = ({product}) => {
 
-    const sekConverter = (price) => {
-        const convertedPrice = price * 9.52;
-        const rounded = convertedPrice % 10;
-        return (convertedPrice - rounded).toFixed(0);
-    }
-
     const handleTitleLenght = (title) => {
         if (title.length > 20) {
             return title.slice(0, 20) + '...'
@@ -30,4 +24,10 @@ export const ProductCard = ({product}) => {
     )
 }
 
+
+export const sekConverter = (price) => {
+    const convertedPrice = price * 9.52;
+    const rounded = convertedPrice % 10;
+    return (convertedPrice - rounded).toFixed(0);
+}
 

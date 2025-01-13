@@ -3,6 +3,7 @@ import {getMaleClothing, getFemaleClothing} from "../src/services/api.js";
 import {ProductCard} from "../src/components/ProductCard.jsx";
 import '../src/styles/Home.css';
 import {Footer} from "../src/components/Footer.jsx";
+import {Link} from "react-router-dom";
 
 
 export const Home = () => {
@@ -14,7 +15,7 @@ export const Home = () => {
     const [error, setError] = useState(null);
 
 
-    useEffect ( () => {
+    useEffect(() => {
 
         const loadGarments = async () => {
             try {
@@ -35,30 +36,37 @@ export const Home = () => {
 
 
 
+
     return (
 
         <main className="main-home-page">
 
-            <section className={`mens-wear ${loading ? 'loading' : ''}`}>
+            <section className='mens-wear'>
                 <h2>New Arrivals - Menswear</h2>
-                <div className="product-container">
+                <div className={`product-container ${loading ? 'loading' : ''}`}>
                     {maleGarments.map(garment => (
-                        <ProductCard product={garment} key={garment.id}/>
+                        <Link to="/product"
+                              state={{garment}}
+                              key={garment.id}>
+                            <ProductCard product={garment} key={garment.id}/>
+                        </Link>
                     ))}
                 </div>
             </section>
-
 
             <section className='section-divider'>
                 <img src='../public/accesories-stock.jpg' alt=''/>
             </section>
 
-            <section className={`womens-wear ${loading ? 'loading' : ''}`}>
+            <section className='womens-wear'>
                 <h2>New Arrivals - Womenswear</h2>
-
-                <div className="product-container">
+                <div className={`product-container ${loading ? 'loading' : ''}`}>
                     {femaleGarments.map(garment => (
-                        <ProductCard product={garment} key={garment.id}/>
+                        <Link to="/product"
+                              state={{garment}}
+                              key={garment.id}>
+                            <ProductCard product={garment} key={garment.id}/>
+                        </Link>
                     ))}
                 </div>
             </section>
