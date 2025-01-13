@@ -1,0 +1,27 @@
+
+
+
+
+
+
+.product-card {
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+}
+
+
+
+.product-text {
+    display: flex;
+    flex-direction: column;
+
+
+    > * {
+        width: fit-content;
+        margin: 0;
+        text-wrap: nowrap;
+    }
+}
