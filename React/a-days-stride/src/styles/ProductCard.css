@@ -6,19 +6,22 @@
 
 .product-card {
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     img {
-        width: 300px;
-        height: auto;
+        object-fit: contain;
+        width: 100%;
     }
 }
 
 
 
 .product-text {
+
     display: flex;
     flex-direction: column;
-
-
     > * {
         width: fit-content;
         margin: 0;

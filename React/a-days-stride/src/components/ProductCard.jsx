@@ -7,21 +7,25 @@ export const ProductCard = ({product}) => {
     const sekConverter = (price) => {
         const convertedPrice = price * 9.52;
         const rounded = convertedPrice % 10;
-
         return (convertedPrice - rounded).toFixed(0);
     }
 
+    const handleTitleLenght = (title) => {
+        if (title.length > 20) {
+            return title.slice(0, 20) + '...'
+        }
+        return title;
+    }
+
+
+    //   <img src={`${product.image}`} alt={`${product.title}`}/>
     return (
         <div className="product-card">
-            <img src={`${product.image}`} alt={`${product.title}`}/>
-
-
+            <img src='../../public/default.jpg' alt={`${product.title}`}/>
             <div className="product-text">
-                <h3>{product.title}</h3>
+                <h3>{handleTitleLenght(product.title)}</h3>
                 <p>{sekConverter(product.price)} SEK</p>
             </div>
-
-            <button>Add to Cart</button>
         </div>
     )
 }

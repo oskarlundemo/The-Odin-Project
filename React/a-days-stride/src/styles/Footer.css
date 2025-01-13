@@ -1,0 +1,38 @@
+
+
+
+
+
+
+
+
+
+.list-container {
+    display: flex;
+    justify-content: space-around;
+
+
+
+
+    ul {
+
+        >li:first-child {
+            color: var(--light-grey);
+            cursor: default;
+        }
+
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        li {
+            list-style: none;
+            text-align: left;
+        }
+
+        li:hover {
+            cursor: pointer;
+            opacity: 0.2;
+        }
+    }
+}

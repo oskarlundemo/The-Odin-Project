@@ -1,23 +1,27 @@
 import {useEffect, useState} from "react";
-import {getGarments} from "../src/services/api.js";
+import {getMaleClothing, getFemaleClothing} from "../src/services/api.js";
 import {ProductCard} from "../src/components/ProductCard.jsx";
 import '../src/styles/Home.css';
+import {Footer} from "../src/components/Footer.jsx";
 
 
 export const Home = () => {
 
-
-    const [garments, setGarments] = useState([]);
+    const [maleGarments, setMaleGarments] = useState([]);
+    const [femaleGarments, setFemaleGarments] = useState([]);
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
 
     useEffect ( () => {
+
         const loadGarments = async () => {
             try {
-                const clothes = await getGarments();
-                setGarments(clothes);
+                const maleClothes = await getMaleClothing();
+                const femaleClothes = await getFemaleClothing();
+                setMaleGarments(maleClothes);
+                setFemaleGarments(femaleClothes);
             } catch (error) {
                 setError("No pieces found");
                 console.error(error);
@@ -35,19 +39,40 @@ export const Home = () => {
 
         <main className="main-home-page">
 
-            <h2>New Arrivals - Menswear</h2>
-            <section className={`womens-wear ${loading ? 'loading' : ''}`}>
-                {garments.map(garment => (
-                    <ProductCard product={garment} key={garment.id}/>
-                ))}
+            <section className={`mens-wear ${loading ? 'loading' : ''}`}>
+                <h2>New Arrivals - Menswear</h2>
+                <div className="product-container">
+                    {maleGarments.map(garment => (
+                        <ProductCard product={garment} key={garment.id}/>
+                    ))}
+                </div>
             </section>
 
-            <h2>New Arrivals - Womenswear</h2>
-            <section className={`mens-wear ${loading ? 'loading' : ''}`}>
-                {garments.map(garment => (
-                    <ProductCard product={garment} key={garment.id}/>
-                ))}
+
+            <section className='section-divider'>
+                <img src='../public/accesories-stock.jpg' alt=''/>
             </section>
+
+            <section className={`womens-wear ${loading ? 'loading' : ''}`}>
+                <h2>New Arrivals - Womenswear</h2>
+
+                <div className="product-container">
+                    {femaleGarments.map(garment => (
+                        <ProductCard product={garment} key={garment.id}/>
+                    ))}
+                </div>
+            </section>
+
+            <section className='section-women-men'>
+                <div>
+                    <p>Menswear</p>
+                </div>
+                <div>
+                    <p>Womenswear</p>
+                </div>
+            </section>
+
+            <Footer/>
         </main>
     )
 }
