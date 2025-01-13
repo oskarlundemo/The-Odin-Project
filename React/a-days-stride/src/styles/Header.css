@@ -4,6 +4,7 @@
 .site-header {
     position: sticky;
     height: fit-content;
+    top: 0;
 }
 
 .sub-header {
