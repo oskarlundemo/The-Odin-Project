@@ -1,14 +1,15 @@
 
 
 
-
-
-
 .loading {
     background: linear-gradient(90deg, var(--easy-white), var(--light-grey), var(--easy-white));
     height: 400px;
     background-size: 300%;
     animation: pulsating 3.5s infinite;
+
+    h2 {
+        background-color: transparent;
+    }
 }
 
 
@@ -31,7 +32,7 @@ main {
 }
 
 section {
-    margin: 0 2rem;
+    margin: 4rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -46,11 +47,10 @@ section {
     align-items: flex-end;
 
     img {
+        object-fit: fill;
         height: 100%;
-        width: 20%;
     }
 }
-
 
 .section-women-men {
     display: flex;
