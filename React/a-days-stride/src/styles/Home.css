@@ -79,3 +79,8 @@ section {
     flex-direction: row;
     gap: 1rem;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
