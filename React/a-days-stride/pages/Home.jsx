@@ -79,8 +79,6 @@ export const Home = () => {
                     <p>Womenswear</p>
                 </div>
             </section>
-
-            <Footer/>
         </main>
     )
 }

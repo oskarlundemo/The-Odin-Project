@@ -12,7 +12,7 @@ export const Footer = () => {
             <div className='list-container'>
 
                 <ul>
-                    <li>Company</li>
+                    <h3>Company</h3>
                     <li>About</li>
                     <li>Terms of use</li>
                     <li>Privacy and cookies</li>
@@ -21,7 +21,7 @@ export const Footer = () => {
                 </ul>
 
                 <ul>
-                    <li>Service</li>
+                    <h3>Service</h3>
                     <li>FAQ</li>
                     <li>Shipping and returns</li>
                     <li>Garment Care</li>
@@ -30,7 +30,7 @@ export const Footer = () => {
 
 
                 <ul>
-                    <li>Find us</li>
+                    <h3>Find us</h3>
                     <li>Stores</li>
                     <li>Instagram</li>
                     <li>Facebook</li>
@@ -38,7 +38,7 @@ export const Footer = () => {
 
 
                 <ul>
-                    <li>Keep in touch</li>
+                    <h3>Keep in touch</h3>
                     <li>Subscribe to our newsletter</li>
                     <li>Instagram</li>
                     <li>Facebook</li>

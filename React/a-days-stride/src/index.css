@@ -39,10 +39,16 @@ body {
 
 h1 {
   font-size: var(--h1-size);
+  color: var(--default-black);
 }
 
 h2 {
   font-size: var(--h2-size);
+  color: var(--default-black);
+}
+
+h3 {
+  color: var(--default-black);
 }
 
 p {

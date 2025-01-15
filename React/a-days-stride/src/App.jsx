@@ -6,6 +6,7 @@ import {useGarmentProvder} from "../context/GarmentProvider.jsx";
 import {Checkout} from "../pages/Checkout.jsx";
 import {Sidebar} from "./components/Sidebar.jsx";
 import {ProductPage} from "../pages/ProductPage.jsx";
+import {Footer} from "./components/Footer.jsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 </Routes>
             </main>
             <div onClick={() => {toggleOverlay(); toggleSidebar();}} className={`overlay ${overlay ? 'active' : ''}`}></div>
+            <Footer/>
         </div>
     )
 }

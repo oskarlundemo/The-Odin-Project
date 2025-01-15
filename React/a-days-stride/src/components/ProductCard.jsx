@@ -4,12 +4,7 @@ import '../styles/ProductCard.css'
 
 export const ProductCard = ({product}) => {
 
-    const handleTitleLenght = (title) => {
-        if (title.length > 20) {
-            return title.slice(0, 20) + '...'
-        }
-        return title;
-    }
+
 
 
     //   <img src={`${product.image}`} alt={`${product.title}`}/>
@@ -31,3 +26,9 @@ export const sekConverter = (price) => {
     return (convertedPrice - rounded).toFixed(0);
 }
 
+export const handleTitleLenght = (title) => {
+    if (title.length > 20) {
+        return title.slice(0, 20) + '...'
+    }
+    return title;
+}
