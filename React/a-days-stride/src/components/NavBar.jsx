@@ -25,6 +25,8 @@ export const NavBar = () => {
                 </Link>
             </div>
             <div className="checkout-container">
+
+                <p>SE/SEK</p>
                     <svg onClick={() => {toggleSidebar(); toggleOverlay();}} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                          fill="#434343">
                         <path

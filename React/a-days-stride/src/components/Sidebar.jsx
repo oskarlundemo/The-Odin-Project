@@ -2,9 +2,12 @@
 import '../styles/Sidebar.css';
 import {useGarmentProvder} from "../../context/GarmentProvider.jsx";
 import {Link} from "react-router-dom";
+import {sekConverter} from "./ProductCard.jsx";
 
 export const Sidebar = ({count}) => {
-    const {sideBar, toggleSidebar, toggleOverlay} = useGarmentProvder();
+    const {sideBar, toggleSidebar, toggleOverlay, cart, sumOrder} = useGarmentProvder();
+
+
 
     return (
         <aside className={`sidebar ${sideBar ? 'show' : ''}`}>
@@ -19,7 +22,20 @@ export const Sidebar = ({count}) => {
                 </svg>
             </div>
 
+
             <div className="sidebar-main">
+
+                {cart.map((item) => {
+                    return (
+                        <div key={item.id} className="cart-item">
+                            <img src={item.image} alt={item.title}/>
+                            <div>
+                                <p>{item.title}</p>
+                                <p>{sekConverter(item.price)} SEK</p>
+                            </div>
+                        </div>
+                    )
+                })}
 
             </div>
 
@@ -30,7 +46,7 @@ export const Sidebar = ({count}) => {
                 <button className="checkout-button">
                     <div>
                         <p>Checkout</p>
-                        <p>0 SEK</p>
+                        <p>{sumOrder} SEK</p>
                     </div>
                 </button>
                 </Link>
