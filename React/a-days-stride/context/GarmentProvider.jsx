@@ -13,7 +13,6 @@ export const GarmentProvider = ({children}) => {
     const [numberItems, setNumberItems] = useState(0);
 
     const addGarmentToCart = (garment) => {
-
         setCart((prev) => {
             const updatedCart = [...prev, garment];
 
@@ -27,7 +26,42 @@ export const GarmentProvider = ({children}) => {
 
             return updatedCart
         })
+    }
 
+
+    const shortenTitle = (title) => {
+
+        let blankSpace = 3;
+        console.log(title.trim())
+
+        for (let i = 0; i < title.length; i++) {
+            if (title[i] === " ") {
+              blankSpace--;
+            }
+
+            if (blankSpace === 0 || i + 1  === title.length) {
+                return title.slice(0, i + 1)
+            }
+        }
+    }
+
+
+    const removeGarmentFromCart = (id) => {
+        setCart((prev) => {
+            const updatedCart = prev.filter((item) =>
+                item.id!== id
+            );
+
+            let newOrderSum = 0;
+            updatedCart.forEach((item) => {
+                newOrderSum += parseInt(sekConverter(item.price))
+            })
+
+            setNumberItems(updatedCart.length);
+            setOrderSum(newOrderSum);
+
+            return updatedCart
+        })
     }
 
     const [details, setDetails] = useState({
@@ -59,6 +93,8 @@ export const GarmentProvider = ({children}) => {
         toggleSidebar,
         toggleOverlay,
         addGarmentToCart,
+        removeGarmentFromCart,
+        shortenTitle
     }
 
     return (

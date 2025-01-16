@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 
 export const ProductPage = () => {
 
-    const {addGarmentToCart, sumCart} = useGarmentProvider();
+    const {addGarmentToCart, shortenTitle} = useGarmentProvider();
 
     const location = useLocation();
     const garment = location.state.garment;
@@ -31,13 +31,13 @@ export const ProductPage = () => {
         <div className="main-product-page">
 
             <div className="product-image-container">
-                <img src='../public/default.jpg' alt={garment.title}/>
+                <img src={garment.image} alt={garment.title}/>
             </div>
 
             <div className="product-info">
 
                 <div className="product-header">
-                    <h2>{garment.title}</h2>
+                    <h2>{shortenTitle(garment.title)}</h2>
                     <div className="star-container">
                         {stars.map((star, index) => (
                             <p key={index}>{star}</p>

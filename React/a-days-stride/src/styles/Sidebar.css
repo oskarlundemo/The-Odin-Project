@@ -2,7 +2,7 @@
 
 
 .sidebar.show {
-    width: 300px;
+    width: 40vh;
 }
 
 
@@ -47,7 +47,6 @@
 
 .sidebar-main {
     height: 100%;
-    width: fit-content;
 
     display: flex;
     flex-direction: column;
@@ -62,7 +61,7 @@
     display: flex;
     gap: 1rem;
     height: fit-content;
-    width: fit-content;
+    width: 100%;
 
     p {
         text-wrap: nowrap;
@@ -71,6 +70,19 @@
     img {
         height: 95px;
         width: 65px;
+    }
+
+
+    > div {
+        width: 100%;
+
+
+        span {
+            display: block;
+            text-align: right;
+            margin-right: 0.5rem;
+            text-decoration: underline;
+        }
     }
 
 }
@@ -94,7 +106,7 @@
 button {
     border: none;
     height: fit-content;
-    width: 200px;
+    width: 300px;
     padding: 1rem;
 }
 
@@ -107,21 +119,28 @@ button:hover {
 }
 
 .checkout-button {
-    background-color: var(--light-grey);
-    color: var(--easy-white);
+    background-color: var(--default-black);
 
     > div {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: fit-content;
+
+        p {
+            color: var(--easy-white);
+        }
     }
 }
 
 
 .continue-shopping-button {
-    background-color: var(--light-blue);
-    color: var(--default-black);
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+
+    p {
+        text-align: center;
+    }
 }
 
 

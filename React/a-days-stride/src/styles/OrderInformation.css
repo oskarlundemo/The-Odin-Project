@@ -20,9 +20,14 @@ input:-webkit-autofill {
         background-color: transparent;
     }
 
+    input:hover {
+        border-bottom: 2px solid var(--default-black);
+        transition: 200ms ease-in-out;
+    }
+
     input:focus {
         outline: none;
-        border-bottom: 1px solid var(--default-black);
+        border-bottom: 2px solid var(--default-black);
         transition: 200ms ease-in-out;
     }
 }
@@ -47,6 +52,11 @@ input:-webkit-autofill {
         > div {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
+
+            > * {
+                width: 100%;
+            }
         }
     }
 
