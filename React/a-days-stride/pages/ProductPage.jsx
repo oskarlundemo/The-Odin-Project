@@ -1,12 +1,12 @@
 import {useLocation} from "react-router-dom";
 import '../src/styles/ProductPage.css'
 import {sekConverter} from "../src/components/ProductCard.jsx";
-import {useGarmentProvder} from "../context/GarmentProvider.jsx";
+import {useGarmentProvider} from "../context/GarmentProvider.jsx";
 import {useEffect, useState} from "react";
 
 export const ProductPage = () => {
 
-    const {addGarmentToCart, sumCart} = useGarmentProvder();
+    const {addGarmentToCart, sumCart} = useGarmentProvider();
 
     const location = useLocation();
     const garment = location.state.garment;
@@ -23,6 +23,7 @@ export const ProductPage = () => {
     const toggleDropis = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     }
+
 
 
 
