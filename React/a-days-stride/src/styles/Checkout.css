@@ -3,14 +3,22 @@
 
 
 
-
+button {
+    background-color: var(--light-grey);
+}
 
 
 .checkout-page-container {
     display: flex;
     flex-direction: column;
-}
+    margin: 0 2rem;
 
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 300;
+    }
+}
 
 
 .checkout-section-container {
@@ -35,8 +43,6 @@
     height: fit-content;
 }
 
-
-
 .item-card {
     display: flex;
     padding: 1rem;
@@ -48,7 +54,7 @@
     align-items: center;
 
     img {
-        height: 40px;
+        height: 60px;
         width: auto;
         object-fit: contain;
     }
@@ -78,12 +84,20 @@
 .item-controls-container {
     display: flex;
     gap: 1rem;
-
     justify-content: space-between;
+
+
+    >span:last-child {
+        text-decoration: underline;
+    }
+
+    >span:last-child:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
 }
 
 .item-quantity {
     display: flex;
     gap: 0.5rem;
-
 }

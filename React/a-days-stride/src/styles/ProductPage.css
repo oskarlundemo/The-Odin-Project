@@ -6,10 +6,11 @@
     display: flex;
     flex-direction: row;
     padding: 0 10rem;
-    justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
+    justify-content: space-between;
 
-    margin: 1rem 0 10rem 0;
+    margin: 3rem 0 10rem 0;
+    padding-left: 0;
 }
 
 
@@ -32,11 +33,19 @@ p {
         justify-content: space-between;
         padding: 1.5rem 2rem;
         width: 100%;
+        background-color: var(--default-black);
+        color: var(--easy-white);
+
+        p {
+            color: var(--easy-white);
+        }
     }
 
     button:hover {
         cursor: pointer;
     }
+
+
 }
 
 
@@ -58,12 +67,7 @@ p {
 
 .product-image-container {
 
-    width: 30%;
 
-
-    img {
-        width: 100%;
-    }
 }
 
 

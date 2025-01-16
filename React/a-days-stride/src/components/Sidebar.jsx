@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {sekConverter} from "./ProductCard.jsx";
 
 export const Sidebar = ({count}) => {
-    const {sideBar, toggleSidebar, toggleOverlay, cart, sumOrder, numberItems} = useGarmentProvider();
+    const {sideBar, toggleSidebar, toggleOverlay, cart, sumOrder, numberItems, shortenTitle, removeGarmentFromCart} = useGarmentProvider();
 
 
 
@@ -30,8 +30,10 @@ export const Sidebar = ({count}) => {
                         <div key={item.id} className="cart-item">
                             <img src={item.image} alt={item.title}/>
                             <div>
-                                <p>{item.title}</p>
+                                <p>{shortenTitle(item.title)}</p>
                                 <p>{sekConverter(item.price)} SEK</p>
+
+                                <span onClick={() =>{removeGarmentFromCart(item.id);}}>Remove</span>
                             </div>
                         </div>
                     )
@@ -43,7 +45,7 @@ export const Sidebar = ({count}) => {
             <div className="sidebar-footer">
 
                 <Link to="/checkout">
-                <button className="checkout-button">
+                <button className="checkout-button" onClick={() =>{toggleSidebar(); toggleOverlay();}}>
                     <div>
                         <p>Checkout</p>
                         <p>{sumOrder} SEK</p>
@@ -52,7 +54,7 @@ export const Sidebar = ({count}) => {
                 </Link>
 
                 <div>
-                <button className="continue-shopping-button">
+                <button className="continue-shopping-button" onClick={() =>{toggleSidebar(); toggleOverlay();}}>
                     <p>
                         Continue Shopping
                     </p>

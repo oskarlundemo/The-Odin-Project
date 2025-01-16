@@ -13,9 +13,7 @@ export const NavBar = () => {
         <nav className="navbar">
             <div className="drop-down-container">
                 <ul className="drop-down-list">
-                    <li>Men</li>
-                    <li>Women</li>
-                    <li>Seasonal Sale</li>
+
                 </ul>
             </div>
 

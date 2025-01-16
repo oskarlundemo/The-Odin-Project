@@ -15,9 +15,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --light-blue: hsl(210, 49%, 58%); /* Soft light blue */
+  --light-blue: hsl(210, 69%, 74%); /* Soft light blue */
   --light-grey: hsl(0, 0%, 85%); /* Soft light blue */
-  --dark-blue: hsl(220, 60%, 30%);  /* Deeper blue for contrast */
+  --dark-blue: hsl(220, 57%, 23%);  /* Deeper blue for contrast */
   --easy-white: hsl(0, 0%, 98%);    /* Off-white for a gentle background */
   --default-black: hsl(0, 0%, 0%); /* Black for */
   --soft-grey: hsl(0, 0%, 55%); /* A soft, light grey */

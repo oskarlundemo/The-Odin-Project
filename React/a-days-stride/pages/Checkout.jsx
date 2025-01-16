@@ -7,7 +7,7 @@ import '../src/styles/Checkout.css'
 export const Checkout = () => {
 
 
-    const {cart} = useGarmentProvider();
+    const {cart, removeGarmentFromCart, shortenTitle, sumOrder} = useGarmentProvider();
 
 
     return (
@@ -25,7 +25,7 @@ export const Checkout = () => {
                                 <div className="item-text-container">
 
                                 <div className="item-details">
-                                    <h3>{item.title}</h3>
+                                    <h3>{shortenTitle(item.title)}</h3>
                                     <p>{sekConverter(item.price)} KR</p>
                                 </div>
                                 <div className="item-controls-container">
@@ -47,7 +47,7 @@ export const Checkout = () => {
                                     </div>
 
 
-                                    <span>Remove</span>
+                                    <span onClick={() => removeGarmentFromCart(item.id)}>Remove</span>
                                 </div>
 
                                 </div>
@@ -55,6 +55,17 @@ export const Checkout = () => {
                             </div>
                         )
                     })}
+
+                    <div className="order-cost-section">
+                        <h2>Order Cost</h2>
+                        <div className="order-cost-details">
+                            <p>Subtotal: {sumOrder} KR</p>
+                            <p>Shipping: 0 KR</p>
+                            <p>Total: {sumOrder} KR</p>
+                        </div>
+                    </div>
+
+
                 </section>
 
 
