@@ -4,12 +4,13 @@ import {sekConverter} from "../src/components/ProductCard.jsx";
 
 const GarmentContext = createContext();
 
-export const useGarmentProvder = () => useContext(GarmentContext)
+export const useGarmentProvider = () => useContext(GarmentContext)
 
 export const GarmentProvider = ({children}) => {
 
     const [cart, setCart] = useState([]);
     const [sumOrder, setOrderSum] = useState([0])
+    const [numberItems, setNumberItems] = useState(0);
 
     const addGarmentToCart = (garment) => {
 
@@ -21,12 +22,23 @@ export const GarmentProvider = ({children}) => {
                 newOrderSum += parseInt(sekConverter(item.price))
             })
 
+            setNumberItems(updatedCart.length);
             setOrderSum(newOrderSum);
 
             return updatedCart
         })
 
     }
+
+    const [details, setDetails] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        zip: '',
+    });
 
 
 
@@ -41,6 +53,9 @@ export const GarmentProvider = ({children}) => {
         overlay,
         cart,
         sumOrder,
+        numberItems,
+        details,
+        setDetails,
         toggleSidebar,
         toggleOverlay,
         addGarmentToCart,

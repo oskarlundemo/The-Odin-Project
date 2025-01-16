@@ -55,10 +55,27 @@
     display: flex;
     gap: 1rem;
     justify-self: flex-end;
+    flex-direction: row;
+
+    > div {
+
+        > svg {
+            position: relative;
+        }
+
+        > span {
+            position: absolute;
+            transform: translate(50%, -50%);
+            background-color: var(--default-black);
+            color: var(--easy-white);
+            border-radius: 100px;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.6rem;
+        }
+    }
+
 
     svg:hover {
         cursor: pointer;
-        transform: scale(1.1);
-        transition: transform 0.3s ease-in-out;
     }
 }

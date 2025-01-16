@@ -2,7 +2,7 @@ import './App.css'
 import {Header} from "./components/Header.jsx";
 import {Home} from "../pages/Home.jsx";
 import {Routes, Route} from 'react-router-dom'
-import {useGarmentProvder} from "../context/GarmentProvider.jsx";
+import {useGarmentProvider} from "../context/GarmentProvider.jsx";
 import {Checkout} from "../pages/Checkout.jsx";
 import {Sidebar} from "./components/Sidebar.jsx";
 import {ProductPage} from "../pages/ProductPage.jsx";
@@ -10,7 +10,7 @@ import {Footer} from "./components/Footer.jsx";
 
 function App() {
 
-    const {overlay, toggleOverlay, toggleSidebar} = useGarmentProvder();
+    const {overlay, toggleOverlay, toggleSidebar} = useGarmentProvider();
 
     return (
         <div className="app-wrapper">

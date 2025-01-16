@@ -1,11 +1,11 @@
 
 import '../styles/Sidebar.css';
-import {useGarmentProvder} from "../../context/GarmentProvider.jsx";
+import {useGarmentProvider} from "../../context/GarmentProvider.jsx";
 import {Link} from "react-router-dom";
 import {sekConverter} from "./ProductCard.jsx";
 
 export const Sidebar = ({count}) => {
-    const {sideBar, toggleSidebar, toggleOverlay, cart, sumOrder} = useGarmentProvder();
+    const {sideBar, toggleSidebar, toggleOverlay, cart, sumOrder, numberItems} = useGarmentProvider();
 
 
 
@@ -13,7 +13,7 @@ export const Sidebar = ({count}) => {
         <aside className={`sidebar ${sideBar ? 'show' : ''}`}>
 
             <div className="sidebar-header">
-                <p>Cart ({count})</p>
+                <p>Cart ({numberItems})</p>
 
                 <svg onClick={() => {toggleSidebar(); toggleOverlay();}} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                      fill="#434343">

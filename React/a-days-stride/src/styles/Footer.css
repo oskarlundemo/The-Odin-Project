@@ -2,14 +2,16 @@
 
 
 
-
-
-
-
-
 .list-container {
     display: flex;
     justify-content: space-around;
+
+    h3 {
+        color: var(--light-grey) !important;
+        text-align: left;
+        margin: 0;
+        font-size: 1em;
+    }
 
     ul {
         display: flex;
@@ -28,9 +30,3 @@
     }
 }
 
-
-h3 {
-    color: var(--light-grey);
-    text-align: left;
-    margin: 0;
-}
