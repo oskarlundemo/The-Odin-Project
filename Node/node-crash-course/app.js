@@ -24,12 +24,7 @@ app.use(morgan('dev'));
 
 
 
-app.get('/', function(req, res) {
-    res.render('index', {title: 'Home'})
-})
-
-
-app.get('/blogs', (req, res) => {
+app.get('/', (req, res) => {
 
     Blog.find()
         .then((result) => {
@@ -45,6 +40,10 @@ app.get('/blogs', (req, res) => {
 
 app.get('/create', function(req, res) {
     res.render('create', {title: 'New post'});
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {title: 'About'});
 })
 
 app.use((req, res) => {
