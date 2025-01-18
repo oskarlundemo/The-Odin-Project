@@ -19,7 +19,9 @@ mongoose.connect(dbURI)
 
 app.set('view engine', 'ejs')
 
+
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 
@@ -36,6 +38,46 @@ app.get('/', (req, res) => {
             res.status(500).send('Server Error');
         });
 });
+
+
+app.post('/blogs', (req, res) => {
+    const blog = new Blog(req.body);
+
+    blog.save()
+        .then((result) => {
+            res.redirect('/');
+        })
+        .catch((err) => {
+            res.status(500).send('Server Error');
+            console.error(err);
+        })
+})
+
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+
+    Blog.findById(id)
+        .then((result) => {
+            res.render('details', {blog: result, title: 'Blog Details'})
+        })
+})
+
+
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findByIdAndDelete(id)
+        .then((result) => {
+            res.json({redirect: '/'})
+        })
+        .catch((err) => {
+            res.status(500).send('Server Error');
+            console.error(err);
+        })
+})
+
+
 
 
 app.get('/create', function(req, res) {
