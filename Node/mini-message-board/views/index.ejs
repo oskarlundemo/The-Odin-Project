@@ -1,0 +1,38 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Message board</title>
+</head>
+
+<body>
+
+<%- include('./partials/header.ejs')%>
+
+<main>
+
+    <% messages.forEach((message) => { %>
+    <div class="message">
+
+        <div class="message-header">
+            <h2>Author:<%= message.user%></h2>
+            <p><%= message.added-%></p>
+        </div>
+        <p><%= message.text%></p>
+    </div>
+    <%});%>
+
+</main>
+
+
+<%- include('./partials/footer.ejs')%>
+
+</body>
+
+</html>

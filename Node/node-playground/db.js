@@ -8,8 +8,9 @@ const authors = [
 
 
 const getAuthorById = async (id) => {
+    console.log(id);
     return authors.find(author => author.id === id)
 }
 
 
-module.export = {getAuthorById}
+module.exports = {getAuthorById}
