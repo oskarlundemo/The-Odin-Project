@@ -1,0 +1,62 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+<div class ='app-wrapper'>
+    <%- include('partials/navbar')%>
+
+
+    <section class="app-content">
+
+        <div class="app-content-header">
+
+            <div class="search-container">
+                <input type="text" placeholder="Search for an instrument">
+            </div>
+
+            <div class="categories-container">
+                <span>Strings</span>
+                <span>Keys</span>
+            </div>
+
+        </div>
+
+
+        <div class="search-results">
+
+            <% if (instruments && instruments.length > 0) { %>
+                <% instruments.forEach((instrument) => { %>
+
+                <div class="instrument">
+                    <h3><%= instrument.instrument_name%></h3>
+                    <p><%= instrument.description%></p>
+                </div>
+
+                    <% }); %>
+                <% } %>
+
+        </div>
+
+
+
+    </section>
+
+
+    <%- include('partials/footer')%>
+</div>
+</body>
+
+
+
+</html>
