@@ -26,27 +26,47 @@
             </div>
 
             <div class="categories-container">
-                <span>Strings</span>
-                <span>Keys</span>
+
             </div>
 
         </div>
 
 
-        <div class="search-results">
+        <table class="search-results">
 
+            <thead>
+            <tr>
+                <th scope="col">Instrument</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
             <% if (instruments && instruments.length > 0) { %>
                 <% instruments.forEach((instrument) => { %>
 
-                <div class="instrument">
-                    <h3><%= instrument.instrument_name%></h3>
-                    <p><%= instrument.description%></p>
-                </div>
+                    <tr class="instrument">
+                        <td><%= instrument.instrument_name%></td>
+                        <td><%= instrument.description%></td>
+                        <td><%= instrument.price %></td>
+                        <td>Ex. strings</td>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                        </td>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                        </td>
+                    </tr>
 
-                    <% }); %>
-                <% } %>
+                <% }); %>
+            <% } %>
+            </tbody>
 
-        </div>
+        </table>
 
 
 

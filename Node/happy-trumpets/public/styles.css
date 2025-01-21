@@ -54,6 +54,7 @@ body {
     h2 {
         margin-bottom: 0;
         font-weight: 500;
+        font-family: "Poppins", serif;
     }
 
     h1 {
@@ -138,20 +139,20 @@ footer {
 }
 
 .categories-container {
-
     span {
         background-color: var(--color-accent);
         padding: 0.5rem;
     }
 }
 
-.search-results {
-    height: 100%;
+table.search-results {
     background-color: var(--color-secondary);
-    display: grid;
-    grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+    border-collapse: collapse;
 }
 
+thead {
+    text-align: left;
+}
 
 /**
 Add
