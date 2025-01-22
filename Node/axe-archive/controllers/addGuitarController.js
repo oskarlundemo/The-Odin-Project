@@ -7,9 +7,11 @@ const {insertInstrument} = require('../db/queries');
 
 exports.addInstrument = async (req, res) => {
     const instrument = {
-        name: req.body.title,
-        description: req.body.content,
-        price: req.body.price,
+        model: req.body.model,
+        brand: req.body.brand,
+        color: req.body.color,
+        year: req.body.year,
+        frets: req.body.frets,
     }
     await insertInstrument(instrument);
     console.log(instrument);
