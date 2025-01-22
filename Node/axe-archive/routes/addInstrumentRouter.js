@@ -2,13 +2,13 @@
 
 
 const {Router} = require('express');
-const {addInstrument} = require('../controllers/addInstrumentController');
+const {addInstrument} = require('../controllers/addGuitarController');
 
 
 const addInstrumentRouter = new Router();
 
 addInstrumentRouter.get('/', (req, res) => {
-    res.render('addPage', { title: 'Add Instrument', subheader: 'Add an instrument'});
+    res.render('addGuitar', { title: 'Add Instrument', subheader: 'Add an instrument'});
 })
 
 

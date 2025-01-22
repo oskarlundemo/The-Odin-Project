@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('partials/head')%>
+
+
+<body>
+<div class ='app-wrapper'>
+
+    <%- include('partials/navbar')%>
+
+    <form action='/add' method='POST'>
+            <label for="title">Model</label>
+            <input type="text" name='title' id="title" placeholder="Stratocaster" required>
+
+            <label for="brand">Brand</label>
+            <input name='brand' id="brand" required placeholder="Fender"></input>
+
+            <label for="color">Color</label>
+            <input name='color' id="color" required placeholder="Sunburst"></input>
+
+            <label for="year">Year</label>
+            <input name='year' id="year" required placeholder="1964">
+
+            <label for="price">Frets</label>
+            <input type="text" name='frets' id="frets" required placeholder="22">
+
+            <button type="submit">Add</button>
+        </form>
+
+    <%- include('partials/footer')%>
+
+</div>
+</body>
+</html>
