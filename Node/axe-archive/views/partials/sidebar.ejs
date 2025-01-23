@@ -1,0 +1,119 @@
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/sidebar.css">
+    <title>Document</title>
+</head>
+
+
+
+
+<aside class="sidebar">
+
+
+    <script>
+        const sideBar = document.querySelector('.sidebar');
+
+
+
+        sideBar.addEventListener('click', (evt) => {
+
+            console.log(evt.target.closest('div'));
+
+            if (evt.target.closest('div')) {
+                evt.target.closest('div').lastElementChild.classList.toggle('rotate');
+                evt.target.closest('div').parentNode.lastElementChild.classList.toggle('show');
+            }
+        })
+    </script>
+
+
+    <div class="drop-down-item">
+
+        <div class="drop-down-header">
+            <h2>Manufacturer</h2>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M480-360 280-560h400L480-360Z"/></svg>
+        </div>
+
+        <ul class="sub-menu">
+            <div>
+                <% if (values.companies && values.companies.length > 0) {%>
+                    <% values.companies.forEach((company) => { %>
+                    <li>
+                        <input type="checkbox" v-model="manufacturer" :checked="manufacturer">
+                        <p><%= company.company %></p>
+                    </li>
+                    <% })%>
+                <%}%>
+            </div>
+        </ul>
+    </div>
+
+
+    <div class="drop-down-item">
+        <div class="drop-down-header">
+            <h2>Model</h2>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M480-360 280-560h400L480-360Z"/></svg>
+        </div>
+
+        <ul class="sub-menu">
+            <div>
+                <% if (values.models && values.models.length > 0) {%>
+                    <% values.models.forEach((model) => { %>
+                        <li>
+                            <input type="checkbox" v-model="manufacturer" :checked="manufacturer">
+                            <p><%= model.model %></p>
+                        </li>
+                    <% })%>
+                <%}%>
+            </div>
+        </ul>
+    </div>
+
+
+    <div class="drop-down-item">
+        <div class="drop-down-header">
+            <h2>Color</h2>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M480-360 280-560h400L480-360Z"/></svg>
+        </div>
+        <ul class="sub-menu">
+            <div>
+                <% if (values.colors && values.colors.length > 0) {%>
+                    <% values.colors.forEach((color) => { %>
+                        <li>
+                            <input type="checkbox" v-model="manufacturer" :checked="manufacturer">
+                            <p><%= color.color %></p>
+                        </li>
+                    <% })%>
+                <%}%>
+            </div>
+        </ul>
+    </div>
+
+
+    <div class="drop-down-item">
+        <div class="drop-down-header">
+            <h2>Frets</h2>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M480-360 280-560h400L480-360Z"/></svg>
+        </div>
+
+        <ul class="sub-menu">
+            <div>
+                <% if (values.frets && values.frets.length > 0) {%>
+                    <% values.frets.forEach((fret) => { %>
+                        <li>
+                            <input type="checkbox" v-model="manufacturer" :checked="manufacturer">
+                            <p><%= fret.frets %></p>
+                        </li>
+                    <% })%>
+                <%}%>
+            </div>
+        </ul>
+    </div>
+
+
+</aside>
