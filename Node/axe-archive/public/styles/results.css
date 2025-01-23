@@ -1,0 +1,60 @@
+
+
+
+.search-results {
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+
+.instrument {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.instrument-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+
+    > div {
+        display: flex;
+    }
+
+    > div:first-child {
+        gap: 0.5rem;
+
+        h2:last-child {
+            color: lightgray;
+        }
+    }
+
+    > div:last-child {
+        gap: 0.5rem;
+    }
+}
+
+.instrument-info {
+    display: flex;
+    gap: 2rem;
+
+    span {
+        font-weight: bold;
+    }
+}
+
+@keyframes hover {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}

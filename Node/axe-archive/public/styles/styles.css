@@ -4,13 +4,11 @@
 
 
 :root {
-    --color-primary: hsl(0, 2%, 84%);
-    --color-secondary: hsl(250, 0%, 100%);
+    --color-primary: hsl(0, 2%, 100%);
     --color-tertiary: hsl(310, 80%, 100%);
     --color-accent: hsl(0, 74%, 51%);
     --color-text: hsl(0, 0%, 0%);
 }
-
 
 
 html, body {
@@ -32,7 +30,6 @@ html, body {
     gap: 3rem;
 }
 
-
 body {
     background-color: var(--color-primary);
     color: var(--color-text);
@@ -41,46 +38,31 @@ body {
     font-style: normal;
 }
 
-a {
-    text-decoration: none;
-    color: var(--color-text)
-}
-
-a:hover {
-    text-decoration: underline;
-    color: var(--color-accent);
-    cursor: pointer;
-}
-
-
 
 .header-text {
     display: flex;
     flex-direction: column;
-    height: fit-content;
-    padding: 0 2rem;
-
-    h2 {
-        margin-bottom: 0;
-        font-weight: 500;
-        font-family: "Poppins", serif;
-    }
-
+    padding: 1rem;
+    gap: 1rem;
+    width: 30%;
     h1 {
         font-family: "Poppins", serif;
         font-weight: 500;
         font-style: normal;
+        text-align: center;
     }
 }
 
 header {
     display: flex;
-    background-color: var(--color-secondary);
-    justify-content: space-between;
+    background-color: var(--color-primary);
+    justify-content: center;
     width: 100%;
-    align-items: flex-end;
-    padding-bottom: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+
 
     nav {
         display: flex;
@@ -101,6 +83,7 @@ header {
         }
     }
 }
+
 
 footer {
     width: 100%;
@@ -127,12 +110,13 @@ footer {
 
 
 .app-content {
-
     display: flex;
-    flex-direction: column;
     gap: 2rem;
-    margin: 0.5rem auto;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
+
 
 .app-content-header {
     display: flex;
@@ -141,86 +125,65 @@ footer {
 }
 
 
-.search-container {
-
-    input {
-        width: 100%;
-        border-bottom: 2px solid var(--color-tertiary);
-        background: var(--color-secondary);
-        color: var(--color-text);
-        font-family: inherit;
-        transition: 200ms ease-in-out;
-        border-radius: 10px;
-        font-size: inherit;
-    }
-
-    input:focus {
-        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
-        font-size: 1.2rem;
-    }
-
-}
-
-
-
-.search-results {
-    border-radius: 15px;
-    background-color: var(--color-secondary);
-    border-collapse: collapse;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-
-.search-results thead tr {
-    border-bottom: 2px dashed lightgrey;
-}
-
-
-.search-results thead tr th {
-    letter-spacing: 1px;
+.add {
+    border-radius: 50%;
     padding: 1rem;
-    color: lightgray;
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-.search-results tbody tr td {
-    letter-spacing: 1px;
-    padding: 1rem;
-    text-align: center;
-
-    svg {
-        margin: 5px auto;
-        width: 100%;
-        transition: 200ms ease-in-out;
-    }
-}
-
-
-.search-results tbody tr:nth-child(even) {
-    background-color: #e3e3e3;
-}
-
-.search-results tbody tr:nth-child(odd) {
-    background-color: transparent;
-}
-
-.search-results tbody tr td:last-child {
-    svg:hover {
-        fill: var(--color-accent);
-        cursor: pointer;
-    }
-}
-
-.search-results tbody tr td:nth-child(6) svg:hover {
-    animation: hover infinite 0.5s ease-in-out;
+.add:hover {
+    animation: spin 500ms 1;
     cursor: pointer;
 }
 
-@keyframes hover {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    75% { transform: translateY(5px); }
-    100% { transform: translateY(0); }
+
+@keyframes spin {
+    0% {}
+    50% {transform: rotate(360deg);}
+    100% {transform: scale(1.1);}
+}
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    transition: 200ms ease-in-out;
+    gap: 1rem;
+
+    form {
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        input {
+            background: var(--color-secondary);
+            color: var(--color-text);
+            font-family: inherit;
+            border: none;
+            height: 100%;
+            margin: 0;
+        }
+    }
+}
+
+
+.search-container:has(input:focus) {
+    transform: scale(1.2);
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search-container:hover {
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 
@@ -281,5 +244,4 @@ textarea {
 input:focus {
     outline: none;
     transform: scale(1.05);
-
 }

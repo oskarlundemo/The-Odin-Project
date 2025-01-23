@@ -12,7 +12,68 @@ async function insertInstrument(instrument) {
 
 async function getInstruments () {
     try {
-        const {rows}= await pool.query('SELECT * FROM "Guitar"')
+        const {rows}= await pool.query('SELECT g.color, g.year, g.model, g.frets, m.company FROM "Guitar" g JOIN "Manufacturer" m ON g.manufacturer_id = m.id')
+        return rows;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+async function searchInstruments(string) {
+    try {
+        const { rows } = await pool.query(
+            `SELECT g.color, g.year, g.model, g.frets, m.company
+             FROM "Guitar" g
+                      JOIN "Manufacturer" m ON g.manufacturer_id = m.id
+             WHERE g.model ILIKE $1 OR m.company ILIKE $1`,
+            [`%${string}%`]
+        );
+        return rows;
+    } catch (e) {
+        console.error(e);
+    }
+}
+async function deleteInstrument (id) {
+    try {
+        await pool.query('DELETE FROM "Guitar" WHERE id = ?', [id]);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+
+async function getCompanies () {
+    try {
+        const {rows} = await pool.query('SELECT (company) FROM "Manufacturer"')
+        return rows;
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+async function getModels () {
+    try {
+        const {rows} = await pool.query('SELECT (model) FROM "Guitar"')
+        return rows;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function getColors () {
+    try {
+        const {rows} = await pool.query('SELECT (color) FROM "Guitar"')
+        return rows;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+async function getFrets () {
+    try {
+        const {rows} = await pool.query('SELECT (frets) FROM "Guitar" GROUP BY (frets);')
         return rows;
     } catch (err) {
         console.error(err);
@@ -22,5 +83,11 @@ async function getInstruments () {
 
 module.exports = {
     insertInstrument,
-    getInstruments
+    getInstruments,
+    deleteInstrument,
+    getCompanies,
+    getModels,
+    getColors,
+    getFrets,
+    searchInstruments
 }
