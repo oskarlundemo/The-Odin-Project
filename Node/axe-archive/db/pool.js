@@ -9,5 +9,5 @@ module.exports = new Pool({
     user: "oskarstromberg",
     database: "Axe Archive",
     password: "test123",
-    port: 5432 // The default port
+    port: 5432
 });

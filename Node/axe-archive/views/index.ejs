@@ -17,9 +17,27 @@
     <%- include('partials/navbar')%>
 
     <section class="app-content">
-        <%- include('partials/sidebar'), {values: values} %>
-        <%- include('partials/results')%>
+        <%- include('partials/results'), {values: values}%>
     </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.add-form');
+            const overlay = document.querySelector('.overlay');
+            const addBtn = document.querySelector('.add');
+
+            addBtn.addEventListener('click', (e) =>  {
+                form.classList.add('show');
+                overlay.classList.add('show');
+
+                overlay.addEventListener('click', (e) =>  {
+                    form.classList.remove('show');
+                    overlay.classList.remove('show');
+                })
+            })
+        })
+    </script>
 
 
     <div class="add">
@@ -27,7 +45,13 @@
     </div>
 
 
+    <%- include('partials/addForm')%>
+
+
     <%- include('partials/footer')%>
+
+
+    <div class="overlay"></div>
 </div>
 </body>
 

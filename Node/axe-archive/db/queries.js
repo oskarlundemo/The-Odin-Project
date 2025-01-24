@@ -4,15 +4,37 @@
 const pool = require('./pool');
 
 async function insertInstrument(instrument) {
-    await pool.query('INSERT INTO instrument (brand, model, color, year, frets ) VALUES ($1, $2, $3, $4, $5);',
-        [instrument.brand, instrument.model, instrument.color, instrument.year, instrument.frets],
+
+    let manufacturerId;
+
+    const {rows} = await pool.query('SELECT id FROM "Manufacturer" WHERE company ILIKE $1 LIMIT 1;',
+        [`%${instrument.brand}%`],
+    );
+
+    if (rows.length > 0) {
+        manufacturerId = rows[0].id;
+    } else {
+        await pool.query('INSERT INTO "Manufacturer" (company) VALUES ($1);',
+            [instrument.brand],
+        );
+        const {rows} =  await pool.query('SELECT id FROM "Manufacturer" WHERE company ILIKE $1 LIMIT 1;',
+            [`%${instrument.brand}%`],
+        );
+        manufacturerId = rows[0].id;
+    }
+
+    await pool.query('INSERT INTO "Guitar" (model, color, year, frets, serial_number, manufacturer_id) VALUES ($1, $2, $3, $4, $5, $6);',
+        [
+            instrument.model, instrument.color,
+            instrument.year, instrument.frets,
+            instrument.snumber, manufacturerId
+        ],
     );
 }
 
-
 async function getInstruments () {
     try {
-        const {rows}= await pool.query('SELECT g.color, g.year, g.model, g.frets, m.company FROM "Guitar" g JOIN "Manufacturer" m ON g.manufacturer_id = m.id')
+        const {rows}= await pool.query('SELECT g.serial_number, g.color, g.year, g.model, g.frets, m.company, m.id FROM "Guitar" g JOIN "Manufacturer" m ON g.manufacturer_id = m.id')
         return rows;
     } catch (err) {
         console.error(err);
@@ -34,49 +56,12 @@ async function searchInstruments(string) {
         console.error(e);
     }
 }
-async function deleteInstrument (id) {
+async function deleteInstrument (guitarId, brandId) {
     try {
-        await pool.query('DELETE FROM "Guitar" WHERE id = ?', [id]);
+        await pool.query('DELETE FROM "Guitar" WHERE serial_number = $1 AND manufacturer_id = $2',
+            [guitarId, brandId]);
     } catch (e) {
         console.error(e);
-    }
-}
-
-
-async function getCompanies () {
-    try {
-        const {rows} = await pool.query('SELECT (company) FROM "Manufacturer"')
-        return rows;
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-async function getModels () {
-    try {
-        const {rows} = await pool.query('SELECT (model) FROM "Guitar"')
-        return rows;
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-async function getColors () {
-    try {
-        const {rows} = await pool.query('SELECT (color) FROM "Guitar"')
-        return rows;
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-
-async function getFrets () {
-    try {
-        const {rows} = await pool.query('SELECT (frets) FROM "Guitar" GROUP BY (frets);')
-        return rows;
-    } catch (err) {
-        console.error(err);
     }
 }
 
@@ -84,10 +69,6 @@ async function getFrets () {
 module.exports = {
     insertInstrument,
     getInstruments,
-    deleteInstrument,
-    getCompanies,
-    getModels,
-    getColors,
-    getFrets,
-    searchInstruments
+    searchInstruments,
+    deleteInstrument
 }
