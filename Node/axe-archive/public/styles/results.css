@@ -2,10 +2,9 @@
 
 
 .search-results {
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 1rem;
     align-items: center;
 }
 
@@ -14,7 +13,6 @@
 .instrument {
     display: flex;
     flex-direction: column;
-    width: 300px;
     border-radius: 15px;
     padding: 1rem 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -40,6 +38,27 @@
 
     > div:last-child {
         gap: 0.5rem;
+
+
+        > svg:first-child {
+            transition: 200ms ease-in-out;
+        }
+
+        > svg:first-child:hover {
+            animation: hover 500ms 1;
+            cursor: pointer;
+        }
+
+
+        >svg:last-child {
+            transition: 200ms ease-in-out;
+        }
+
+        >svg:last-child:hover {
+            fill: red;
+            cursor: pointer;
+            animation: shake 500ms 1;
+        }
     }
 }
 
@@ -50,6 +69,13 @@
     span {
         font-weight: bold;
     }
+}
+
+@keyframes shake {
+    0% { transform: rotate(0); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes hover {

@@ -2,7 +2,7 @@
 
 
 .sidebar {
-    display: flex;
+    display: none;
     gap: 2rem;
     flex-direction: column;
     left: 0;
