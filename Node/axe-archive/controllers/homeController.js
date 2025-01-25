@@ -1,7 +1,7 @@
 
 
 
-const {getInstruments, searchInstruments, insertInstrument, deleteInstrument, } = require("../db/queries");
+const {getInstruments, searchInstruments, insertInstrument, deleteInstrument, editInstrument} = require("../db/queries");
 
 
 exports.addInstrument = async (req, res) => {
@@ -23,6 +23,31 @@ exports.addInstrument = async (req, res) => {
 }
 
 
+
+exports.editInstrument = async (req, res) => {
+    console.log("Editing Instrument");
+    console.log(req.body);
+
+    const editGuitar = {
+        g_id: req.body.guitar_id,
+        m_id: req.body.brand_id,
+        model: req.body.model,
+        frets: req.body.frets,
+        color: req.body.color,
+        year: req.body.year,
+    }
+
+    await editInstrument(editGuitar);
+    const instrument = await getInstruments();
+
+    const values = {
+        instrument,
+    }
+    res.render('index', {values: values});
+}
+
+
+
 exports.searchInstruments = async (req, res) => {
     try {
         const searchString  = req.query.search;
@@ -31,7 +56,6 @@ exports.searchInstruments = async (req, res) => {
             instrument,
         }
         res.render('index', {values: values});
-
     } catch (e) {
         console.error(e);
     }
@@ -39,12 +63,17 @@ exports.searchInstruments = async (req, res) => {
 
 
 exports.deleteInstrument = async (req, res) => {
-    const id = req.params.id;
-    const guitarId = req.params.id.split(' ')[0];
-    const brandId = req.params.id.split(' ')[1];
+    const guitarId = req.params.id;
+    const brandId = req.body.brand_id;
 
-    res.json({ redirect: "http://localhost:3000/" }); // Send the redirect URL
-    await deleteInstrument(guitarId, brandId);
+    try {
+        await deleteInstrument(guitarId, brandId);
+        const referer = req.get('Referer') || '/';
+        res.json({ redirect: referer });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({error})
+    }
 }
 
 

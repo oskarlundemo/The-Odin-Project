@@ -9,13 +9,14 @@
 }
 
 
-
 .instrument {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    padding: 1rem 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+    width: 350px;
+    height: 300px;
 }
 
 .instrument-header {
@@ -26,6 +27,7 @@
 
     > div {
         display: flex;
+        padding: 0 1rem;
     }
 
     > div:first-child {
@@ -36,9 +38,8 @@
         }
     }
 
-    > div:last-child {
+    > div:nth-child(2) {
         gap: 0.5rem;
-
 
         > svg:first-child {
             transition: 200ms ease-in-out;
@@ -62,6 +63,7 @@
     }
 }
 
+
 .instrument-info {
     display: flex;
     gap: 2rem;
@@ -70,6 +72,72 @@
         font-weight: bold;
     }
 }
+
+
+
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+
+    width: 350px;
+    height: 300px;
+
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+
+    span {
+        text-align: right;
+    }
+
+    span:hover {
+        color: var(--color-accent);
+        cursor: pointer;
+    }
+
+    >input {
+        transition: 200ms ease-in-out;
+        border: 1px solid var(--color-primary);
+        outline: none;
+        border-radius: 5px;
+        padding: 0.4rem;
+    }
+
+    > input:hover {
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+
+    > input:focus {
+        transform: scale(1.05);
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+        background-color: var(--color-primary);
+        color: var(--color-text);
+        padding: 0.5rem 2rem;
+        width: fit-content;
+        border-radius: 0.2rem;
+        align-self: center;
+        transition: 200ms ease-in-out;
+        border: none;
+        box-shadow: inset 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+        margin-top: 5px;
+    }
+
+    button:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+        color: var(--color-accent);
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
 
 @keyframes shake {
     0% { transform: rotate(0); }
@@ -84,3 +152,6 @@
     75% { transform: translateY(5px); }
     100% { transform: translateY(0); }
 }
+
+
+

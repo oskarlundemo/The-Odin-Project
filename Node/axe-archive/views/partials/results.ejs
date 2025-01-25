@@ -7,32 +7,136 @@
 </head>
 
 
+
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const instruments = document.querySelectorAll('.instrument');
+        instruments.forEach((instrument) => {
+
+            instrument.addEventListener('click', (event) => {
+                if (event.target.classList.contains('edit')) {
+                    let id = event.target.nextElementSibling;
+
+                    const cancel = document.createElement('span');
+                    cancel.textContent = 'Cancel';
+
+                    const editForm = document.createElement('form');
+                    editForm.classList.add('edit-form');
+                    editForm.method = 'POST';
+                    editForm.action = '/edit';
+
+                    const instrumentCard = event.currentTarget;
+
+                    const brandIdInput = document.createElement('input');
+                    brandIdInput.type = 'hidden';
+                    brandIdInput.name = 'brand_id';
+                    brandIdInput.value = id.dataset.brand_id;
+
+                    const guitarIdInput = document.createElement('input');
+                    guitarIdInput.type = 'hidden';
+                    guitarIdInput.name = 'guitar_id';
+                    guitarIdInput.value = id.dataset.guitar_id;
+
+                    const modelInput = document.createElement('input');
+                    modelInput.type = 'text';
+                    modelInput.id = 'model';
+                    modelInput.name = 'model';
+                    const modelLabel = document.createElement('label');
+                    modelLabel.setAttribute('for', 'model');
+                    modelLabel.textContent = 'Model';
+
+                    const brandInput = document.createElement('input');
+                    brandInput.type = 'text';
+                    brandInput.id = 'brand';
+                    brandInput.name = 'brand';
+                    const brandLabel = document.createElement('label');
+                    brandLabel.setAttribute('for', 'brand');
+                    brandLabel.textContent = 'Brand';
+
+                    const colorInput = document.createElement('input');
+                    colorInput.type = 'text';
+                    colorInput.id = 'color';
+                    colorInput.name = 'color';
+                    const colorLabel = document.createElement('label');
+                    colorLabel.setAttribute('for', 'color');
+                    colorLabel.textContent = 'Color';
+
+                    const yearInput = document.createElement('input');
+                    yearInput.type = 'text';
+                    yearInput.id = 'year';
+                    yearInput.name = 'year';
+                    const yearLabel = document.createElement('label');
+                    yearLabel.setAttribute('for', 'year');
+                    yearLabel.textContent = 'Year';
+
+                    const fretInput = document.createElement('input');
+                    fretInput.type = 'text';
+                    fretInput.id = 'frets';
+                    fretInput.name = 'frets';
+                    const fretLabel = document.createElement('label');
+                    fretLabel.setAttribute('for', 'frets');
+                    fretLabel.textContent = 'Frets';
+
+                    const saveButton = document.createElement('button');
+                    saveButton.setAttribute('for', 'save');
+                    saveButton.textContent = 'Save';
+                    saveButton.type = 'submit';
+
+                    editForm.append(
+                        cancel,
+                        brandIdInput, guitarIdInput,
+                        modelLabel, modelInput,
+                        brandLabel, brandInput,
+                        colorLabel, colorInput,
+                        yearLabel, yearInput,
+                        fretLabel, fretInput,
+                        saveButton,
+                    );
+
+                    cancel.addEventListener('click', () => {
+                        editForm.replaceWith(instrumentCard);
+                    })
+
+                    instrumentCard.replaceWith(editForm);
+                }
+            })
+        })
+    })
+
+</script>
+
+
+
+
 <div class="search-results">
 
     <% if (values.instrument && values.instrument.length > 0) { %>
         <% values.instrument.forEach((instrument) => { %>
+                        <div class="instrument">
+                            <div class="instrument-header">
+                                <div>
+                                    <h2><%= instrument.model %></h2>
+                                    <h2><%= instrument.company %></h2>
+                                </div>
 
-        <div class="instrument">
+                                <div>
+                                    <svg class="edit" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
 
-            <div class="instrument-header">
-                <div>
-                    <h2><%= instrument.model %></h2>
-                    <h2><%= instrument.company%></h2>
-                </div>
-
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-                    <svg data-brand_id="<%= instrument.id %>" data-guitar_id="<%= instrument.serial_number %>" class="delete-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                </div>
-            </div>
-
-            <div class="instrument-info">
-                <p><span>Color </span><%= instrument.color%></p>
-                <p><span>Year </span><%= instrument.year%></p>
-                <p><span>Frets </span><%= instrument.frets%></p>
-            </div>
-        </div>
-
+                                    <svg data-brand_id="<%= instrument.id %>" data-guitar_id="<%= instrument.serial_number %>" class="delete-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343">
+                                        <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="instrument-info">
+                                <p><span>Color </span><%= instrument.color %></p>
+                                <p><span>Year </span><%= instrument.year %></p>
+                                <p><span>Frets </span><%= instrument.frets %></p>
+                            </div>
+                        </div>
         <% }); %>
     <% } %>
 
@@ -42,30 +146,22 @@
 
             trashCans.forEach((trashCan) => {
                 trashCan.addEventListener('click', (event) => {
-                    console.log('G ID: ' + trashCan.dataset.guitar_id + ' Brand ID: ' + trashCan.dataset.brand_id);
-                    const endPoint = `/${trashCan.dataset.guitar_id} ${trashCan.dataset.brand_id}`;
-
-                    fetch (endPoint, {
-                        method: 'DELETE'
+                    const endPoint = `http://localhost:3000/${trashCan.dataset.guitar_id}`;
+                    fetch(endPoint, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ brand_id: trashCan.dataset.brand_id })
                     })
                         .then((response) => response.json())
-                        .then((data) => {window.location.href = data.redirect})
-                        .catch((err) => { console.error(err); });
-                });
-            })
+                        .then((data) => {
 
-                /**
-                 * fetch(endPoint, {
-                 method: 'DELETE'
-                 })
-                 .then((response) => response.json())
-                 .then((data) => window.location.href = data.redirect)
-                 .catch(err => { console.log(err); });
-                 *
-                 * @type {string}
-                 *
-                 *  const endPoint = `/blogs/${trashCan.dataset.doc}`;
-                 */
+                            window.location.href = data.redirect;
+                        })
+                        .catch((err) => {
+                            console.error('Fetch error:', err); // Debugging
+                        });
+                });
+            });
 
         </script>
 
