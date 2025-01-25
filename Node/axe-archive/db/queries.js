@@ -42,10 +42,26 @@ async function getInstruments () {
 }
 
 
+async function editInstrument(instrument) {
+
+    /* Måste fixa så man checkar brand, 
+     */
+
+    await pool.query(
+        'UPDATE "Guitar" SET model = $1, color = $2, year = $3, frets = $4 WHERE serial_number = $5 AND manufacturer_id = $6;',
+        [
+            instrument.model, instrument.color,
+            instrument.year, instrument.frets,
+            instrument.g_id, instrument.m_id
+        ]
+    );
+}
+
+
 async function searchInstruments(string) {
     try {
         const { rows } = await pool.query(
-            `SELECT g.color, g.year, g.model, g.frets, m.company
+            `SELECT g.color, g.serial_number, g.year, g.model, g.frets, m.company, m.id
              FROM "Guitar" g
                       JOIN "Manufacturer" m ON g.manufacturer_id = m.id
              WHERE g.model ILIKE $1 OR m.company ILIKE $1`,
@@ -70,5 +86,6 @@ module.exports = {
     insertInstrument,
     getInstruments,
     searchInstruments,
-    deleteInstrument
+    deleteInstrument,
+    editInstrument
 }
