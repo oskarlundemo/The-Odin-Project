@@ -14,6 +14,14 @@
     <title><%= title%></title>
 </head>
 <body>
+
+<%if (errors && errors.length > 0) {%>
+    <div class="error-box">
+        <p>Error! Failed to create user</p>
+    </div>
+<%}%>
+
+
 <main class="login-card">
 
     <section class="login-box">
@@ -42,8 +50,13 @@
 
 
     <section class="pop-up-box">
-        <svg class="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-        <h1>Create new account</h1>
+
+        <div class="pop-up-header">
+            <svg class="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            <h1>Create new account</h1>
+        </div>
+
+
         <form action='/sign-up' method='POST' class="add-form">
 
             <div class="form-container">
@@ -54,7 +67,13 @@
                     <div class="input-box">
                         <input type="text" placeholder="John" id="firstname" name ="firstname">
                     </div>
-                    <span class="error-msg"></span>
+                    <%if (errors && errors.length > 0) {%>
+                        <% errors.forEach((error) => {%>
+                            <% if (error.path === 'firstname') {%>
+                                <span class="error-msg"><%= error.msg%></span>
+                            <%}%>
+                        <%})%>
+                    <%}%>
                 </div>
 
                 <div class="form-card">
@@ -62,7 +81,14 @@
                     <div class="input-box">
                         <input type="text" placeholder="Doe" id="lastname" name ="lastname">
                     </div>
-                    <span class="error-msg"></span>
+
+                    <%if (errors && errors.length > 0) {%>
+                        <% errors.forEach((error) => {%>
+                            <% if (error.path === 'lastname') {%>
+                                <span class="error-msg"><%= error.msg%></span>
+                            <%}%>
+                        <%})%>
+                    <%}%>
                 </div>
 
                 <div class="form-card">
@@ -71,7 +97,13 @@
                     <div class="input-box">
                         <input type="email" placeholder="john@domain.com" id="email" name ="email">
                     </div>
-                    <span class="error-msg"></span>
+                    <%if (errors && errors.length > 0) {%>
+                        <% errors.forEach((error) => {%>
+                            <% if (error.path === 'email') {%>
+                                <span class="error-msg"><%= error.msg%></span>
+                            <%}%>
+                        <%})%>
+                    <%}%>
                 </div>
 
             </div>
@@ -84,7 +116,13 @@
                     <div class="input-box">
                         <input type="text" placeholder="@doeJohn" id="newUsername" name ="username">
                     </div>
-                    <span class="error-msg"></span>
+                    <%if (errors && errors.length > 0) {%>
+                    <% errors.forEach((error) => {%>
+                    <% if (error.path === 'username') {%>
+                        <span class="error-msg"><%= error.msg%></span>
+                        <%}%>
+                        <%})%>
+                    <%}%>
                 </div>
 
                 <div class="form-card">
@@ -92,7 +130,12 @@
                     <div class="input-box">
                         <input type="password" placeholder="*****" id="newPassword" name ="newPassword">
                     </div>
-                    <span class="error-msg"></span>
+                    <%if (errors && errors.length > 0) {%>
+                        <% const error = errors.find(err => err.path ==='newPassword');%>
+                            <% if (error) {%>
+                                <span class="error-msg"><%= error.msg%></span>
+                            <%}%>
+                    <%}%>
                 </div>
 
                 <div class="form-card">
@@ -100,12 +143,18 @@
                     <div class="input-box">
                         <input type="password" placeholder="*****" id="reenterpassword" name ="reeenterpassword">
                     </div>
-                    <span class="error-msg"></span>
+                    <%if (errors && errors.length > 0) {%>
+                        <% errors.forEach((error) => {%>
+                            <% if (error.path === 'reenterpassword') {%>
+                                <span class="error-msg"><%= error.msg%></span>
+                            <%}%>
+                        <%})%>
+                    <%}%>
                 </div>
             </div>
             </div>
 
-            <button type="submit">Create Account</button>
+            <button class="create-button" type="submit">Create Account</button>
         </form>
     </section>
 </main>

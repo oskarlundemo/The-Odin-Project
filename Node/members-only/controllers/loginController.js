@@ -2,6 +2,9 @@
 
 
 const {body, validationResult} = require('express-validator');
+const {createNewUser} = require("../db/queries");
+const LocalStrategy = require('passport-local');
+const passport = require('passport');
 
 
 exports.validateNewUser = [
@@ -40,23 +43,34 @@ exports.validateNewUser = [
 ]
 
 
-
 exports.handleValidationErrors = (req, res, next) => {
     const errors = validationResult(req);
     console.log(req.body);
 
     if (!errors.isEmpty()) {
-        return res.status(400).send({errors: errors.array()});
+        return res.status(400).render('login', {title: "Login", errors: errors.array()});
     }
     next();
 }
 
 exports.loadUI = (req, res) => {
-    res.render("login", {title: "Login"});
+    res.render("login", {title: "Login", errors: {}});
 }
 
-exports.addUser = (req, res) => {
-    console.log(req.body);
+exports.addUser = async (req, res) => {
+    const newUser = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.newPassword,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+    }
 
-    body('username').isLength({ min: 3, max: 10}).withMessage('Username must be at least 3 characters long');
+    await createNewUser(newUser)
+    res.redirect("/index");
+}
+
+exports.loginUser = async (req, res) => {
+
+
 }

@@ -1,5 +1,42 @@
 
 
+
+
+.left-info, .right-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3rem;
+}
+
+
+
+.error-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-background);
+    margin-bottom: 4rem;
+    border-radius: var(--default-radius);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+
+    p {
+        color: var(--error-color);
+        width: fit-content;
+    }
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
 .login-form {
     display: flex;
     gap: 1rem;
@@ -8,17 +45,13 @@
 }
 
 
+
 .login-card {
     background: var(--card-background);
     display: flex;
     flex-direction: column;
     padding: 2rem 3rem;
-    position: fixed;
-    z-index: 10;
 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
     border-radius: var(--default-radius);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
@@ -83,8 +116,30 @@
     transition: 250ms ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        min-width: 255px;
+    }
+}
+
+
+.pop-up-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        text-align: left;
+        width: fit-content;
+    }
+
     > svg:first-child {
-        align-self: flex-end;
+        align-self: flex-start;
         transition: var(--default-transition);
     }
 
@@ -93,10 +148,8 @@
         cursor: pointer;
     }
 
-    h1 {
-        text-align: center;
-    }
 }
+
 
 
 .add-form {
