@@ -1,0 +1,50 @@
+
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: 100%;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--card-background);
+    padding: 2rem 0;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    p {
+        text-align: center;
+    }
+}
+
+.home-card {
+    height: 100%;
+    width: 40%;
+    background-color: var(--card-background);
+    align-self: center;
+    margin: 2rem 0;
+    border-radius: var(--default-radius);
+}
+
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
