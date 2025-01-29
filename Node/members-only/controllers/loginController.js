@@ -5,10 +5,11 @@ const {body, validationResult} = require('express-validator');
 const {createNewUser} = require("../db/queries");
 const LocalStrategy = require('passport-local');
 const passport = require('passport');
+const pool = require("../db/pool");
+const bcrypt = require("bcryptjs");
 
 
 exports.validateNewUser = [
-
     body('firstname')
         .isLength({min: 1})
         .withMessage('First name is required'),
@@ -70,7 +71,9 @@ exports.addUser = async (req, res) => {
     res.redirect("/index");
 }
 
-exports.loginUser = async (req, res) => {
 
-
-}
+exports.loginUser = passport.authenticate("local", {
+        successRedirect: "http://localhost:3000/home",
+        failureRedirect: "/login",
+        failureFlash: true
+});
