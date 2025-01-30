@@ -34,10 +34,10 @@ exports.validateNewUser = [
         .matches(/[!@#$%^&*(),.?":{}|<>]/)
         .withMessage('Password must contain at least one special character'),
 
-    body('reeenterpassword')
+    body('reenterpassword')
         .custom((value, {req}) => {
             if (value !== req.body.newPassword) {
-                throw new Error('Passwords do not match');
+                throw new Error('Passwords did not match');
             }
             return true;
         })
@@ -73,7 +73,7 @@ exports.addUser = async (req, res) => {
 
 
 exports.loginUser = passport.authenticate("local", {
-        successRedirect: "http://localhost:3000/home",
-        failureRedirect: "/login",
-        failureFlash: true
+    successRedirect: "http://localhost:3000/home",
+    failureRedirect: "http://localhost:3000/login",
+    failureFlash: 'Invalid username or password'
 });

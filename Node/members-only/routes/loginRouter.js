@@ -10,6 +10,6 @@ const loginRouter = new Router();
 
 loginRouter.get('/', loadUI);
 loginRouter.post('/sign-up', validateNewUser, handleValidationErrors, addUser);
-loginRouter.post("/login", loginUser);
+loginRouter.post("/", loginUser);
 
 module.exports = loginRouter;

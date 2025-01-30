@@ -39,10 +39,17 @@
                     <div class="post-header">
                         <h2><%= message.title%></h2>
 
+                        <%if (user.member_status) {%>
                         <div class="post-info">
-                            <p><%= message.username%></p>
-                            <p>dateFormater(<% message.created%>)</p>
+                            <p><%= moment(message.created).format('MMM DD YYYY') %></p>
+                            <p>@<%= message.username%></p>
                         </div>
+                        <%} else { %>
+                            <div class="post-info">
+                                <p>Unknown</p>
+                                <p>@Anonymous</p>
+                            </div>
+                        <%}%>
                     </div>
                     <p><%= message.body%></p>
                 </div>
@@ -50,6 +57,12 @@
             <%}%>
     </main>
 
+
+    <div class="member-container">
+        <form method="post" action="/home/member">
+            <input type="text" class="search-box" name="secret">
+        </form>
+    </div>
 
     <section class="pop-up-box">
 

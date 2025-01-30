@@ -20,7 +20,7 @@ header {
 }
 
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -97,8 +97,26 @@ footer {
 .post-info {
     display: flex;
     align-self: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
     gap: 0.5rem;
     p {
         margin: 0;
+    }
+}
+
+
+.member-container {
+    display: flex;
+    margin: 2rem 1rem;
+
+    input {
+        background-color: transparent;
+        border: none;
+        transition: var(--default-transition);
+    }
+
+    input:hover {
+        background-color: var(--card-background);
     }
 }

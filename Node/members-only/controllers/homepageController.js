@@ -1,9 +1,8 @@
-const {saveNewMessage, getPosts} = require("../db/queries");
+const {saveNewMessage, getPosts, meme, memberRequest} = require("../db/queries");
 
 
 exports.loadHomepage = async (req, res) => {
     const posts = await getPosts();
-    console.log("I controller");
     res.render("index", {title: "Home", user: req.user, messages: posts});
 }
 
@@ -15,6 +14,13 @@ exports.logOutUser = (req, res) => {
             res.redirect('/login');
         });
     });
+}
+
+
+exports.memberRequest = async (req, res) => {
+    console.log(req.body);
+    await memberRequest(req.body.secret, req.user.user_id);
+    res.redirect('/home');
 }
 
 exports.postMessage = async (req, res) => {

@@ -20,6 +20,23 @@ async function createNewUser (user) {
     }
 }
 
+
+async function memberRequest (input, user) {
+    try {
+        const {rows} = await pool.query('SELECT * FROM member_secrets WHERE password = $1;', [input]);
+
+
+        if (rows.length >= 1) {
+            await pool.query('UPDATE users SET member_status = true WHERE user_id = $1;', [
+                user
+            ])
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 async function saveNewMessage (message, user) {
     try {
         /*
@@ -66,5 +83,6 @@ async function getPosts (user) {
 module.exports = {
     createNewUser,
     saveNewMessage,
-    getPosts
+    getPosts,
+    memberRequest
 }
