@@ -60,9 +60,14 @@ body, p, a, li {
     font-family: 'Open Sans', sans-serif;
 }
 
+textarea {
+    border: none !important;
+    resize: none;
+    height: 200px;
+    width: 100%;
+}
 
-
-input {
+input, textarea {
     background-color: var(--input-background);
     transition: var(--default-transition);
     color: var(--text-color);
@@ -80,11 +85,11 @@ input:-webkit-autofill {
     transition: var(--default-transition) !important;
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
 }
 
-.input-box:has(input:focus) {
+.input-box:has(input:focus), .input-box:has(textarea:focus) {
     outline: none;
     transform: scale(1.1);
 
@@ -100,7 +105,7 @@ input:focus {
     gap: 0.2rem;
 }
 
-.input-box {
+.input-box, textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -138,6 +143,64 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5;
 }
+
+.pop-up-box.show {
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 100;
+}
+
+.pop-up-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 10px;
+
+    transition: 250ms ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        min-width: 255px;
+    }
+}
+
+
+
+.pop-up-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        text-align: left;
+        width: fit-content;
+    }
+
+    > svg:first-child {
+        align-self: flex-start;
+        transition: var(--default-transition);
+    }
+
+    svg:first-child:hover {
+        fill: var(--error-color);
+        cursor: pointer;
+    }
+
+}
+
+
 
 button {
     background-color: var(--button-background);
