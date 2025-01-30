@@ -15,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     newUserForm.addEventListener('submit', async (e) => {
 
-
-
-
     });
 
 

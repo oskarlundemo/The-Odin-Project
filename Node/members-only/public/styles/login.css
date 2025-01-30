@@ -95,63 +95,6 @@ body {
     }
 }
 
-.pop-up-box.show {
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 100;
-}
-
-.pop-up-box {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: 1000;
-
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    background-color: var(--card-background);
-    border-radius: 10px;
-
-    transition: 250ms ease-in-out;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
-
-    h1 {
-        text-align: center;
-    }
-
-    input {
-        min-width: 255px;
-    }
-}
-
-
-.pop-up-header {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-
-    h1 {
-        text-align: left;
-        width: fit-content;
-    }
-
-    > svg:first-child {
-        align-self: flex-start;
-        transition: var(--default-transition);
-    }
-
-    svg:first-child:hover {
-        fill: var(--error-color);
-        cursor: pointer;
-    }
-
-}
-
-
-
 .add-form {
     display: flex;
 }

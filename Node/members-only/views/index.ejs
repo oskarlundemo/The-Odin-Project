@@ -11,7 +11,7 @@
     <meta name="author" content="Oskar Lundemo">
     <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" href="/styles/index.css"> <!-- Global variables -->
-    <script src="/js/login.js" defer></script>
+    <script src="/js/home.js" defer></script>
     <title><%= title%></title>
 </head>
 <body>
@@ -27,13 +27,64 @@
         </div>
     </header>
 
+    <div class="filter-content">
+        <button class="button create-post">New Post</button>
+    </div>
+
     <main class="home-card">
-        <div class="post-container"></div>
+            <%if (messages && messages.length > 0) {%>
+                <%messages.forEach((message) => {%>
+                <div class="post">
+
+                    <div class="post-header">
+                        <h2><%= message.title%></h2>
+
+                        <div class="post-info">
+                            <p><%= message.username%></p>
+                            <p>dateFormater(<% message.created%>)</p>
+                        </div>
+                    </div>
+                    <p><%= message.body%></p>
+                </div>
+                <%})%>
+            <%}%>
     </main>
+
+
+    <section class="pop-up-box">
+
+        <div class="pop-up-header">
+            <svg class="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            <h1>New Message</h1>
+        </div>
+
+        <form class="post-form" action="/home/message" method="post">
+            <div class="form-card">
+                <label for="title">Title</label>
+                <div class="input-box">
+                    <input type="text" placeholder="I love puppies!" id="title" name ="title">
+                </div>
+                <span class="error-msg"></span>
+            </div>
+            <div class="form-card">
+                <label for="content">Message</label>
+                <div class="input-box">
+                    <textarea placeholder="They are just so cute and fuzzy! I adore them because..." id="content" name="body"></textarea>
+                </div>
+                <span class="error-msg"></span>
+            </div>
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
+                Send
+            </button>
+        </form>
+    </section>
+
 
     <footer>
         <p>Lundemo @ 2025</p>
     </footer>
+
 </div>
 
 <div class="overlay"></div>

@@ -1,15 +1,12 @@
+const {saveNewMessage, getPosts} = require("../db/queries");
 
 
-
-exports.loadHomepage = (req, res) => {
+exports.loadHomepage = async (req, res) => {
+    const posts = await getPosts();
     console.log("I controller");
-
-
-    console.log(req.user.username);
-
-    console.log("I efter");
-    res.render("index", {title: "Home", user: req.user});
+    res.render("index", {title: "Home", user: req.user, messages: posts});
 }
+
 
 exports.logOutUser = (req, res) => {
     req.logout((err) => {
@@ -19,3 +16,15 @@ exports.logOutUser = (req, res) => {
         });
     });
 }
+
+exports.postMessage = async (req, res) => {
+    const message = {
+        title: req.body.title,
+        body: req.body.body,
+    }
+    const user = req.user;
+
+    await saveNewMessage(message, user);
+    res.redirect('/home');
+}
+
