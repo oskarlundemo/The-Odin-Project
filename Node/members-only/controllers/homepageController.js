@@ -19,7 +19,7 @@ exports.logOutUser = (req, res) => {
 
 exports.memberRequest = async (req, res) => {
     console.log(req.body);
-    await memberRequest(req.body.secret, req.user.user_id);
+    await memberRequest(req.body.secret, req.user);
     res.redirect('/home');
 }
 

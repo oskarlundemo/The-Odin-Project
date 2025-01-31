@@ -2,7 +2,7 @@
 
 
 const {body, validationResult} = require('express-validator');
-const {createNewUser} = require("../db/queries");
+const {createNewUser, getPosts} = require("../db/queries");
 const LocalStrategy = require('passport-local');
 const passport = require('passport');
 const pool = require("../db/pool");
@@ -59,16 +59,22 @@ exports.loadUI = (req, res) => {
 }
 
 exports.addUser = async (req, res) => {
-    const newUser = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.newPassword,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-    }
+    try {
+        const newUser = {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.newPassword,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+        }
+        const user = await createNewUser(newUser);
+        const posts = await getPosts();
 
-    await createNewUser(newUser)
-    res.redirect("/index");
+        res.render("index", {user: user, title: 'Home', messages: posts});
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server error')
+    }
 }
 
 
