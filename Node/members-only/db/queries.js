@@ -5,18 +5,37 @@
 const pool = require('./pool');
 const bcrypt = require('bcryptjs')
 
-async function createNewUser (user) {
+async function createNewUser(user) {
     try {
         const hashedPassword = await bcrypt.hash(user.password, 10);
-        await pool.query('INSERT INTO "users" (username, password, firstname, lastname, email) VALUES ($1, $2, $3, $4, $5);',
+        const result = await pool.query(
+            'INSERT INTO "users" (username, password, firstname, lastname, email) VALUES ($1, $2, $3, $4, $5) RETURNING *;',
             [
-                user.username, hashedPassword,
-                user.firstname, user.lastname,
+                user.username,
+                hashedPassword,
+                user.firstname,
+                user.lastname,
                 user.email,
-            ],
+            ]
         );
-    } catch(err) {
+        return result.rows[0];
+    } catch (err) {
         console.log(err);
+        throw err;
+    }
+}
+
+
+async function memberRequest (input, user) {
+    try {
+        const {rows} = await pool.query('SELECT * FROM member_secrets WHERE password = $1;', [input]);
+        if (rows.length >= 1) {
+            await pool.query('UPDATE users SET member_status = true WHERE user_id = $1;', [
+                user.user_id
+            ])
+        }
+    } catch (e) {
+        console.log(e);
     }
 }
 
@@ -66,5 +85,6 @@ async function getPosts (user) {
 module.exports = {
     createNewUser,
     saveNewMessage,
-    getPosts
+    getPosts,
+    memberRequest
 }

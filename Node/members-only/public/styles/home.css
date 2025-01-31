@@ -20,13 +20,16 @@ header {
 }
 
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
 
     p {
         text-align: center;
+        width: fit-content;
     }
 }
 
@@ -51,9 +54,20 @@ footer {
 
 .user-info {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 1rem;
     padding: 0 1rem;
+
+    > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        p {
+            margin: 0;
+        }
+    }
 }
 
 .post-form {
@@ -97,8 +111,26 @@ footer {
 .post-info {
     display: flex;
     align-self: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
     gap: 0.5rem;
     p {
         margin: 0;
+    }
+}
+
+
+.member-container {
+    display: flex;
+    margin: 1rem 0;
+
+    input {
+        background-color: transparent;
+        border: none;
+        transition: var(--default-transition);
+    }
+
+    input:hover {
+        background-color: var(--card-background);
     }
 }

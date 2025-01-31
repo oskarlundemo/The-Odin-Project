@@ -149,6 +149,8 @@ input:focus, textarea:focus {
     z-index: 100;
 }
 
+
+
 .pop-up-box {
     position: fixed;
     left: 50%;
