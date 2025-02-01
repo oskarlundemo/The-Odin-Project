@@ -1536,7 +1536,7 @@ var require_react_development = __commonJS({
               error("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", _name || "Unknown");
             }
             if (typeof type.getDefaultProps === "function" && !type.getDefaultProps.isReactClassApproved) {
-              error("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+              error("getDefaultProps is only used on classic React.createClass definitions. Use a public property named `defaultProps` instead.");
             }
           }
         }

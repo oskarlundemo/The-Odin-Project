@@ -5790,13 +5790,13 @@ var require_react_dom_development = __commonJS({
             },
             /**
              * We release all dispatched `SyntheticEvent`s after each event loop, adding
-             * them back into the pool. This allows a way to hold onto a reference that
-             * won't be added back into the pool.
+             * them back into the pool.js. This allows a way to hold onto a reference that
+             * won't be added back into the pool.js.
              */
             persist: function() {
             },
             /**
-             * Checks if this event should be released back into the pool.
+             * Checks if this event should be released back into the pool.js.
              *
              * @return {boolean} True if this should not be released, false otherwise.
              */
@@ -9808,7 +9808,7 @@ var require_react_dom_development = __commonJS({
             }
             if (UNSAFE_componentWillReceivePropsUniqueNames.size > 0) {
               var _sortedNames = setToSortedString(UNSAFE_componentWillReceivePropsUniqueNames);
-              error("Using UNSAFE_componentWillReceiveProps in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n\nPlease update the following components: %s", _sortedNames);
+              error("Using UNSAFE_componentWillReceiveProps in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to public getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n\nPlease update the following components: %s", _sortedNames);
             }
             if (UNSAFE_componentWillUpdateUniqueNames.size > 0) {
               var _sortedNames2 = setToSortedString(UNSAFE_componentWillUpdateUniqueNames);
@@ -9820,7 +9820,7 @@ var require_react_dom_development = __commonJS({
             }
             if (componentWillReceivePropsUniqueNames.size > 0) {
               var _sortedNames4 = setToSortedString(componentWillReceivePropsUniqueNames);
-              warn("componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames4);
+              warn("componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to public getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames4);
             }
             if (componentWillUpdateUniqueNames.size > 0) {
               var _sortedNames5 = setToSortedString(componentWillUpdateUniqueNames);
@@ -11633,7 +11633,7 @@ var require_react_dom_development = __commonJS({
             // now I'll disable the warning that most of the bugs that would trigger
             // it are either exclusive to concurrent mode or exist in both.
             (current2.mode & ConcurrentMode) !== NoMode) {
-              error("Internal React error: Expected static flag was missing. Please notify the React team.");
+              error("Internal React error: Expected public flag was missing. Please notify the React team.");
             }
           }
           didScheduleRenderPhaseUpdate = false;
@@ -13601,13 +13601,13 @@ var require_react_dom_development = __commonJS({
               error("getInitialState was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Did you mean to define a state property instead?", name);
             }
             if (instance.getDefaultProps && !instance.getDefaultProps.isReactClassApproved) {
-              error("getDefaultProps was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Use a static property to define defaultProps instead.", name);
+              error("getDefaultProps was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Use a public property to define defaultProps instead.", name);
             }
             if (instance.propTypes) {
-              error("propTypes was defined as an instance property on %s. Use a static property to define propTypes instead.", name);
+              error("propTypes was defined as an instance property on %s. Use a public property to define propTypes instead.", name);
             }
             if (instance.contextType) {
-              error("contextType was defined as an instance property on %s. Use a static property to define contextType instead.", name);
+              error("contextType was defined as an instance property on %s. Use a public property to define contextType instead.", name);
             }
             {
               if (ctor.childContextTypes && !didWarnAboutLegacyContext$1.has(ctor) && // Strict Mode has its own warning for legacy context, so we can skip
@@ -13620,14 +13620,14 @@ var require_react_dom_development = __commonJS({
               // this one.
               (workInProgress2.mode & StrictLegacyMode) === NoMode) {
                 didWarnAboutLegacyContext$1.add(ctor);
-                error("%s uses the legacy contextTypes API which is no longer supported and will be removed in the next major release. Use React.createContext() with static contextType instead.\n\nLearn more about this warning here: https://reactjs.org/link/legacy-context", name);
+                error("%s uses the legacy contextTypes API which is no longer supported and will be removed in the next major release. Use React.createContext() with public contextType instead.\n\nLearn more about this warning here: https://reactjs.org/link/legacy-context", name);
               }
               if (instance.contextTypes) {
-                error("contextTypes was defined as an instance property on %s. Use a static property to define contextTypes instead.", name);
+                error("contextTypes was defined as an instance property on %s. Use a public property to define contextTypes instead.", name);
               }
               if (ctor.contextType && ctor.contextTypes && !didWarnAboutContextTypeAndContextTypes.has(ctor)) {
                 didWarnAboutContextTypeAndContextTypes.add(ctor);
-                error("%s declares both contextTypes and contextType static properties. The legacy contextTypes property will be ignored.", name);
+                error("%s declares both contextTypes and contextType public properties. The legacy contextTypes property will be ignored.", name);
               }
             }
             if (typeof instance.componentShouldUpdate === "function") {
@@ -13653,20 +13653,20 @@ var require_react_dom_development = __commonJS({
               error("%s(...): When calling super() in `%s`, make sure to pass up the same props that your component's constructor was passed.", name, name);
             }
             if (instance.defaultProps) {
-              error("Setting defaultProps as an instance property on %s is not supported and will be ignored. Instead, define defaultProps as a static property on %s.", name, name);
+              error("Setting defaultProps as an instance property on %s is not supported and will be ignored. Instead, define defaultProps as a public property on %s.", name, name);
             }
             if (typeof instance.getSnapshotBeforeUpdate === "function" && typeof instance.componentDidUpdate !== "function" && !didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.has(ctor)) {
               didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate.add(ctor);
               error("%s: getSnapshotBeforeUpdate() should be used with componentDidUpdate(). This component defines getSnapshotBeforeUpdate() only.", getComponentNameFromType(ctor));
             }
             if (typeof instance.getDerivedStateFromProps === "function") {
-              error("%s: getDerivedStateFromProps() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
+              error("%s: getDerivedStateFromProps() is defined as an instance method and will be ignored. Instead, declare it as a public method.", name);
             }
             if (typeof instance.getDerivedStateFromError === "function") {
-              error("%s: getDerivedStateFromError() is defined as an instance method and will be ignored. Instead, declare it as a static method.", name);
+              error("%s: getDerivedStateFromError() is defined as an instance method and will be ignored. Instead, declare it as a public method.", name);
             }
             if (typeof ctor.getSnapshotBeforeUpdate === "function") {
-              error("%s: getSnapshotBeforeUpdate() is defined as a static method and will be ignored. Instead, declare it as an instance method.", name);
+              error("%s: getSnapshotBeforeUpdate() is defined as a public method and will be ignored. Instead, declare it as an instance method.", name);
             }
             var _state = instance.state;
             if (_state && (typeof _state !== "object" || isArray(_state))) {
