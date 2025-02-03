@@ -5,36 +5,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-    --background-color: hsl(60, 30%, 95%); /* Light cream background, inspired by honey */
-    --card-background: hsl(60, 20%, 90%); /* Soft yellow background for cards */
-    --text-color: hsl(220, 10%, 20%); /* Dark text for contrast, resembling bee stripes */
+    --background-color: hsl(0, 0%, 98%);
+    --card-background: hsl(0, 0%, 100%);
+    --text-color: hsl(220, 10%, 15%);
 
-    --link-color: hsl(45, 80%, 50%); /* Warm yellow link color, like bee stripes */
-    --link-hover: hsl(45, 80%, 60%); /* Slightly brighter yellow when hovering over links */
+    --link-color: hsl(210, 90%, 40%);
+    --link-hover: hsl(210, 90%, 50%);
 
-
-    --default-radius: 10px;
-    --default-transition: 300ms ease-in-out;
-    --default-box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
-
+    --default-radius: 8px;
+    --default-transition: 250ms ease-in-out;
+    --default-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
     /*
     Input
-     */
-    --input-radius: 5px;
-    --input-background: hsl(60, 20%, 95%); /* Light, soft yellow background for inputs, in line with the honey theme */
-    --error-color: hsl(354, 100%, 50%);
+    */
+    --input-radius: 6px;
+    --input-background: hsl(0, 0%, 96%);
+    --error-color: hsl(0, 80%, 50%);
 
     /*
     Button
-     */
-    --button-background: hsl(45, 80%, 50%); /* Warm yellow background for buttons, matching the bee theme */
-    --button-hover: hsl(45, 80%, 60%); /* Slightly lighter yellow for button hover */
+    */
+    --button-background: hsl(210, 90%, 50%);
+    --button-hover: hsl(210, 90%, 60%);
 
     /*
     Font sizes
-     */
-
+    */
     --span-size: 16px;
 }
 
@@ -42,6 +39,10 @@ html, body {
     margin: 0;
     height: 100%;
     width: 100%;
+}
+
+svg {
+    fill: var(--text-color);
 }
 
 

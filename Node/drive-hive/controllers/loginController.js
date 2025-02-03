@@ -10,9 +10,6 @@ exports.loadLogin = (req, res) => {
 
 
 exports.addNewUser = async (req, res) => {
-
-    console.log(req.body)
-
     try {
         const hashedPassword = await bcrypt.hash(req.body.newPassword, 10)
         const user = {

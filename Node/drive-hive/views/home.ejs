@@ -1,0 +1,68 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Oskar Lundemo">
+    <link rel="icon" href="/svgs/hive.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/index.css"> <!-- Global variables -->
+    <script src="/js/login.js" defer></script>
+    <title><%= title%></title>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <header>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFF55"><path d="m390-80-68-120H190l-90-160 68-120-68-120 90-160h132l68-120h180l68 120h132l90 160-68 120 68 120-90 160H638L570-80H390Zm248-440h86l44-80-44-80h-86l-45 80 45 80ZM438-400h84l45-80-45-80h-84l-45 80 45 80Zm0-240h84l46-81-45-79h-86l-45 79 46 81ZM237-520h85l45-80-45-80h-85l-45 80 45 80Zm0 240h85l45-80-45-80h-86l-44 80 45 80Zm200 120h86l45-79-46-81h-84l-46 81 45 79Zm201-120h85l45-80-45-80h-85l-45 80 45 80Z"/></svg>
+        <h1>Drive Hive</h1>
+    </header>
+
+    <main class="home-card">
+        <aside>
+            <div>
+                <h2>Folders</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFF55"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z"/></svg>
+            </div>
+            <ul>
+                <li>School</li>
+                <li>Work</li>
+            </ul>
+        </aside>
+
+        <section class="folder-content">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">File size</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <th scope="row">Anteckningar</th>
+                    <th scope="row">You</th>
+                    <th scope="row">2025-10-21</th>
+                    <th scope="row">252 kb</th>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+
+
+    <footer>
+        <p>Lundemo @2025</p>
+    </footer>
+</div>
+<div class="overlay"></div>
+</body>
+</html>
