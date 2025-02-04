@@ -3,10 +3,7 @@
 
 const {body, validationResult} = require('express-validator');
 const {createNewUser, getPosts} = require("../db/queries");
-const LocalStrategy = require('passport-local');
 const passport = require('passport');
-const pool = require("../db/pool");
-const bcrypt = require("bcryptjs");
 
 
 exports.validateNewUser = [

@@ -1,39 +1,67 @@
-
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-    --background-color: hsl(0, 0%, 98%);
-    --card-background: hsl(0, 0%, 100%);
-    --text-color: hsl(220, 10%, 15%);
+    --background-color: hsl(220, 20%, 100%);
+    --card-background: hsl(220, 20%, 95%);
+    --text-color: hsl(220, 10%, 20%);
+    --input-background: hsl(220, 15%, 85%);
+    --button-background: hsl(210, 80%, 70%);
+    --button-hover: hsl(210, 80%, 65%);
+    --link-color: hsl(210, 90%, 60%);
+    --link-hover: hsl(210, 90%, 55%);
 
-    --link-color: hsl(210, 90%, 40%);
-    --link-hover: hsl(210, 90%, 50%);
+    --default-radius: 10px;
+    --default-transition: 300ms ease-in-out;
+    --default-box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
 
-    --default-radius: 8px;
-    --default-transition: 250ms ease-in-out;
-    --default-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
-    /*
-    Input
-    */
-    --input-radius: 6px;
-    --input-background: hsl(0, 0%, 96%);
-    --error-color: hsl(0, 80%, 50%);
-
-    /*
-    Button
-    */
-    --button-background: hsl(210, 90%, 50%);
-    --button-hover: hsl(210, 90%, 60%);
-
-    /*
-    Font sizes
-    */
+    --input-radius: 5px;
+    --error-color: hsl(354, 100%, 50%);
     --span-size: 16px;
 }
+
+
+.darkmode {
+    --background-color: hsl(220, 20%, 10%);
+    --card-background: hsl(220, 20%, 15%);
+    --text-color: hsl(220, 10%, 85%);
+    --input-background: hsl(220, 15%, 20%);
+    --button-background: hsl(240, 90%, 60%);
+    --button-hover: hsl(240, 90%, 65%);
+    --link-color: hsl(240, 90%, 70%);
+    --link-hover: hsl(240, 90%, 75%);
+}
+
+#theme-switch {
+    position: fixed;
+    bottom: 4%;
+    right: 2%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: var(--card-background);
+    padding: 0.2rem;
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+
+
+
 
 html, body {
     margin: 0;
@@ -225,8 +253,17 @@ button:hover {
 
 .error-msg {
     color: var(--error-color);
-    font-size: var(--span-size);
+    font-size: 1rem;
+    height: 1rem;
+    display: block;
+    margin-top: 0.2rem;
+    visibility: hidden;
 }
+
+.error-msg:not(:empty) {
+    visibility: visible;
+}
+
 
 a {
     color: var(--link-color);

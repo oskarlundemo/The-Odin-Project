@@ -15,6 +15,27 @@ const addNewUser = async (user) => await prisma.user.create({
     }
 })
 
+const findLoginUsername = async (username) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            username: username
+        }
+    })
+    if (!user) throw new Error('Incorrect username or password');
+    return user;
+}
+
+const findLoginId = async (id) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: id
+        }
+    })
+    if (!user) throw new Error('Incorrect username or password');
+    return user;
+}
 module.exports = {
     addNewUser,
+    findLoginId,
+    findLoginUsername
 }
