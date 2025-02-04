@@ -1,13 +1,14 @@
 
 
 
-document.addEventListener('DOMContentLoaded', function(){
+
+document.addEventListener("DOMContentLoaded", () => {
     darkMode();
-    toggleAccountCreation();
+    toggleFormCreate();
 })
 
 
-export const darkMode = () => {
+const darkMode = () => {
     let darkmode = localStorage.getItem('darkmode');
     const themeSwitch = document.getElementById('theme-switch');
 
@@ -25,12 +26,12 @@ export const darkMode = () => {
     themeSwitch.addEventListener('click', function(){
         darkmode = localStorage.getItem('darkmode');
         darkmode !== 'active' ? enableDarkmode() : disableDarkmode();
-        alert('Oskar')
     })
 }
 
-const toggleAccountCreation = () => {
-    const createAccountLink = document.querySelector('.create-account');
+
+const toggleFormCreate = () => {
+    const newFolderIcon = document.querySelector('.new-folder');
     const popUpModule = document.querySelector('.pop-up-box');
     const overlay = document.querySelector('.overlay');
     const closeIcon = document.querySelector('.close');
@@ -40,7 +41,7 @@ const toggleAccountCreation = () => {
         overlay.classList.remove('show');
     })
 
-    createAccountLink.addEventListener('click', function(e) {
+    newFolderIcon.addEventListener('click', function(e) {
         popUpModule.classList.add('show');
         overlay.classList.add('show');
 
@@ -50,4 +51,3 @@ const toggleAccountCreation = () => {
         })
     })
 }
-

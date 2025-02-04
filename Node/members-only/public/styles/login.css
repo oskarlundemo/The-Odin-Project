@@ -5,8 +5,6 @@
 .left-info, .right-info {
     display: flex;
     flex-direction: column;
-
-    gap: 3rem;
 }
 
 
@@ -73,7 +71,6 @@ body {
     gap: 2rem;
     align-items: center;
     flex-direction: column;
-
 
     button {
         padding: 1rem 2rem;
