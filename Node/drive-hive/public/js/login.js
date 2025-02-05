@@ -25,7 +25,6 @@ export const darkMode = () => {
     themeSwitch.addEventListener('click', function(){
         darkmode = localStorage.getItem('darkmode');
         darkmode !== 'active' ? enableDarkmode() : disableDarkmode();
-        alert('Oskar')
     })
 }
 

@@ -26,18 +26,15 @@ const findLoginUsername = async (username) => {
 }
 
 const findLoginId = async (id) => {
-
-    console.log('I find ' + id)
     const user = await prisma.user.findUnique({
         where: {
             id: id
         }
     })
+
     if (!user) return null;
     return user;
 }
-
-
 
 const createNewFolder = async (folderName, req, res) => {
     await prisma.folder.create({
@@ -45,8 +42,10 @@ const createNewFolder = async (folderName, req, res) => {
             name: folderName,
         }
     })
+}
 
-
+const getUserFolders = async (req, res) => {
+    console.log(req.user);
 }
 
 
@@ -54,5 +53,6 @@ module.exports = {
     addNewUser,
     findLoginId,
     findLoginUsername,
-    createNewFolder
+    createNewFolder,
+    getUserFolders,
 }

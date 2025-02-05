@@ -53,6 +53,7 @@ exports.handleValidationErrors = (req, res, next) => {
 
 exports.loadUI = (req, res) => {
     res.render("login", {title: "Login", errors: {}});
+
 }
 
 exports.addUser = async (req, res) => {
