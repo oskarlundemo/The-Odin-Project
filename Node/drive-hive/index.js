@@ -21,21 +21,38 @@ const findLoginUsername = async (username) => {
             username: username
         }
     })
-    if (!user) throw new Error('Incorrect username or password');
+    if (!user) return null;
     return user;
 }
 
 const findLoginId = async (id) => {
+
+    console.log('I find ' + id)
     const user = await prisma.user.findUnique({
         where: {
             id: id
         }
     })
-    if (!user) throw new Error('Incorrect username or password');
+    if (!user) return null;
     return user;
 }
+
+
+
+const createNewFolder = async (folderName, req, res) => {
+    await prisma.folder.create({
+        data: {
+            name: folderName,
+        }
+    })
+
+
+}
+
+
 module.exports = {
     addNewUser,
     findLoginId,
-    findLoginUsername
+    findLoginUsername,
+    createNewFolder
 }

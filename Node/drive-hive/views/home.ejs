@@ -73,14 +73,24 @@
 
     <div class="pop-up-box new-folder">
         <svg class="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-        <form method="post" action="/new-folder" class="">
+        <form method="post" action="/home/new-folder" class="new-folder-form">
             <label for="name">New Folder</label>
             <div class="input-box">
-                <input type="text" id="name" name="name" placeholder="Nameless folder">
+                <input type="text" id="name" name="foldername" placeholder="Nameless folder">
             </div>
+
+            <%if (errors && errors.length > 0) {%>
+                <% const error = errors.find(err => err.path ==='folder-name');%>
+                <% if (error) {%>
+                    <span class="error-msg"><%= error.msg%></span>
+                <%} else {%>
+                    <span class="error-msg"></span>
+                <%}%>
+            <%}%>
+
+            <button type="submit">Create</button>
         </form>
     </div>
-
 
     <footer>
         <p>Lundemo 🧑‍💻 2025</p>
