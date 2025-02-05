@@ -2,7 +2,7 @@
 
 
 const {Router} = require("express");
-const {loadHomepage, validateFolder, handleValidationErrors, newFolder} = require("../controllers/homeController");
+const {loadHomepage, validateFolder,handleValidationErrors, newFolder} = require("../controllers/homeController");
 
 const homeRoute = new Router();
 
