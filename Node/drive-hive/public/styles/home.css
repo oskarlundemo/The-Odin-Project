@@ -131,7 +131,17 @@ thead tr th:nth-child(4) {
 }
 
 
+.new-folder-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.2rem;
 
+    button {
+        align-self: center;
+        margin-top: 1rem;
+    }
+}
 
 
 footer {
