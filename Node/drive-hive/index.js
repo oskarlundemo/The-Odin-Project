@@ -36,16 +36,42 @@ const findLoginId = async (id) => {
     return user;
 }
 
-const createNewFolder = async (folderName, req, res) => {
+
+const createNewFolder = async (folderName, user, req, res) => {
+
+    console.log(user)
+
     await prisma.folder.create({
         data: {
             name: folderName,
         }
     })
+
+    const latestFolder = await prisma.folder.findMany({
+        orderBy: {
+            id: 'desc',
+        }, take: 1
+    })
+
+    const latestFolderData = latestFolder[0];
+
+    await prisma.user_Folder.create({
+        data: {
+            folder_id: latestFolderData.id,
+            user_id: user.id,
+        }
+    })
 }
 
-const getUserFolders = async (req, res) => {
-    console.log(req.user);
+const getUserFolders = async (user, req, res) => {
+    const userFolders = await prisma.user_Folder.findMany({
+        where: {user_id: user.id,},
+        include: {
+            folder: true,
+        }
+    })
+    const folders = userFolders.map(uf => uf.folder);
+    return folders;
 }
 
 

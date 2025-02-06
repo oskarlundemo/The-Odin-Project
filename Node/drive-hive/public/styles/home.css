@@ -78,25 +78,30 @@ table {
     border-collapse: collapse;
 }
 
-tbody {
+
+
+tbody tr th {
     font-weight: normal;
-
-    tr {
-        th {
-            text-align: left;
-        }
-    }
-}
-
-
-tr {
-    border-bottom: 1px solid lightgray;
-
-}
-
-thead tr th {
     text-align: left;
+    padding: 0.5rem 0.5rem;
 }
+
+
+tbody tr {
+    border-radius: var(--default-radius);
+}
+
+
+thead tr {
+    text-align: left;
+    border-bottom: 1px solid lightgray;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--background-color);
+}
+
+
 
 thead tr th:nth-child(1) {
     width: 30%;
@@ -107,11 +112,9 @@ thead tr th:nth-child(2) {
 }
 
 thead tr th:nth-child(3) {
-    width: 30%;
-}
-
-thead tr th:nth-child(4) {
-    width: 20%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .new-folder {
@@ -129,6 +132,20 @@ thead tr th:nth-child(4) {
         fill: var(--error-color);
     }
 }
+
+.folder-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.folder-configure {
+    align-items: flex-end;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+
 
 
 .new-folder-form {
