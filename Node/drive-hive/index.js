@@ -31,16 +31,12 @@ const findLoginId = async (id) => {
             id: id
         }
     })
-
     if (!user) return null;
     return user;
 }
 
 
 const createNewFolder = async (folderName, user, req, res) => {
-
-    console.log(user)
-
     await prisma.folder.create({
         data: {
             name: folderName,
@@ -74,6 +70,30 @@ const getUserFolders = async (user, req, res) => {
     return folders;
 }
 
+const deleteFolder = async (folderId, userID) => {
+    await prisma.user_Folder.delete({
+        where: {
+            user_id_folder_id: {
+                folder_id: parseInt(folderId),
+                user_id: userID
+            }
+        }
+    })
+}
+
+const loadFiles = async (id, req, res) => {
+    console.log('Loading files')
+    try {
+        return await prisma.file_Folder.findMany({
+            where: {folder_id: parseInt(id)},
+            include: {
+                file: true,
+            }
+        });
+    } catch (e) {
+        console.error(e)
+    }
+}
 
 module.exports = {
     addNewUser,
@@ -81,4 +101,6 @@ module.exports = {
     findLoginUsername,
     createNewFolder,
     getUserFolders,
+    deleteFolder,
+    loadFiles,
 }

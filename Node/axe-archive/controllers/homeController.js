@@ -25,8 +25,6 @@ exports.addInstrument = async (req, res) => {
 
 
 exports.editInstrument = async (req, res) => {
-    console.log("Editing Instrument");
-    console.log(req.body);
 
     const editGuitar = {
         g_id: req.body.guitar_id,

@@ -1,11 +1,13 @@
 const {body, validationResult} = require("express-validator");
-const {createNewFolder, getUserFolders} = require('../index');
+const {createNewFolder, getUserFolders, deleteFolder} = require('../index');
 
 
 exports.loadHomepage = async (req, res) => {
     const folders = await getUserFolders(req.user);
     res.render('home', {title: 'Home', errors: {}, user: req.user, folders: folders});
 }
+
+
 
 exports.validateFolder = [
     body('foldername')
@@ -32,7 +34,25 @@ exports.logOutUser = (req, res) => {
         });
     });
 }
-exports.newFolder = async (req, res) => {
-    await createNewFolder(req.body.foldername, req.user);
-    res.render('home', {title: 'Home', errors: {}, user: req.user});
+
+exports.deleteFolder = async (req, res, next) => {
+    const folderId = req.params.id;
+    try {
+        await deleteFolder(folderId, req.user.id);
+        const referer = req.get('Referer') || '/';
+        res.json({redirect: referer});
+
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({e})
+    }
+    next();
 }
+
+
+
+
+exports.newFolder = async (req, res, next) => {
+    await createNewFolder(req.body.foldername, req.user);
+    next();
+};

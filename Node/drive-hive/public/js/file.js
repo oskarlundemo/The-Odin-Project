@@ -2,58 +2,13 @@
 
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
     darkMode();
     toggleFormCreate();
-    deleteFolder();
-    inspectFiles();
 })
 
 
-
-
-const inspectFiles = () => {
-    const tableBody = document.querySelector("tbody");
-    tableBody.addEventListener("click", (ev) => {
-        let tableRow = ev.target.closest("TR");
-        if (tableRow) {
-            let folderId = tableRow.dataset.doc;
-            let folderName = tableRow.querySelector('.folder-name').textContent.trim();
-
-            let encodedFolderName = encodeURIComponent(folderName);
-            window.location.href = `http://localhost:3000/${encodedFolderName}/${folderId}`;
-        }
-    })
-}
-
-
-
-const deleteFolder = () => {
-    const tableBody = document.querySelector("tbody");
-
-    tableBody.addEventListener("click", (ev) => {
-        if (ev.target.classList.contains("delete")) {
-            let folderId = ev.target.dataset.doc;
-            const endPoint = `http://localhost:3000/home/${folderId}`;
-
-            fetch(endPoint, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({folderId}),
-            })
-                .then(res => res.json())
-                .then((data) => {
-                    window.location.href = data.redirect;
-                })
-
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
-    })
-}
 
 
 const darkMode = () => {
@@ -79,7 +34,7 @@ const darkMode = () => {
 
 
 const toggleFormCreate = () => {
-    const newFolderIcon = document.querySelector('.new-folder');
+    const newFolderIcon = document.querySelector('.new-file-btn');
     const popUpModule = document.querySelector('.pop-up-box');
     const overlay = document.querySelector('.overlay');
     const closeIcon = document.querySelector('.close');
