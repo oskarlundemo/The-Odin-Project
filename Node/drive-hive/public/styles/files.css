@@ -28,6 +28,12 @@ header {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+    }
 }
 
 
@@ -123,6 +129,10 @@ tbody tr th:last-child div {
         animation: bounce 0.5s ease-in-out;
     }
 
+    > :nth-child(2):hover {
+        animation: bounce 0.5s ease-in-out;
+    }
+
     > :last-child:hover {
         fill: red;
         animation: shake 0.5s ease-in-out;
@@ -157,6 +167,14 @@ tbody tr:hover {
         opacity: 1;
     }
 }
+
+
+.file-name-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 
 thead tr th:nth-child(1) {
     width: 30%;
@@ -210,8 +228,6 @@ thead tr th:nth-child(5) {
         cursor: pointer;
     }
 }
-
-
 
 
 .new-file-form {

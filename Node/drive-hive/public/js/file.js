@@ -6,7 +6,80 @@
 document.addEventListener("DOMContentLoaded", () => {
     darkMode();
     toggleFormCreate();
+    deleteFile();
+    downloadFile();
 })
+
+
+
+
+const downloadFile = () => {
+    const tableBody = document.querySelector("tbody");
+
+    tableBody.addEventListener("click", (ev) => {
+
+        if (ev.target.classList.contains("download")) {
+            const data = JSON.parse(ev.target.dataset.doc);
+
+            let fileId = data.fileId;
+            let folderId = data.folderId;
+            let folderName = encodeURIComponent(data.folderName)
+
+            const endPoint = `http://localhost:3000/${folderName}/${folderId}/${fileId}`;
+
+            fetch(endPoint, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    })
+
+}
+
+
+
+
+const deleteFile = () => {
+    const tableBody = document.querySelector("tbody");
+
+    tableBody.addEventListener("click", (ev) => {
+
+        if (ev.target.classList.contains("delete")) {
+            const data = JSON.parse(ev.target.dataset.doc);
+
+            console.log('I file.js');
+            console.log(data);
+
+            let fileId = data.fileId;
+            let folderId = data.folderId;
+            let folderName = encodeURIComponent(data.folderName)
+
+            const endPoint = `http://localhost:3000/${folderName}/${folderId}/${fileId}/`;
+
+            fetch(endPoint, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then((data) => {
+                    window.location.href = data.redirect;
+                })
+
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    })
+}
+
 
 
 

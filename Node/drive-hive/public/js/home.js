@@ -15,11 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 const inspectFiles = () => {
     const tableBody = document.querySelector("tbody");
     tableBody.addEventListener("click", (ev) => {
-        let tableRow = ev.target.closest("TR");
-        if (tableRow) {
+        if (!ev.target.classList.contains('delete')) {
+            let tableRow = ev.target.closest("TR");
             let folderId = tableRow.dataset.doc;
             let folderName = tableRow.querySelector('.folder-name').textContent.trim();
-
             let encodedFolderName = encodeURIComponent(folderName);
             window.location.href = `http://localhost:3000/${encodedFolderName}/${folderId}`;
         }
