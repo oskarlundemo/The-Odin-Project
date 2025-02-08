@@ -5,6 +5,14 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 
+/**
+ *
+ * Login
+ * @param user
+ * @returns {Promise<Prisma.Prisma__UserClient<GetResult<Prisma.$UserPayload<DefaultArgs>, {data: {firstname, lastname, email, username, password}}, "create", Prisma.PrismaClientOptions>, never, DefaultArgs, Prisma.PrismaClientOptions>>}
+ */
+
+
 const addNewUser = async (user) => await prisma.user.create({
     data: {
         firstname: user.firstname,
@@ -36,12 +44,22 @@ const findLoginId = async (id) => {
 }
 
 
+/**
+ * Folder
+ * @param folderName
+ * @param user
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+
 const createNewFolder = async (folderName, user, req, res) => {
     await prisma.folder.create({
         data: {
             name: folderName,
         }
     })
+
 
     const latestFolder = await prisma.folder.findMany({
         orderBy: {
@@ -71,6 +89,7 @@ const getUserFolders = async (user, req, res) => {
 }
 
 const deleteFolder = async (folderId, userID) => {
+
     await prisma.user_Folder.delete({
         where: {
             user_id_folder_id: {
@@ -79,21 +98,73 @@ const deleteFolder = async (folderId, userID) => {
             }
         }
     })
+
+    await prisma.folder.delete({
+        where: {
+            id: parseInt(folderId),
+        }
+    })
 }
 
-const loadFiles = async (id, req, res) => {
-    console.log('Loading files')
+const loadFolder = async (folderId) => {
     try {
-        return await prisma.file_Folder.findMany({
-            where: {folder_id: parseInt(id)},
-            include: {
-                file: true,
-            }
+        return await prisma.folder.findUnique({
+            where: {id: folderId},
         });
     } catch (e) {
-        console.error(e)
+        console.error(e);
+        return null;
     }
 }
+
+
+
+
+
+/**
+ * Files
+ * @param folderId
+ * @returns {Promise<GetFindResult<Prisma.$FilePayload<DefaultArgs>, {where: {folder_id}}, Prisma.PrismaClientOptions>[]>}
+ */
+
+
+const loadFiles = async (folderId) => {
+    return await prisma.file.findMany({
+        where: {
+            folder_id: folderId
+        }
+    })
+}
+
+
+const saveFile = async (folderId, file, req, res) => {
+    await prisma.file.create({
+        data: {
+            name: file.originalname,
+            size: file.size,
+            path: file.path,
+            folder_id: folderId,
+        }
+    })
+}
+
+const deleteFileFromDB = async (fileId, req, res) => {
+    await prisma.file.delete({
+        where: {
+            id: fileId,
+        }
+    })
+}
+
+const getSingleFileFromDB = async (fileId, req, res) => {
+    return await prisma.file.findUnique({
+        where: {
+            id: fileId
+        }
+    })
+}
+
+
 
 module.exports = {
     addNewUser,
@@ -102,5 +173,9 @@ module.exports = {
     createNewFolder,
     getUserFolders,
     deleteFolder,
+    loadFolder,
     loadFiles,
+    saveFile,
+    deleteFileFromDB,
+    getSingleFileFromDB
 }
