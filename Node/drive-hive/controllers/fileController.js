@@ -1,12 +1,14 @@
 const {loadFolder, loadFiles, saveFile, deleteFileFromDB, getSingleFileFromDB} = require("../index");
 
 const download = require('download');
+const mime = require('mime-types');
 const { createClient } = require('@supabase/supabase-js');
 
 const fs = require('fs').promises;
 const supabaseUrl = 'https://szbfcswimsizxxcbtbyx.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 function formatFileSize (bytes) {
     if (bytes < 1024) return bytes + " B";
@@ -19,13 +21,19 @@ function formatFileSize (bytes) {
 }
 
 
+function formatFileType (fileName) {
+    return fileName.split('.').pop().toUpperCase();
+}
+
+
 function formatFileName (fileName) {
     if (fileName.length > 30) {
         let splitString = fileName.substring(0, 30);
         let lastSpace = splitString.lastIndexOf(" ");
-        let fileType = fileName.substring(fileName.lastIndexOf('.'), fileName.length);
-
-        return fileName.substring(0, lastSpace) + "... ." + fileType;
+        if (lastSpace < 0 || lastSpace > splitString.length) {
+            return fileName.substring(0, 30) + "...";
+        }
+        return fileName.substring(0, lastSpace) + " ...";
     }
     return fileName;
 }
@@ -48,6 +56,7 @@ exports.loadFiles = async (req, res) => {
             folder: folder,
             formatFileSize,
             formatFileName,
+            formatFileType
         });
 }
 
@@ -67,32 +76,33 @@ exports.deleteFile = async (req, res) => {
 
 exports.saveFile = async (req, res) => {
 
-
-    const { foldername, id } = req.params;
-    await saveFile(parseInt(id), req.file);
-
     console.log(req.file);
 
-    const filePath = `${foldername}/${req.file.filename}`; // Create a structured path
+    const { foldername, id } = req.params;
+
+
+    const filePath = `uploads/${req.file.originalname}`;
     const fileMimeType = req.file.mimetype;
 
 
     try {
-
-        const fileBuffer = await fs.readFile(req.file.path);
-
-        const fileBlob = new Blob([fileBuffer], { type: fileMimeType });
-
+        const fileBlob = new Blob([req.file.buffer], { type: fileMimeType });
 
         const {data, error} = await supabase
             .storage
             .from('drive-hive')
-            .upload(filePath, fileBuffer, {
-                contentType: req.file.mimetype, // 👈 Add this to fix the issue!
+            .upload(filePath, fileBlob, {
+                contentType: fileMimeType,
                 cacheControl: '3600',
-                upsert: false,
+                upsert: true,
             })
-        console.log('File uploaded successfully:', data);
+
+        if (error) {
+            console.error("❌ Supabase Error:", error.message);
+        }
+
+        await saveFile(parseInt(id), req.file);
+
     } catch (err) {
         console.error('Error uploading file:', err.message);
     }
@@ -108,12 +118,39 @@ exports.saveFile = async (req, res) => {
 exports.downloadFileFromDB = async (req, res) => {
     const file = await getSingleFileFromDB(parseInt(req.params.fileId));
 
-    console.log(file);
+    console.log(file)
+
 
     try {
-        await download(file.path, 'downloads');
-    } catch (err) {
-        console.log(err);
-    }
+        const {data, error} = await supabase
+            .storage
+            .from('drive-hive')
+            .download(`uploads/${file.name}`);
 
+        if (error) {
+            console.error(error.message);
+            return res.status(500).json({ error: error.message });
+        }
+
+        if (!data) {
+            console.log(data);
+        }
+
+        const fileBuffer = Buffer.from(await data.arrayBuffer());
+
+        const fileExtension = file.name.split('.').pop();
+        const contentType = mime.lookup(fileExtension) || 'application/octet-stream';
+
+        const encodedFileName = encodeURIComponent(file.name);
+
+        res.setHeader('Content-Disposition', `attachment; filename="${encodedFileName}"`);
+        res.setHeader('Content-Type', contentType);
+        res.setHeader('Content-Length', fileBuffer.length);
+
+        res.send(fileBuffer);
+
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ error: e });
+    }
 }

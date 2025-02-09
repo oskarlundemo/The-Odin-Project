@@ -142,7 +142,6 @@ const saveFile = async (folderId, file, req, res) => {
         data: {
             name: file.originalname,
             size: file.size,
-            path: file.path,
             folder_id: folderId,
         }
     })

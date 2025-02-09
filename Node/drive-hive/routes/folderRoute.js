@@ -4,7 +4,8 @@
 const {Router} = require('express');
 const {loadFiles, saveFile, deleteFile, downloadFileFromDB} = require("../controllers/fileController");
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const folderRouter = new Router();
 
