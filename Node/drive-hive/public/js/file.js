@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const downloadFile = () => {
     const tableBody = document.querySelector("tbody");
 
-    tableBody.addEventListener("click", (ev) => {
+    tableBody.addEventListener("click", async (ev) => {
 
         if (ev.target.classList.contains("download")) {
             const data = JSON.parse(ev.target.dataset.doc);
@@ -25,18 +25,41 @@ const downloadFile = () => {
             let folderId = data.folderId;
             let folderName = encodeURIComponent(data.folderName)
 
-            const endPoint = `http://localhost:3000/${folderName}/${folderId}/${fileId}`;
 
-            fetch(endPoint, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
+            try {
+                const endPoint = `http://localhost:3000/${folderName}/${folderId}/${fileId}`;
+
+                const response = await fetch(endPoint)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-            })
-                .then(res => res.json())
-                .catch((err) => {
-                    console.log(err);
-                })
+
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+
+                const contentDisposition = response.headers.get("Content-Disposition");
+                let filename = "downloaded_file";
+                if (contentDisposition) {
+                    const match = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+                    if (match && match[1]) {
+                        filename = match[1].replace(/['"]/g, '');
+                    }
+                }
+
+                // Create a hidden link and trigger the download
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                // Clean up URL object
+                window.URL.revokeObjectURL(url);
+            } catch (err) {
+                console.error("Download failed:", err);
+            }
         }
     })
 

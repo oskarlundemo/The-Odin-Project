@@ -36,9 +36,7 @@
         </div>
     </header>
 
-
     <main class="home-card">
-
 
         <div class="folder-controls">
             <h2><%= title%></h2>
@@ -56,6 +54,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Created</th>
                     <th scope="col">Owner</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Size</th>
                     <th scope="col"></th>
                 </tr>
@@ -64,7 +63,7 @@
                 <tbody>
                 <%if (files && files.length > 0) {%>
                     <% files.forEach(function(file) { %>
-                        <tr data-doc=<%= file.id%>>
+                        <tr data-doc=<%= file.id%> >
                             <th scope="row">
                                 <div class="file-name-container">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
@@ -78,6 +77,10 @@
 
                             <th scope="row">
                                 <p><%= user.username%></p>
+                            </th>
+
+                            <th scope="row">
+                                <p><%= formatFileType(file.name)%></p>
                             </th>
 
                             <th scope="row">
