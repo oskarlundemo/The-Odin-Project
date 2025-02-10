@@ -63,8 +63,31 @@ exports.loadFiles = async (req, res) => {
 
 exports.deleteFile = async (req, res) => {
     const fileId = parseInt(req.params.fileId);
+
+    const file = await getSingleFileFromDB(fileId);
+    console.log(file);
+
     try {
         await deleteFileFromDB(fileId);
+
+        const {data, error} = await supabase
+            .storage
+            .from('drive-hive')
+            .remove([`uploads/${file.name}`])
+
+
+        if (!data) {
+            console.log('No file found.');
+            console.log(data)
+        }
+
+        if (error) {
+            console.log(error.message);
+        } else {
+            console.log('File deleted successfully.');
+        }
+
+
         const referer = req.get('Referer') || '/';
         res.json({redirect: referer});
     } catch (e) {
